@@ -1,2 +1,3 @@
 # Literasee
-Assessment Literacy for R
+
+An R package for the creation of Literasee related materials

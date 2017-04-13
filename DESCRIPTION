@@ -1,0 +1,16 @@
+Package: Literasee
+Type: Package
+Title: Assessment Literacy related materials
+Version: 0.0-0.1
+Date: 2017-04-13
+Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role=c("aut", "cre")),
+		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
+Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
+Depends: R (>= 3.3)
+Suggests: SGP (>= 1.6-0.0)
+Imports: crayon
+Description: Assessment Literacy related materials.
+LazyData: Yes
+LazyDataCompression: xz
+License: GPL-3
+ByteCompile: TRUE
