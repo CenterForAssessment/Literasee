@@ -1,4 +1,4 @@
-<a href="https://literasee.io"><img src="https://raw.githubusercontent.com/CenterForAssessment/Literasee_Resources/master/misc/Symbol.svg" align="left" hspace="12" vspace="15"></a>
+<a href="https://literasee.io"><img src="https://raw.githubusercontent.com/CenterForAssessment/SGP_Resources/master/misc/Symbol.svg" align="left" hspace="12" vspace="15"></a>
 The **Literasee** Package is open source software built for the [**R** software environment](https://CRAN.R-project.org/). The classes, functions and data within the **Literasee**
 package are used to build assessment literacy related materials including technical reports and explorable explanation.
 
