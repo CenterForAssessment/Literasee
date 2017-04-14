@@ -1,13 +1,12 @@
 language: r
-warnings_are_errors: true
+warnings_are_errors: yes
 notifications:
   webhooks:
     urls: https://webhooks.gitter.im/e/4aa77870ca2e9e17d777
     on_success: always
     on_failure: always
-    on_start: false
+    on_start: no
 env:
   global:
   - secure: Rvw4xGy0zCk3WKZkTaFsx++gk1BFQfI91Vt8lo6kcGoGSM8G5OjJ0Qlk04sy9kFLRRFhO+3xYhIBKJBFlm3pXlz3r5r3XmI/a8sw+T9s0Ipbs0SWDAAV7g2juJPqrA5DeSwPTBdW+g4I7/Xr7YO2/V/0S2fK+C0LEcwfGarBcJX9cQ8ImxTgarImU4E0qGJZAUuvqcx9agjO5/b7AEMtx/C0JbrelBHmv1SDUWRSUXNYyHdRK2Ig21LbuhIWRM9640XYCWFp8FEi7Mrc3b8V4djASGt/I9heES9823NNsIZvkwaf6IDRmwsIXEpSP23xD3LuADDtVMYuFqahNoo4ZLpxEaXj3SFjDE5D++TOGl+sZNL9j1qTS3eemgO/YLdAf0xdX1rW0lIKSuhw6cmWdPwu6YR7YO2OwjZQ/7ydtODnyhJrZsmt4heZqO9VjRvhcBQWrXTdl/HMkKBGvWXyHib9yXI0jozU01OL5FA2Inh+pNS7YkFrULE4CrBGjA3VkOaTfxW9ka6anzKsvRZJ6HAw1OFXkm6rRh3OSuEE9XpuaNe1hzeXNgkPujpv+gtXjvlqrq9L/SpNvvN4uyN9kMMdfzkTHvFcjMXo3vZMXs/5FVLafzEHvq8EbtKQhYDNx5cHs1drndj9hxRU9E6zJdbaXP+SEaFPOJp2LRXNXP0=
-after_success:
-- Rscript -e "packagedocs::deploy_travis()"
+after_success: Rscript -e "packagedocs::deploy_travis()"
