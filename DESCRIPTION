@@ -7,10 +7,12 @@ Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebe
 		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
 Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
 Depends: R (>= 3.3)
-Suggests: SGP (>= 1.6-0.0)
+Suggests: SGP (>= 1.6-0.0),
+    packagedocs
 Imports: crayon
 Description: Assessment Literacy content development via R.
 LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3
 ByteCompile: TRUE
+VignetteBuilder: packagedocs
