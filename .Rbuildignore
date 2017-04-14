@@ -6,3 +6,4 @@ README.md
 ^\.Rproj\.user$
 LICENSE.md
 ^_gh-pages$
+^docs$
