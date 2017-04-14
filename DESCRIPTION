@@ -1,7 +1,7 @@
 Package: Literasee
 Type: Package
 Title: Assessment Literacy content development via R
-Version: 0.0-0.2
+Version: 0.0-0.3
 Date: 2017-04-14
 Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role=c("aut", "cre")),
 		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
