@@ -1,3 +1,3 @@
-exportPattern("^[[:alpha:]]+")
+export(reportSGP)
 importFrom(crayon,bold,green,magenta,red,yellow)
 importFrom(utils,packageVersion)
