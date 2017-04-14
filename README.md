@@ -56,7 +56,7 @@ Linux: apt-get install r-base-dev (or similar).
 
 ### References
 
-Betebenner, D. W. and VanIwaarden, A. (2017). Literasee: Assessment Literacy for R.
+Betebenner, D. W. and VanIwaarden, A. (2017). Literasee: Assessment Literacy content development via R.
 
 R Development Core Team (2017). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 3-900051-07-0.

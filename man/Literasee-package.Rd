@@ -2,7 +2,7 @@
 \alias{Literasee-package}
 \alias{Literasee}
 \docType{package}
-\title{Literasee: Assessment Literacy for R}
+\title{Literasee: Assessment Literacy content development via R}
 \description{
 Assessment Literacy for R.
 }
@@ -16,7 +16,7 @@ Date: \tab 2017-4-14\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
-Literasee is an experimental package for the R software environment designed to ease in the creation of assessment literacy related materials.
+Literasee is an experimental package for the R software environment designed to ease in the creation of assessment literacy related content.
 }
 \author{
 Damian W. Betebenner \email{dbetebenner@nciea.org} and Adam Van Iwaarden \email{avaniwaarden@gmail.com}
