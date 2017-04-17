@@ -4,23 +4,28 @@ template:
 
 reference:
   - title: Build
-    desc:  Build each component of the site.
+    desc:  Generate content.
     contents:
-    - starts_with("build_")
+    - reportSGP
   - title: Templates
     contents:
-    - template_navbar
-    - render_page
+    - reportSGP
   - title: Helpers
     contents:
-    - clean_site
-    - as_pkgdown
-    - in_pkgdown
-    - rel_path
+    - reportSGP
 
 navbar:
+  title: "Literasee"
+  type: inverse
   left:
-  - text: Intro
-    href: articles/pkgdown.html
-  - text: Reference
-    href: reference/index.html
+    - text: "Home"
+      href: index.html
+    - text: "Articles"
+      href: articles/pkgdown.html
+    - text: "Deployment"
+      href: articles/deployment.html
+    - text: "Reference"
+      href: "reference/"
+  right:
+    - icon: fa-github
+      href: https://github.com/CenterForAssessment/Literasee
