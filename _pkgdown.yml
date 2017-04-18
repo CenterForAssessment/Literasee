@@ -1,6 +1,6 @@
 template:
   params:
-    bootswatch: cerulean
+    bootswatch: united
 
 reference:
   - title: Build
@@ -18,6 +18,8 @@ navbar:
   title: "Literasee"
   type: inverse
   left:
+    - icon: fa-github
+      href: https://github.com/CenterForAssessment/Literasee
     - text: "Home"
       href: index.html
     - text: "Articles"
@@ -27,5 +29,5 @@ navbar:
     - text: "Reference"
       href: "reference/"
   right:
-    - icon: fa-github
+    - icon: fa-github fa-lg
       href: https://github.com/CenterForAssessment/Literasee
