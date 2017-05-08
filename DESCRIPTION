@@ -1,15 +1,15 @@
 Package: Literasee
 Type: Package
-Title: Assessment Literacy content development via R
-Version: 0.0-0.3
-Date: 2017-04-14
+Title: Assessment Literacy Content Development via R
+Version: 0.0-0.4
+Date: 2017-5-8
 Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role=c("aut", "cre")),
 		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
 Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
 Depends: R (>= 3.3)
 Suggests: SGP (>= 1.7-0.0), knitr, rmarkdown
 Imports: crayon
-Description: Assessment Literacy content development via R.
+Description: Assessment Literacy Content Development via R.
 LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3

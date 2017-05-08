@@ -2,7 +2,7 @@
 \alias{Literasee-package}
 \alias{Literasee}
 \docType{package}
-\title{Literasee: Assessment Literacy content development via R}
+\title{Literasee: Assessment Literacy Content Development via R}
 \description{
 Assessment Literacy for R.
 }
@@ -11,8 +11,8 @@ Assessment Literacy for R.
 \tabular{ll}{
 Package: \tab Literasee\cr
 Type: \tab Package\cr
-Version: \tab 0.0-0.3\cr
-Date: \tab 2017-4-14\cr
+Version: \tab 0.0-0.4\cr
+Date: \tab 2017-5-8\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
