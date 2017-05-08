@@ -1,0 +1,33 @@
+template:
+  params:
+    bootswatch: united
+
+reference:
+  - title: Build
+    desc:  Generate content.
+    contents:
+    - reportSGP
+  - title: Templates
+    contents:
+    - reportSGP
+  - title: Helpers
+    contents:
+    - reportSGP
+
+navbar:
+  title: "Literasee"
+  type: inverse
+  left:
+    - icon: fa-github
+      href: https://github.com/CenterForAssessment/Literasee
+    - text: "Home"
+      href: index.html
+    - text: "Articles"
+      href: articles/pkgdown.html
+    - text: "Deployment"
+      href: articles/deployment.html
+    - text: "Reference"
+      href: "reference/"
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/CenterForAssessment/Literasee

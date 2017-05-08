@@ -1,10 +1,11 @@
 <a href="https://literasee.io"><img src="https://centerforassessment.github.io/SGP_Resources/Literasee.svg" align="left" hspace="12" vspace="15"></a>
 The **Literasee** Package is open source software built for the [**R** software environment](https://CRAN.R-project.org/). The classes, functions and data within the **Literasee**
 package are used to build assessment literacy related content including technical reports and [explorable explanations](http://explorableexplanations.com/). For example, the
-package used by the [SGP Package](https://github.com/CenterForAssessment/SGP) to create interactive technical reports and data visualizations. 
+package used by the [SGP Package](https://github.com/CenterForAssessment/SGP) to create interactive technical reports and data visualizations.
 
 
 [![Build Status](https://travis-ci.org/CenterForAssessment/Literasee.svg?branch=master)](https://travis-ci.org/CenterForAssessment/Literasee)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/Literasee)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Literasee)](http://cran.r-project.org/package=Literasee)
 [![Development Version](https://img.shields.io/badge/devel-0.0--0.2-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
 [![Rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/Literasee)](https://github.com/metacran/cranlogs.app)
