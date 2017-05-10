@@ -2,6 +2,11 @@ template:
   params:
     bootswatch: paper
 
+home:
+  links:
+    - text: Learn more
+      href: literasee.io
+
 reference:
   - title: Higher level functions
     desc:  Wrapper functions controlling lower level functions.
