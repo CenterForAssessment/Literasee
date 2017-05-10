@@ -1,0 +1,27 @@
+template:
+  params:
+    bootswatch: cerulean
+
+reference:
+  - title: Higher level functions
+    desc:  Wrapper functions controlling lower level functions.
+    contents:
+    - reportSGP
+  - title: Lower level functions
+    desc: Lower level functions controlling most output.
+    contents:
+    - reportSGP
+  - title: Miscellaneous functions
+    desc: Functions used by both higher and lower level functions
+    contents:
+    - reportSGP
+
+navbar:
+  left:
+  - text: Intro
+    href: articles/Literasee.html
+  - text: Reference
+    href: reference/index.html
+  right:
+  - icon: fa-github fa-2x
+    href: https://github.com/centerforassessment/Literasee

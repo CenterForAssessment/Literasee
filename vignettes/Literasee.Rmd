@@ -10,3 +10,7 @@ vignette: >
 # Literasee
 
 Lorum ipsem
+
+* First bullet
+* Second bullet
+* Third bullet
