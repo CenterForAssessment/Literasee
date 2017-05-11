@@ -9,7 +9,7 @@ vignette: >
 
 # Literasee
 
-Lorum ipsem
+A basic test
 
 * First bullet
 * Second bullet

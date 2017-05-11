@@ -11,7 +11,7 @@ home:
 navbar:
     title: ~
     type: default
-    right:
+    left:
     - text: Getting Started
       href: articles/Literasee.html
     - text: Reference
@@ -28,6 +28,7 @@ navbar:
       - text: "------------------"
       - text: "Change log"
         href: news/index.html
+    right:
       - icon: fa-github fa-2x
         href: https://github.com/centerforassessment/Literasee
 
