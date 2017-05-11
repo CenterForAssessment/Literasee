@@ -29,13 +29,52 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="articles/Literasee.html">Intro</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="articles/index.html">Articles</a>
+</li>
+<li>
+  <a href="news/index.html">News</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="articles/Literasee.html">Intro</a>
+</li>
+<li class="dropdown-header">Reference</li>
+<li>
+  <a></a>
+</li>
+<li>
+  <a></a>
+</li>
+<li>
+  <a></a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    News
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li class="dropdown-header">Release notes</li>
+    <li>
+      <a href="articles/releases/readxl-1.0.0.html">Version 1.0.0</a>
+    </li>
+    <li>
+      <a href="articles/releases/readxl-0.1.1.html">Version 0.1.1</a>
+    </li>
+    <li>
+      <a href="articles/releases/readxl-0.1.0.html">Version 0.1.0</a>
+    </li>
+    <li class="divider">
+    <li>
+      <a href="news/index.html">Change log</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="https://github.com/centerforassessment/Literasee">
     <span class="fa fa-github fa-2x"></span>
@@ -53,13 +92,36 @@
       
       </header><div class="row">
   <div class="contents col-md-9">
-    <div id="literasee" class="section level1">
+    
+<p>Assessment Literacy content development via R</p>
+<div id="installation" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#literasee" class="anchor"></a>Literasee</h1></div>
-
-<div id="literasee-resources" class="section level3">
+<a href="#installation" class="anchor"></a>Installation</h1></div>
+<div id="stable-version-from-cran" class="section level3">
 <h3 class="hasAnchor">
-<a href="#literasee-resources" class="anchor"></a>Literasee Resources</h3>
+<a href="#stable-version-from-cran" class="anchor"></a>Stable version from <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a>
+</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"Literasee"</span>)</code></pre></div>
+</div>
+<div id="development-version-from-github" class="section level3">
+<h3 class="hasAnchor">
+<a href="#development-version-from-github" class="anchor"></a>Development version from <a href="https://github.com/CenterForAssessment/Literasee/">Github</a>
+</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"CenterForAssessment/Literasee"</span>)</code></pre></div>
+</div>
+</div>
+<div id="usage" class="section level1">
+<h1 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h1>
+<ul>
+<li>The <a href="https://github.com/CenterForAssessment/Literasee/wiki/Home">Literasee Package Wiki</a> contains instructions on how to prepare data and run <strong>Literasee</strong> analyses.</li>
+<li>The <a href="https://CRAN.R-project.org/web/packages/Literasee/Literasee.pdf">Literasee Package Documentation</a> contains man pages for all functions and data sets in the the <strong>Literasee</strong> Package.</li>
+<li>Numerous <a href="https://gist.github.com/dbetebenner">Literasee Gists</a> provide other examples of analyses that can be performed.</li>
+</ul>
+</div>
+<div id="resources" class="section level1">
+<h1 class="hasAnchor">
+<a href="#resources" class="anchor"></a>Resources</h1>
 <ul>
 <li>Web: <a href="https://literasee.io">literasee.io</a>
 </li>
@@ -67,54 +129,19 @@
 </li>
 </ul>
 </div>
-<div id="contributors" class="section level3">
-<h3 class="hasAnchor">
-<a href="#contributors" class="anchor"></a>Contributors</h3>
-<p>The <strong>Literasee</strong> Package is crafted with ❤️ by:</p>
-<ul>
-<li><a href="https://github.com/dbetebenner">Damian Betebenner</a></li>
-<li><a href="https://github.com/adamvi">Adam VanIwaarden</a></li>
-</ul>
-<p>We love feedback and are happy to answer questions.</p>
-</div>
-<div id="install-the-latest-stable-release-from-cran" class="section level3">
-<h3 class="hasAnchor">
-<a href="#install-the-latest-stable-release-from-cran" class="anchor"></a>Install the latest stable release from <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a>
-</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"Literasee"</span>)
-<span class="kw">require</span>(Literasee)</code></pre></div>
-</div>
-<div id="install-latest-development-release-from-github-octocat" class="section level3">
-<h3 class="hasAnchor">
-<a href="#install-latest-development-release-from-github-octocat" class="anchor"></a>Install latest development release from <a href="https://github.com/CenterForAssessment/Literasee/">Github</a> :octocat:</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"devtools"</span>)
-<span class="kw">require</span>(devtools)
-<span class="kw">install_github</span>(<span class="st">"CenterForAssessment/Literasee"</span>)
-<span class="kw">require</span>(Literasee)</code></pre></div>
-<p>To install from Github you might need: Windows: <a href="https://CRAN.R-project.org/bin/windows/Rtools/">Rtools</a>, OS X: xcode (from the app store), Linux: apt-get install r-base-dev (or similar).</p>
-</div>
-<div id="to-use-the-literasee-package" class="section level3">
-<h3 class="hasAnchor">
-<a href="#to-use-the-literasee-package" class="anchor"></a>To use the Literasee Package</h3>
-<ul>
-<li>The <a href="https://github.com/CenterForAssessment/Literasee/wiki/Home">Literasee Package Wiki</a> contains instructions on how to prepare data and run <strong>Literasee</strong> analyses.</li>
-<li>The <a href="https://CRAN.R-project.org/web/packages/Literasee/Literasee.pdf">Literasee Package Documentation</a> contains man pages for all functions and data sets in the the <strong>Literasee</strong> Package.</li>
-<li>Numerous <a href="https://gist.github.com/dbetebenner">Literasee Gists</a> provide other examples of analyses that can be performed.</li>
-</ul>
-</div>
-<div id="references" class="section level3">
-<h3 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h3>
+<div id="references" class="section level1">
+<h1 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h1>
 <p>Betebenner, D. W. and VanIwaarden, A. (2017). Literasee: Assessment Literacy content development via R.</p>
 <p>R Development Core Team (2017). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. 3-900051-07-0.</p>
 </div>
-</div>
+
   </div>
 
   <div class="col-md-3" id="sidebar">
     <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Learn more at <br><a href="https://literasee.io">https://​literasee.io</a>
+<li>Learn more at <br><a href="literasee.io">literasee.io</a>
 </li>
 </ul>
 <h2>License</h2>
@@ -123,15 +150,6 @@
 <ul class="list-unstyled">
 <li>Damian W. Betebenner <br><small class="roles"> Author, maintainer </small> </li>
 <li>Adam R. Van Iwaarden <br><small class="roles"> Author </small> </li>
-</ul>
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://travis-ci.org/CenterForAssessment/Literasee"><img src="https://travis-ci.org/CenterForAssessment/Literasee.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/centerforassessment/Literasee"><img src="https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="http://cran.r-project.org/package=Literasee"><img src="http://www.r-pkg.org/badges/version/Literasee" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/CenterForAssessment/Literasee"><img src="https://img.shields.io/badge/devel-0.0--0.4-brightgreen.svg" alt="Development Version"></a></li>
-<li><a href="https://github.com/metacran/cranlogs.app"><img src="http://cranlogs.r-pkg.org/badges/grand-total/Literasee" alt="Rstudio mirror downloads"></a></li>
-<li><a href="https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md"><img src="http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat" alt="License"></a></li>
 </ul>
 </div>
 </div>
