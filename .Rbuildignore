@@ -9,4 +9,4 @@
 LICENSE.md
 ^vignettes/articles$
 ^vignettes/releases$
-appveyor\.yml$
+^appveyor\.yml$
