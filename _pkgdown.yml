@@ -1,6 +1,6 @@
 template:
   params:
-    bootswatch: paper
+    bootswatch: flatly
 
 home:
   links:
@@ -9,33 +9,39 @@ home:
 
 
 navbar:
-  right:
-      - text: Intro
-        href: articles/Literasee.html
-      - text: Reference
-      - title: Higher level functions
-        desc:  Wrapper functions controlling lower level functions.
+    title: ~
+    type: default
+    right:
+    - text: Getting Started
+      href: articles/Literasee.html
+    - text: Reference
+      href: reference/index.html
+    - text: News
+      menu:
+      - text: "Release notes"
+      - text: "Version 0.0-0.4"
+        href: articles/releases/Literasee-0.0-0.4.html
+      - text: "Version 0.0-0.2"
+        href: articles/releases/Literasee-0.0-0.2.html
+      - text: "Version 0.0-0.1"
+        href: articles/releases/Literasee-0.0-0.1.html
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html
+      - icon: fa-github fa-2x
+        href: https://github.com/centerforassessment/Literasee
+
+
+reference:
+      - title: Content export functions
+        desc:  Functions that directly export content.
         contents:
             - reportSGP
       - title: Lower level functions
-        desc: Lower level functions controlling most output.
+        desc: Lower level functions converting Rmd to other formats.
         contents:
             - reportSGP
       - title: Miscellaneous functions
-        desc: Functions used by both higher and lower level functions
+        desc: Auxiliary functions
         contents:
             - reportSGP
-      - text: News
-        menu:
-            - text: "Release notes"
-            - text: "Version 1.0.0"
-              href: articles/releases/readxl-1.0.0.html
-            - text: "Version 0.1.1"
-              href: articles/releases/readxl-0.1.1.html
-            - text: "Version 0.1.0"
-              href: articles/releases/readxl-0.1.0.html
-            - text: "------------------"
-            - text: "Change log"
-              href: news/index.html
-      - icon: fa-github fa-2x
-        href: https://github.com/centerforassessment/Literasee
