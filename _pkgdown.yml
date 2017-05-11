@@ -1,0 +1,48 @@
+template:
+  params:
+    bootswatch: flatly
+
+home:
+  links:
+    - text: Learn more
+      href: literasee.io
+
+
+navbar:
+    title: ~
+    type: default
+    left:
+    - text: Getting Started
+      href: articles/Literasee.html
+    - text: Reference
+      href: reference/index.html
+    - text: News
+      menu:
+      - text: "Release notes"
+      - text: "Version 0.0-0.4"
+        href: articles/releases/Literasee-0.0-0.4.html
+      - text: "Version 0.0-0.2"
+        href: articles/releases/Literasee-0.0-0.2.html
+      - text: "Version 0.0-0.1"
+        href: articles/releases/Literasee-0.0-0.1.html
+      - text: "------------------"
+      - text: "Change log"
+        href: news/index.html
+    right:
+      - icon: fa-github fa-2x
+        href: https://github.com/centerforassessment/Literasee
+
+
+reference:
+      - title: Content export functions
+        desc:  Functions that directly export content.
+        contents:
+            - reportSGP
+      - title: Lower level functions
+        desc: Lower level functions converting Rmd to other formats.
+        contents:
+            - reportSGP
+      - title: Miscellaneous functions
+        desc: Auxiliary functions
+        contents:
+            - reportSGP
