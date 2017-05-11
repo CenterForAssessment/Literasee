@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/CenterForAssessment/Literasee.svg?branch=master)](https://travis-ci.org/CenterForAssessment/Literasee)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/Literasee)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Literasee)](http://cran.r-project.org/package=Literasee)
-[![Development Version](https://img.shields.io/badge/devel-0.0--0.2-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
+[![Development Version](https://img.shields.io/badge/devel-0.0--0.5-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
 [![Rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/Literasee)](https://github.com/metacran/cranlogs.app)
 [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md)
 

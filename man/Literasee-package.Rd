@@ -11,8 +11,8 @@ Assessment Literacy for R.
 \tabular{ll}{
 Package: \tab Literasee\cr
 Type: \tab Package\cr
-Version: \tab 0.0-0.4\cr
-Date: \tab 2017-5-8\cr
+Version: \tab 0.0-0.5\cr
+Date: \tab 2017-5-11\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }

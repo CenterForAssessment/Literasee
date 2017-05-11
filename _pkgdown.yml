@@ -13,7 +13,7 @@ navbar:
     type: default
     left:
     - text: Getting Started
-      href: articles/Literasee.html
+      href: articles/index.html
     - text: Reference
       href: reference/index.html
     - text: News
