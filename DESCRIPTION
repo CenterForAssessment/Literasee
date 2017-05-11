@@ -14,5 +14,6 @@ LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3
 VignetteBuilder: knitr
-URL: https://centerforassessment.github.io/Literasee, https://github.com/CenterForAssessment/Literasee 
+URL: https://centerforassessment.github.io/Literasee, https://github.com/CenterForAssessment/Literasee
+BugReports: https://github.com/Literasee/CenterForAssessment/issues
 ByteCompile: TRUE
