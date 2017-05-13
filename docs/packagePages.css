@@ -5818,12 +5818,15 @@ button.close {
   min-height: 50px;
   padding: 5px 0; }
   .navbar-brand {
-    font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+/*!    font-family: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
     font-weight: normal;
+*/
+    font-family: "Josefin Sans", monospace;
+    font-weight: 400;
     font-size: 32px;
     padding: 0 0 0 54px;
-    height: 50px;
-    line-height: 50px;
+    height: 48px;
+    line-height: 55px;
     background-image: url(logo.svg);
     background-size: 32px auto;
     background-repeat: no-repeat;
