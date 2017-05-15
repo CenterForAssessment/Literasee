@@ -3193,7 +3193,7 @@ tbody.collapse.in {
   list-style: none;
   font-size: 15px;
   text-align: left;
-  background-color: #fff;
+  background-color: #ebfbfb;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -3984,8 +3984,10 @@ tbody.collapse.in {
   .navbar-default .navbar-form {
     border-color: transparent; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #fcfcfc;
-    color: #212121; }
+    background-color: #ebfbfb;
+    color: #212121;
+    border-left: 1px solid #bdd;
+    border-right: 1px solid #bdd; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
       color: #444; }
