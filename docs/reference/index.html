@@ -29,6 +29,19 @@
 
 <!-- mathjax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+<!-- shrink nav-bar -->
+<script>
+    jQuery(function($) {
+    $(window).scroll(function(){
+        if($(window).scrollTop()>100) {
+            $('.navbar').addClass("navbar-shrink");
+        }else {
+            $('.navbar').removeClass("navbar-shrink");
+        }
+    });
+});
+</script>
   </head>
 
   <body>

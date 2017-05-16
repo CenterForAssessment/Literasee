@@ -1,0 +1,16 @@
+---
+title: "Literasee: Assessment Literacy content development via R"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Literasee: Assessment Literacy content development via R}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+# Literasee
+
+A basic test
+
+* First bullet
+* Second bullet
+* Third bullet

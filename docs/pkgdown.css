@@ -111,6 +111,11 @@ code a, pre a {
 
 /* For shrinking navbar ------------------ */
 
+.navbar-shrink {
+    background: rgba(51, 51, 51, 0.8);
+    height:35px;
+}
+
 /* For big header
 
   &-brand {
