@@ -39,12 +39,12 @@ reference:
       - title: Content export functions
         desc:  Functions that directly export content.
         contents:
-            - reportSGP
+          - reportSGP
       - title: Lower level functions
         desc: Lower level functions converting Rmd to other formats.
         contents:
-            - reportSGP
+          - reportSGP
       - title: Miscellaneous functions
         desc: Auxiliary functions
         contents:
-            - reportSGP
+          - reportSGP

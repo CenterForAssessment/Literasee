@@ -1,4 +1,5 @@
 ---
+author: "Damian W Betebenner & Adam VanIwaarden"
 title: "Literasee: Assessment Literacy content development via R"
 output: rmarkdown::html_vignette
 vignette: >
