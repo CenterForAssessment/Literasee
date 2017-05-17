@@ -1,0 +1,11 @@
+#  Introduction
+
+The SGP methodology is an open source norm- and criterion-referenced student growth analysis that produces student growth percentiles and student growth projections/targets for each student in the state with adequate longitudinal data.  The methodology is currently used for many purposes.  States and districts have used the results in various ways including parent/student diagnostic reporting, institutional improvement, and school and educator accountability.  Specifics about the manner in which growth is included in school and educator accountability can be found in documents related to those accountability systems.  
+
+This report includes four sections:
+
+- ***Data - *** includes details on the decision rules used in the raw data preparation and student record validation.
+- ***Analytics - *** introduces some of the basic statistical methods and the computational process implemented in the 2016 analyses.^[More in-depth treatment of the SGP Methodology can be found [here](https://github.com/CenterForAssessment/SGP_Resources/tree/master/articles).]
+- ***Goodness of Fit - *** investigates how well the statistical models used to produce SGPs fit Georgia students' data.  This includes discussion of goodness of fit plots and the student-level correlations between SGP and prior achievement.
+- ***SGP Results - *** provides basic descriptive statistics from the 2016 analyses at both the state and school levels.
+
