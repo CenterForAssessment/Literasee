@@ -1,9 +1,0 @@
-```{r, results='asis', echo=FALSE, SGP_Object_Tests}
-	require(SGP)
-
-	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==sgp.year]$GRADE))
-	if (eoct.tf) {
-		GL_subjects <- unique(sgp_object@Data[YEAR==sgp.year & GRADE != "EOCT", CONTENT_AREA])
-		EOC_subjects <- unique(sgp_object@Data[YEAR==sgp.year & GRADE == "EOCT", CONTENT_AREA])
-	} else GL_subjects <- unique(sgp_object@Data[YEAR==sgp.year, CONTENT_AREA])
-```

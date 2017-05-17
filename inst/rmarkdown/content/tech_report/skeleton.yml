@@ -5,12 +5,6 @@ author:
   - name: Report First Author
   - name: Report Second Author
 date: Date
-output: 
-  html_document:
-    toc: yes
-  pdf_document:
-    toc: yes
 ---
 
 <!--SGPreport-->
-
