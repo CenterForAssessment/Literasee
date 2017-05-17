@@ -1,8 +1,10 @@
 template:
-  params:
-    bootswatch: flatly
+  package: packagePages
+  default_assets: false
+
 
 home:
+  strip_header: true
   links:
     - text: Learn more
       href: literasee.io
