@@ -1,6 +1,6 @@
 \name{multi_document}
 \alias{multi_document}
-\title{Formatter wrapper for \code{\link[rmarkdown]{html_document}} to facilitate multiple output format porting.}
+\title{Formatter wrapper for rmarkdown's \code{html_document} to facilitate multiple output format porting.}
 \usage{
 multi_document(
   ...,

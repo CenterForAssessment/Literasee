@@ -1,11 +1,11 @@
 # Changes in version: Literasee 0.0-0.3
 
-  * Utilize pkgdown package for documentation generation.
+  * o Utilize pkgdown package for documentation generation.
 
 # Changes in version: Literasee 0.0-0.2
 
-  * Starting reportSGP function.
+  * o Starting reportSGP function.
 
 # Changes in version: Literasee 0.0-0.1
 
-  * Package Released.
+  * o Package Released.
