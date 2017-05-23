@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/CenterForAssessment/Literasee.svg?branch=master)](https://travis-ci.org/CenterForAssessment/Literasee)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/Literasee)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Literasee)](http://cran.r-project.org/package=Literasee)
-[![Development Version](https://img.shields.io/badge/devel-0.0--0.7-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
+[![Development Version](https://img.shields.io/badge/devel-0.0--0.8-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
 [![Rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/Literasee)](https://github.com/metacran/cranlogs.app)
 [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md)
 
@@ -11,12 +11,7 @@ Assessment Literacy content development via R
 
 ## Installation
 
-### Stable version from [CRAN](https://CRAN.R-project.org/package=Literasee)
-
-```R
-install.packages("Literasee")
-```
-
+Currently there is no "stable" version of `Literasee` available on [CRAN](https://CRAN.R-project.org).  The development version of the package must be installed from github. 
 
 ### Development version from [Github](https://github.com/CenterForAssessment/Literasee/)
 

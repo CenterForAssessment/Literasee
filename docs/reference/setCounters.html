@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
 
-<title>Gets the table number — tblNum • Literasee</title>
+<title>Sets the table, figure and equation counter numbers. — setCounters • Literasee</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -95,29 +95,38 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gets the table number</h1>
+    <h1>Sets the table, figure and equation counter numbers.</h1>
     </div>
 
     
-    <p>The function relies on <code>options("table_number")</code> in
-order to keep track of the current number.</p>
+    <p>The function relies on <code>options("table_number")</code>, <code>options("fig_caption_no")</code> and <code>options("equation_counter")</code> as counters.</p>
     
 
-    <pre class="usage"><span class='fu'>tblNum</span>(<span class='kw'>advance.counter</span><span class='kw'>=</span><span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>setCounters</span>(
+  <span class='kw'>tbl.counter</span><span class='kw'>=</span><span class='fl'>0</span>,
+  <span class='kw'>fig.counter</span><span class='kw'>=</span><span class='fl'>0</span>,
+  <span class='kw'>eqn.counter</span><span class='kw'>=</span><span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>advance.counter</th>
-      <td><p>Numeric.  Number to be added to the present table number.  Default is 0, giving the present table.</p></td>
+      <th>tbl.counter</th>
+      <td><p>Numeric.  Number to set to the present table number.  Default is 0, meaning the next (first) table will be number 1.</p></td>
+    </tr>
+    <tr>
+      <th>fig.counter</th>
+      <td><p>Numeric.  Number to set to the present figure number.  Default is 0, meaning the next (first) figure will be number 1.</p></td>
+    </tr>
+    <tr>
+      <th>eqn.counter</th>
+      <td><p>Numeric.  Number to set to the present equation number.  Default is 0, meaning the next (first) equation will be number 1.</p></td>
     </tr>
     </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>options</span>(<span class='kw'>table_number</span><span class='kw'>=</span><span class='fl'>1</span>)
-<span class='fu'>tblNum</span>()</div><div class='output co'>#&gt; [1] 1</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>setCounters</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
