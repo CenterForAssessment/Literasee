@@ -64,10 +64,10 @@
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Release notes</li>
     <li>
-      <a href="../articles/releases/Literasee-0.0-0.4.html">Version 0.0-0.4</a>
+      <a href="../articles/releases/Literasee-0.0-0.8.html">Version 0.0-0.8</a>
     </li>
     <li>
-      <a href="../articles/releases/Literasee-0.0-0.2.html">Version 0.0-0.2</a>
+      <a href="../articles/releases/Literasee-0.0-0.4.html">Version 0.0-0.4</a>
     </li>
     <li>
       <a href="../articles/releases/Literasee-0.0-0.1.html">Version 0.0-0.1</a>
@@ -97,7 +97,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;0.0-0.7</small>
+        <small>version&nbsp;0.0-0.8</small>
       </h1>
     </div>
 
@@ -126,30 +126,66 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-lower-level-functions" class="hasAnchor"><a href="#section-lower-level-functions" class="anchor"></a>Lower level functions</h2>
-            <p class="section-desc"><p>Lower level functions converting Rmd to other formats.</p></p>
+            <h2 id="section-report-rendering-functions" class="hasAnchor"><a href="#section-report-rendering-functions" class="anchor"></a>Report rendering functions</h2>
+            <p class="section-desc"><p>Functions to render (knit) .Rmd documents into finished reports in various file formats. These are wrappers/extensions of the rmarkdown package functionality.</p></p>
           </th>
         </tr>
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="reportSGP.html">reportSGP</a></code> </p>
+            <p><code><a href="renderMultiDocument.html">renderMultiDocument</a></code> </p>
           </td>
-          <td><p>Function for automatic technical report generation from SGP analyses.</p></td>
+          <td><p>Render R Markdown in Multiple Output Formats</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="multi_document.html">multi_document</a></code> </p>
+          </td>
+          <td><p>Formatter wrapper for <code>rmarkdown::html_document</code> to facilitate multiple output format porting.</p></td>
         </tr>
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-miscellaneous-functions" class="hasAnchor"><a href="#section-miscellaneous-functions" class="anchor"></a>Miscellaneous functions</h2>
-            <p class="section-desc"><p>Auxiliary functions</p></p>
+            <h2 id="section-lower-level-functions" class="hasAnchor"><a href="#section-lower-level-functions" class="anchor"></a>Lower level functions</h2>
+            <p class="section-desc"><p>Functions used in reports to create beautiful tables in HTML and PDF, and keep track of tables, figures, and equations.</p></p>
           </th>
         </tr>
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="reportSGP.html">reportSGP</a></code> </p>
+            <p><code><a href="dualTable.html">dualTable</a></code> </p>
           </td>
-          <td><p>Function for automatic technical report generation from SGP analyses.</p></td>
+          <td><p>Output HTML and LaTeX Tables</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="eqnNum.html">eqnNum</a></code> </p>
+          </td>
+          <td><p>Gets the equation number</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="setCounters.html">setCounters</a></code> </p>
+          </td>
+          <td><p>Sets the table, figure and equation counter numbers.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="tblCap.html">tblCap</a></code> </p>
+          </td>
+          <td><p>Returns formated caption with table number</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="tblNum.html">tblNum</a></code> </p>
+          </td>
+          <td><p>Gets the table number</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="tblNumIncrement.html">tblNumIncrement</a></code> </p>
+          </td>
+          <td><p>Increase the table number counter</p></td>
         </tr>
       </tbody>
       </table>
@@ -160,8 +196,8 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-content-export-functions">Content export functions</a></li>
+      <li><a href="#section-report-rendering-functions">Report rendering functions</a></li>
       <li><a href="#section-lower-level-functions">Lower level functions</a></li>
-      <li><a href="#section-miscellaneous-functions">Miscellaneous functions</a></li>
     </ul>
   </div>
 </div>

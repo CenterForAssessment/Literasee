@@ -11,7 +11,8 @@ tblCap <- function(caption.text=NULL, advance.counter=1) {
 eqnNumNext <- function() {options("equation_counter" = getOption("equation_counter")+1); return(getOption("equation_counter"))}
 
 eqnNum <- function(advance.counter=0, eqn.name="t1", em.space=150) {
-  if (!is.null(eqn.name)) assign(eqn.name, getOption('equation_counter')+1, envir=.GlobalEnv) else getOption('equation_counter')+1
+  pos <- 1
+  if (!is.null(eqn.name)) assign(eqn.name, getOption('equation_counter')+1, envir=as.environment(pos)) else getOption('equation_counter')+1
   return(cat('\\hspace{', em.space, 'em} \\text{(', getOption('equation_counter')+advance.counter, ')}', sep=""))
 }
 

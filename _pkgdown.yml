@@ -21,10 +21,10 @@ navbar:
     - text: News
       menu:
       - text: "Release notes"
+      - text: "Version 0.0-0.8"
+        href: articles/releases/Literasee-0.0-0.8.html
       - text: "Version 0.0-0.4"
         href: articles/releases/Literasee-0.0-0.4.html
-      - text: "Version 0.0-0.2"
-        href: articles/releases/Literasee-0.0-0.2.html
       - text: "Version 0.0-0.1"
         href: articles/releases/Literasee-0.0-0.1.html
       - text: "------------------"
@@ -40,11 +40,17 @@ reference:
         desc:  Functions that directly export content.
         contents:
             - reportSGP
+      - title: Report rendering functions
+        desc:  Functions to render (knit) .Rmd documents into finished reports in various file formats.  These are wrappers/extensions of the rmarkdown package functionality.
+        contents:
+            - renderMultiDocument
+            - multi_document
       - title: Lower level functions
-        desc: Lower level functions converting Rmd to other formats.
+        desc: Functions used in reports to create beautiful tables in HTML and PDF, and keep track of tables, figures, and equations.
         contents:
-            - reportSGP
-      - title: Miscellaneous functions
-        desc: Auxiliary functions
-        contents:
-            - reportSGP
+            - dualTable
+            - eqnNum
+            - setCounters
+            - tblCap
+            - tblNum
+            - tblNumIncrement

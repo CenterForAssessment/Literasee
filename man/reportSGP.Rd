@@ -6,21 +6,38 @@ The function reportSGP is used to create automatic or customized technical repor
 }
 
 \usage{
-reportSGP(sgp_object=NULL)
+reportSGP(
+  sgp_object,
+  sgp.year,
+  output_file="docs/SGP_Report.Rmd",
+  content="tech_report",
+  references=TRUE)
 }
 
 \arguments{
   \item{sgp_object}{An SGP object resulting from SGP analyses.
   }
+  \item{sgp.year}{The value of the YEAR in the SGP object @Data to use for the report.
+  }
+  \item{output_file}{Character - the name that should be assigned to the .Rmd output file.
+    May be a (relative) file path, in which case directories will be created as needed.
+  }
+  \item{content}{Character - the type of report to create.  Pulls content .Rmd files ('bones') from one of the
+    content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
+  }
+  \item{references}{Boolean. Include a 'References' section in the report.
+  }
 }
 
-\value{Returns a technical in multiple output formats including HTML and PDF.
+\value{Returns a technical report in multiple output formats including HTML and PDF.
 }
 
 \author{Damian W. Betebenner \email{dbetebenner@nciea.org} and Adam Van Iwaarden \email{avaniwaarden@gmail.com}}
 
 \examples{
+  \dontrun{
     reportSGP()
+  }
 }
 
 \keyword{documentation}
