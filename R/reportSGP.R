@@ -6,6 +6,9 @@
 	references=TRUE
 ) {
 
+	### Set variables to NULL to prevent R CMD check warnings
+	YEAR <- NULL
+
 	###  Begin new .Rmd output_file
 	if (!dir.exists(dirname(output_file))) dir.create(dirname(output_file), showWarnings = FALSE, recursive = TRUE)
 	content_bones <- system.file("rmarkdown", "content", content, package = "Literasee")

@@ -1,6 +1,6 @@
 \name{multi_document}
 \alias{multi_document}
-\title{Formatter wrapper for rmarkdown's \code{html_document} to facilitate multiple output format porting.}
+\title{Formatter wrapper for \code{rmarkdown::html_document} to facilitate multiple output format porting.}
 \usage{
 multi_document(
   ...,
@@ -10,8 +10,8 @@ multi_document(
   toc_depth = 2,
   self_contained = TRUE,
   dev = "png",
-  html_template = "default",
   literasee_template = "sgp_report",
+  html_template = "default",
   css = "default",
   bibliography = "default",
   csl = "default",
