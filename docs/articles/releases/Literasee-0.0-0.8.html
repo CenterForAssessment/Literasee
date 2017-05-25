@@ -94,7 +94,7 @@
 <p>The package isn’t available on <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a> yet so you’ll need to install it off of GitHub.</p>
 <pre><code>devtools::install_github("centerforassessment/Literasee")</code></pre>
 <p>The main function, <code>reportSGP</code>, can be tested with the following code:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Literasee)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Literasee)
 <span class="kw">library</span>(SGP)
 
 ###  Run testSGP(3) in order to get a test SGP object
@@ -108,13 +108,13 @@
 
 
 ###  Create .Rmd "skeleton" report from boilerplate content
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>(Demonstration_SGP, <span class="dt">output_file=</span><span class="st">"docs/SGP_Report.Rmd"</span>, <span class="dt">sgp.year =</span> <span class="kw">tail</span>(<span class="kw">unique</span>(Demonstration_SGP@Data$YEAR), <span class="dv">1</span>))
+<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>(Demonstration_SGP, <span class="dt">output_file=</span><span class="st">"docs/SGP_Report.Rmd"</span>, <span class="dt">sgp.year =</span> <span class="kw">tail</span>(<span class="kw">unique</span>(Demonstration_SGP<span class="op">@</span>Data<span class="op">$</span>YEAR), <span class="dv">1</span>))
 
 ###  Render .Rmd file into PDF and HTML formatted reports.
 <span class="kw">setwd</span>(<span class="st">"docs"</span>)
 <span class="kw"><a href="../../reference/renderMultiDocument.html">renderMultiDocument</a></span>(<span class="dt">rmd_input =</span> <span class="st">"SGP_Report.Rmd"</span>, <span class="dt">report_format =</span> <span class="kw">c</span>(<span class="st">"HTML"</span>, <span class="st">"PDF"</span>))
 
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>()</code></pre>
+<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>()</code></pre></div>
 <p>Literasee is under active development. We :heart: feedback and are happy to answer questions.</p>
 </div>
 </div>
@@ -148,7 +148,6 @@
 
   ga('create', 'UA-98997021-1', 'auto');
   ga('send', 'pageview');
-
 </script></footer>
 </div>
 

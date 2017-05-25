@@ -24,7 +24,7 @@ body {
 .page-header {
   margin-top: 0;
   margin-bottom: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
 /* Static header placement on mobile devices */
@@ -111,6 +111,12 @@ code a, pre a {
 
 /* For shrinking navbar ------------------ */
 
+.navbar.shrink {
+    background: #e4f4f4;
+    min-height: 0;
+    padding: 0 0;
+}
+
 /* For big header
 
   &-brand {
@@ -149,7 +155,7 @@ code a, pre a {
 footer {
   margin-top: 45px;
   padding: 35px 0 36px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 3px solid #ccc;
 
   display: flex;
   color: #666;
@@ -179,8 +185,8 @@ a.anchor {
 
   background-image: url(./link.svg);
   background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: center center;
+  background-size: 19px 19px;
+  background-position: center bottom;
 }
 
 .hasAnchor:hover a.anchor {
@@ -190,19 +196,19 @@ a.anchor {
 /* Tweak appearance of navigation in sidebar ---------------------- */
 
 #sidebar .nav {
-  padding-left: 0px;
+  padding-left: 0;
   list-style-type: none;
   color: #5a9ddb;
 }
 
 #sidebar .nav > li {
-  padding: 10px 0 0px 20px;
+  padding: 10px 0 0 20px;
   display: list-item;
   line-height: 20px;
   background-image: url(./tocBullet.svg);
   background-repeat: no-repeat;
   background-size: 16px 280px;
-  background-position: left 0px;
+  background-position: left 0;
 }
 
 #sidebar .nav > li.active {
@@ -210,7 +216,7 @@ a.anchor {
 }
 
 #sidebar a {
-  padding: 0px;
+  padding: 0;
   color: #5a9ddb;
   background-color: transparent;
 }

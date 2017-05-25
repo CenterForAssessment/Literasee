@@ -7,6 +7,4 @@
 ^README\.Rmd$
 ^README-.*\.png$
 LICENSE.md
-^vignettes/articles$
-^vignettes/releases$
 ^appveyor\.yml$
