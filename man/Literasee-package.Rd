@@ -4,14 +4,14 @@
 \docType{package}
 \title{Literasee: Assessment Literacy Content Development via R}
 \description{
-Assessment Literacy for R.
+Assessment Literacy Content Development via R.
 }
 
 \details{
 \tabular{ll}{
 Package: \tab Literasee\cr
 Type: \tab Package\cr
-Version: \tab 0.0-0.9\cr
+Version: \tab 0.0-1.0\cr
 Date: \tab 2017-5-26\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
