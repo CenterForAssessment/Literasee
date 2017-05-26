@@ -1,14 +1,14 @@
 ---
-author: "Damian W Betebenner & Adam R Van Iwaarden"
+author: "Adam R Van Iwaarden"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Literasee: Assessment Literacy content development via R}
+  %\VignetteIndexEntry{Literasee: Advanced Vignette 1}
   %\VignetteEngine{knitr::rmarkdown}
   %\usepackage[utf8]{inputenc}
 ---
 
-# Literasee
+# Advanced Literasee 1
 
 A basic test
 
