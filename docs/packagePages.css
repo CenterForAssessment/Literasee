@@ -5814,8 +5814,8 @@ button.close {
   border-bottom: 1px solid #444;
   -webkit-box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
-  min-height: 65px;
-  padding: 14px 0;
+  min-height: 55px;
+  padding: 10px 0;
   transition: all 0.35s ease; }
   .navbar-brand {
     font-family: "Josefin Sans", monospace;
@@ -5824,7 +5824,7 @@ button.close {
     padding: 0 0 0 54px;
     height: 48px;
     line-height: 55px;
-    background-image: url(logo.svg);
+    background-image: url(logo.png);
     background-size: 32px auto;
     background-repeat: no-repeat;
     background-position: 15px center; }
@@ -6492,5 +6492,3 @@ input[type="checkbox"],
 
 .carousel-caption h1, .carousel-caption h2, .carousel-caption h3, .carousel-caption h4, .carousel-caption h5, .carousel-caption h6 {
   color: inherit; }
-
-/*# sourceMappingURL=tidyverse.css.map */

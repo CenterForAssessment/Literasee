@@ -117,23 +117,6 @@ code a, pre a {
     padding: 0 0;
 }
 
-/* For big header
-
-  &-brand {
-    font-family: $font-family-monospace;
-    font-weight: normal;
-    font-size: 48px;
-    padding: 35px 15px;
-
-    padding-left: 84px;
-    background-image:url(../logo.png);
-    background-size: 60px auto;
-    background-repeat: no-repeat;
-    background-position: 15px center;
-
-  }
-*/
-
 /* Reference index & topics ----------------------------------------------- */
 
 .ref-index th {font-weight: normal;}
@@ -163,7 +146,7 @@ footer {
 footer p {
   margin-bottom: 0;
 }
-footer .tidyverse {
+footer .packagePages {
   flex: 1;
 }
 footer .author {
