@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
-<title>Literasee v0.0-0.8 • Literasee</title>
+<title>Literasee: Advanced Vignette 2 • Literasee</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../../packagePages.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- Fonts --><link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600" rel="stylesheet" type="text/css">
@@ -92,45 +92,24 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Literasee v0.0-0.8</h1>
+      <h1>Literasee: Advanced Vignette 2</h1>
+                        <h4 class="author">Damian W Betebenner &amp; Adam R Van Iwaarden</h4>
             
+            <h4 class="date">2017-05-26</h4>
           </div>
 
     
     
 <div class="contents">
-<div id="changes-in-version-literasee-0-0-0-8" class="section level1">
+<div id="advanced-literasee-2" class="section level1">
 <h1 class="hasAnchor">
-<a href="#changes-in-version-literasee-0-0-0-8" class="anchor"></a>Changes in version: Literasee 0.0-0.8</h1>
+<a href="#advanced-literasee-2" class="anchor"></a>Advanced Literasee 2</h1>
+<p>A basic test</p>
 <ul>
-<li>Add VERY preliminary .Rmd bones for skeleton technical report construction.</li>
-<li>Fix documentation so that pkgdown documentation generation works correctly.</li>
+<li>First bullet</li>
+<li>Second bullet</li>
+<li>Third bullet</li>
 </ul>
-<p>The package isn’t available on <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a> yet so you’ll need to install it off of GitHub.</p>
-<pre><code>devtools::install_github("centerforassessment/Literasee")</code></pre>
-<p>The main function, <code>reportSGP</code>, can be tested with the following code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Literasee)
-<span class="kw">library</span>(SGP)
-
-###  Run testSGP(3) in order to get a test SGP object
-
-<span class="kw">testSGP</span>(<span class="dv">3</span>)
-
-
-###  Load Data (Demonstration_SGP from testSGP(1) or testSGP(3) ) and package
-<span class="kw">load</span>(<span class="st">"Data/Demonstration_SGP.Rdata"</span>) <span class="co"># Use to test EOCT Documentation</span>
-<span class="kw">require</span>(Literasee)
-
-
-###  Create .Rmd "skeleton" report from boilerplate content
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>(Demonstration_SGP, <span class="dt">output_file=</span><span class="st">"docs/SGP_Report.Rmd"</span>, <span class="dt">sgp.year =</span> <span class="kw">tail</span>(<span class="kw">unique</span>(Demonstration_SGP<span class="op">@</span>Data<span class="op">$</span>YEAR), <span class="dv">1</span>))
-
-###  Render .Rmd file into PDF and HTML formatted reports.
-<span class="kw">setwd</span>(<span class="st">"docs"</span>)
-<span class="kw"><a href="../../reference/renderMultiDocument.html">renderMultiDocument</a></span>(<span class="dt">rmd_input =</span> <span class="st">"SGP_Report.Rmd"</span>, <span class="dt">report_format =</span> <span class="kw">c</span>(<span class="st">"HTML"</span>, <span class="st">"PDF"</span>))
-
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>()</code></pre></div>
-<p>Literasee is under active development. We :heart: feedback and are happy to answer questions.</p>
 </div>
 </div>
   </div>
@@ -139,7 +118,7 @@
         <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#changes-in-version-literasee-0.0-0.8">Changes in version: Literasee 0.0-0.8</a></li>
+<li><a href="#advanced-literasee-2">Advanced Literasee 2</a></li>
       </ul>
 </div>
       </div>
