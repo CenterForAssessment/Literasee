@@ -15,7 +15,13 @@ navbar:
     type: default
     left:
     - text: Getting Started
-      href: articles/index.html
+      href: articles/Literasee.html
+    - text: Vignettes
+      menu:
+      - text: "Advanced Literasee 1"
+        href: articles/Literasee_Vignette_1.html
+      - text: "Advanced Literasee 2"
+        href: articles/Literasee_Vignette_2.html
     - text: Reference
       href: reference/index.html
     - text: News
