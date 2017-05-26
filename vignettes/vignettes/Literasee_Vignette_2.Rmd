@@ -1,6 +1,5 @@
 ---
-title: "Literasee: Advanced Vignette 2"
-author: "Damian W Betebenner & Adam R Van Iwaarden"
+author: "Damian W Betebenner"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
