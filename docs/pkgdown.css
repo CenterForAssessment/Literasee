@@ -166,7 +166,7 @@ a.anchor {
   height: 30px;
   visibility: hidden;
 
-  background-image: url(./link.svg);
+  background-image: url(./img/link.svg);
   background-repeat: no-repeat;
   background-size: 19px 19px;
   background-position: center bottom;
@@ -188,7 +188,7 @@ a.anchor {
   padding: 10px 0 0 20px;
   display: list-item;
   line-height: 20px;
-  background-image: url(./tocBullet.svg);
+  background-image: url(./img/tocBullet.svg);
   background-repeat: no-repeat;
   background-size: 16px 280px;
   background-position: left 0;
