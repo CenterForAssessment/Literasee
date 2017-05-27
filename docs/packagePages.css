@@ -1543,7 +1543,8 @@ pre {
 
 .row {
   margin-left: -15px;
-  margin-right: -15px; }
+  margin-right: -15px;
+  margin-top: 20px; }
   .row:before, .row:after {
     content: " ";
     display: table; }
