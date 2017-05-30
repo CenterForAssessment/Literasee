@@ -11,15 +11,15 @@ Assessment Literacy Content Development via R.
 \tabular{ll}{
 Package: \tab Literasee\cr
 Type: \tab Package\cr
-Version: \tab 0.0-2.0\cr
-Date: \tab 2017-5-29\cr
+Version: \tab 0.0-2.2\cr
+Date: \tab 2017-5-30\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
 Literasee is an experimental package for the R software environment designed to ease in the creation of assessment literacy related content.
 }
 \author{
-Damian W. Betebenner \email{dbetebenner@nciea.org} and Adam Van Iwaarden \email{avaniwaarden@gmail.com}
+Damian W. Betebenner \email{dbetebenner@nciea.org} and Adam R. Van Iwaarden \email{avaniwaarden@gmail.com}
 }
 
 \references{
