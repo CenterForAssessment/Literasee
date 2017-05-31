@@ -1087,7 +1087,7 @@ a {
   color: #778;
   text-decoration: none; }
   a:hover, a:focus {
-    color: #114;
+    color: black;
     text-decoration: none; }
   a:focus {
     outline: 5px auto -webkit-focus-ring-color;
@@ -5817,7 +5817,8 @@ button.close {
   box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
   min-height: 55px;
   padding: 10px 0;
-  transition: all 0.35s ease; }
+  transition: all 0.35s ease;
+  color: #444; }
   .navbar-brand {
     font-family: "Josefin Sans";
     font-weight: 400;
@@ -5839,7 +5840,7 @@ button.close {
     background-position: 15px center; }
   .navbar-label a:hover, a:visited, a:link, a:active {
     text-decoration: none!important;
-    color: #444;
+    color: black;
     -webkit-box-shadow: none!important;
     box-shadow: none!important; }
   .navbar-nav li a {

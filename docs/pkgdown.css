@@ -210,11 +210,12 @@ a.anchor {
 
 #sidebar a {
   padding: 0;
-  color: #5a9ddb;
+  color: #778;
   background-color: transparent;
 }
 
 #sidebar a:hover {
   background-color: transparent;
-  text-decoration: underline;
+  text-decoration: none;
+  color: black;
 }
