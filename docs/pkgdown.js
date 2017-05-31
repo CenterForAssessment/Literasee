@@ -8,7 +8,7 @@ $(function() {
 });
 
 $(window).scroll(function(){
-    if($(window).scrollTop() > 30) {
+    if($(window).scrollTop() > 35) {
         $('.navbar').addClass("shrink");
         $('.navbar-brand').addClass("shrink");
         $('.navbar-label').addClass("shrink");
