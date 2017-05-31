@@ -151,7 +151,7 @@ footer {
   border-top: 3px solid #ccc;
 
   display: flex;
-  color: #666;
+  color: black;
 }
 footer p {
   margin-bottom: 0;
@@ -162,6 +162,30 @@ footer .packagePages {
 footer .author {
   flex: 1;
   text-align: right;
+}
+
+.packagePages a {
+  padding: 0;
+  color: #778;
+  background-color: transparent;
+}
+
+.author a {
+  padding: 0;
+  color: #778;
+  background-color: transparent;
+}
+
+.packagePages a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+}
+
+.author a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
 }
 
 /* ---------------------- hover anchor tags */

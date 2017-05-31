@@ -5816,8 +5816,7 @@ button.close {
   box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
   min-height: 55px;
   padding: 10px 0;
-  transition: all 0.35s ease;
-  color: #444; }
+  transition: all 0.35s ease; }
   .navbar-brand {
     font-family: "Josefin Sans";
     font-weight: 400;
@@ -5839,8 +5838,8 @@ button.close {
     background-position: 15px center; }
   .navbar-label a:hover, a:visited, a:link, a:active {
     text-decoration: none!important;
-    color: black;
     -webkit-box-shadow: none!important;
+    color: black;
     box-shadow: none!important; }
   .navbar-nav li a {
     padding-top: 10px;
