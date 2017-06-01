@@ -11,9 +11,14 @@ Assessment Literacy content development via R
 
 ## Installation
 
-Currently there is no "stable" version of `Literasee` available on [CRAN](https://CRAN.R-project.org).  The development version of the package must be installed from github. 
+### From [CRAN](https://CRAN.R-project.org)
 
-### Development version from [Github](https://github.com/CenterForAssessment/Literasee/)
+Currently there is no "stable" version of `Literasee` available on [CRAN](https://CRAN.R-project.org).  
+The development version of the package must be installed from github. 
+
+### From [Github](https://github.com/CenterForAssessment/Literasee/)
+
+To install the development version of **Literasee**: 
 
 ```R
 devtools::install_github("CenterForAssessment/Literasee")
@@ -27,8 +32,8 @@ devtools::install_github("CenterForAssessment/Literasee")
 
 ## Resources
 
-* Web: [literasee.io](https://literasee.io)
-* CRAN Repo: https://CRAN.R-project.org/package=Literasee
+* [literasee.io](https://literasee.io)
+* [CRAN Repo](https://CRAN.R-project.org/package=Literasee)
 
 ## Contributors
 
