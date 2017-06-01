@@ -1,11 +1,7 @@
-^.*\.Rproj$
-^\.Rproj\.user$
 ^\.travis\.yml$
-^inst/web$
 ^docs$
 ^_pkgdown\.yml$
-^README\.Rmd$
-^README-.*\.png$
+^README\.md$
 ^LICENSE.md
 ^appveyor\.yml$
 ^vignettes/releases$
