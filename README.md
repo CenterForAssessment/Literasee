@@ -5,18 +5,18 @@
 [![Rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/Literasee)](https://github.com/metacran/cranlogs.app)
 [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md)
 
-## Overview
+# Overview
 
 Assessment Literacy content development via R
 
-## Installation
+# Installation
 
-### From [CRAN](https://CRAN.R-project.org)
+## From [CRAN](https://CRAN.R-project.org)
 
 Currently there is no "stable" version of `Literasee` available on [CRAN](https://CRAN.R-project.org).  
 The development version of the package must be installed from github. 
 
-### From [Github](https://github.com/CenterForAssessment/Literasee/)
+## From [Github](https://github.com/CenterForAssessment/Literasee/)
 
 To install the development version of **Literasee**: 
 
@@ -24,18 +24,18 @@ To install the development version of **Literasee**:
 devtools::install_github("CenterForAssessment/Literasee")
 ```
 
-## Usage
+# Usage
 
 * The [Literasee Package Wiki](https://github.com/CenterForAssessment/Literasee/wiki/Home) contains instructions on how to prepare data and run **Literasee** analyses.
 * The [Literasee Package Documentation](https://CRAN.R-project.org/web/packages/Literasee/Literasee.pdf) contains man pages for all functions and data sets in the the **Literasee** Package.
 * Numerous [Literasee Gists](https://gist.github.com/dbetebenner) provide other examples of analyses that can be performed.
 
-## Resources
+# Resources
 
 * [literasee.io](https://literasee.io)
 * [CRAN Repo](https://CRAN.R-project.org/package=Literasee)
 
-## Contributors
+# Contributors
 
 The **Literasee** Package is crafted with :heart: by:
 
@@ -45,7 +45,7 @@ The **Literasee** Package is crafted with :heart: by:
 We love feedback and are happy to answer questions.
 
 
-## References
+# References
 
 Betebenner, D. W. and VanIwaarden, A. (2017). Literasee: Assessment Literacy content development via R.
 
