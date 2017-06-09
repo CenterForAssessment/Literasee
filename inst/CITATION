@@ -2,13 +2,12 @@ citHeader("To cite package 'Literasee' in publications use:")
 
 citEntry(entry = "Manual",
          title        = "{Literasee}: Assessment Literacy Content Development via R.",
-         author       = "Damian W. Betebenner and Adam {VanIwaarden}",
+         author       = "Damian W. Betebenner and Adam R. {Van Iwaarden}",
          year         = "2017",
-         note         = "R package version 0.0-0.7",
+         note         = "R package version 0.0-2.4",
          url          = "literacy.io",
 
-         textVersion  = paste("Damian W. Betebenner and Adam VanIwaarden (2017).",
+         textVersion  = paste("Damian W. Betebenner and Adam R. Van Iwaarden (2017).",
                         "Literasee: Assessment Literacy Content Development via R.",
-                        "(R package version 0.0-0.7)",
-                        "(R package version 0.0-0.6)",
+                        "(R package version 0.0-2.4)",
                         "URL: literasee.io"))

@@ -1,8 +1,9 @@
 Package: Literasee
 Type: Package
 Title: Assessment Literacy Content Development via R
-Version: 0.0-0.8
-Date: 2017-5-22
+Version: 0.0-2.4
+Date: 2017-6-2
+Description: Assessment Literacy Content Development via R.
 Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role=c("aut", "cre")),
 		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
 Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
@@ -10,11 +11,10 @@ Depends: R (>= 3.3), rmarkdown (>= 0.5.1)
 Suggests: knitr
 Imports: crayon, Hmisc, Gmisc, htmlTable, jpeg, markdown, data.table (>= 1.10.0), SGP (>= 1.7-0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc, libcurl and git for creating Literasee backed Github repositories
-Description: Assessment Literacy Content Development via R.
 LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3
 VignetteBuilder: knitr
 URL: https://centerforassessment.github.io/Literasee, https://github.com/CenterForAssessment/Literasee
-BugReports: https://github.com/Literasee/CenterForAssessment/issues
+BugReports: https://github.com/CenterForAssessment/Literasee/issues
 ByteCompile: TRUE

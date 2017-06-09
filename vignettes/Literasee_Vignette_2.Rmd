@@ -1,0 +1,17 @@
+---
+author: "Damian W Betebenner"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Literasee: Advanced Vignette 2}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+# Advanced Literasee 2
+
+A basic test
+
+* First bullet
+* Second bullet
+* Third bullet

@@ -1,0 +1,17 @@
+---
+author: "Adam R Van Iwaarden"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Literasee: Advanced Vignette 1}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+# Advanced Literasee 1
+
+A basic test
+
+* First bullet
+* Second bullet
+* Third bullet

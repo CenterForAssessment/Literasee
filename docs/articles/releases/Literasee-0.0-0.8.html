@@ -5,8 +5,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="favicon.png" sizes="16x16">
-<title>Literasee v0.0-0.8 • Literasee</title>
+<link rel="icon" type="image/png" href="https://centerforassessment.github.io/public/favicon.png" sizes="16x16">
+<title> • Literasee</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../../packagePages.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- Fonts --><link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600" rel="stylesheet" type="text/css">
@@ -25,13 +25,28 @@
       </button>
 
       <div class="navbar-brand-container">
-        <a class="navbar-brand" href="../../index.html">Literasee</a>
+        <a class="navbar-brand" href="https://centerforassessment.github.io"></a><a class="navbar-label" href="../../index.html">Literasee</a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="../../articles/index.html">Getting Started</a>
+  <a href="../../articles/Literasee.html">Getting Started</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Vignettes
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../../articles/Literasee_Vignette_1.html">Advanced Literasee 1</a>
+    </li>
+    <li>
+      <a href="../../articles/Literasee_Vignette_2.html">Advanced Literasee 2</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../../reference/index.html">Reference</a>
@@ -65,6 +80,12 @@
      
   </a>
 </li>
+<li>
+   <a style="cursor:pointer" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&amp;via=dbetebenner&amp;text=Literasee%3A%20Assessment%20Literacy%20Content%20Development%20via%20R&amp;hashtags=rstats%2C%20Literasee','','scrollbars=0,menubar=0,height=300,width=600,resizable=0,toolbar=0,location=0,status=0')">
+    <span class="fa fa-twitter"></span>
+     
+  </a>
+</li>
       </ul>
 </div>
 <!--/.nav-collapse -->
@@ -77,7 +98,7 @@
       </header><div class="row">
   <div class="col-md-9">
     <div class="page-header toc-ignore">
-      <h1>Literasee v0.0-0.8</h1>
+      <h1></h1>
             
           </div>
 
@@ -94,7 +115,7 @@
 <p>The package isn’t available on <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a> yet so you’ll need to install it off of GitHub.</p>
 <pre><code>devtools::install_github("centerforassessment/Literasee")</code></pre>
 <p>The main function, <code>reportSGP</code>, can be tested with the following code:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Literasee)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Literasee)
 <span class="kw">library</span>(SGP)
 
 ###  Run testSGP(3) in order to get a test SGP object
@@ -108,13 +129,13 @@
 
 
 ###  Create .Rmd "skeleton" report from boilerplate content
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>(Demonstration_SGP, <span class="dt">output_file=</span><span class="st">"docs/SGP_Report.Rmd"</span>, <span class="dt">sgp.year =</span> <span class="kw">tail</span>(<span class="kw">unique</span>(Demonstration_SGP@Data$YEAR), <span class="dv">1</span>))
+<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>(Demonstration_SGP, <span class="dt">output_file=</span><span class="st">"docs/SGP_Report.Rmd"</span>, <span class="dt">sgp.year =</span> <span class="kw">tail</span>(<span class="kw">unique</span>(Demonstration_SGP<span class="op">@</span>Data<span class="op">$</span>YEAR), <span class="dv">1</span>))
 
 ###  Render .Rmd file into PDF and HTML formatted reports.
 <span class="kw">setwd</span>(<span class="st">"docs"</span>)
 <span class="kw"><a href="../../reference/renderMultiDocument.html">renderMultiDocument</a></span>(<span class="dt">rmd_input =</span> <span class="st">"SGP_Report.Rmd"</span>, <span class="dt">report_format =</span> <span class="kw">c</span>(<span class="st">"HTML"</span>, <span class="st">"PDF"</span>))
 
-<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>()</code></pre>
+<span class="kw"><a href="../../reference/reportSGP.html">reportSGP</a></span>()</code></pre></div>
 <p>Literasee is under active development. We :heart: feedback and are happy to answer questions.</p>
 </div>
 </div>
@@ -132,12 +153,12 @@
 </div>
 
 
-      <footer><div class="tidyverse">
-  <p>Literasee is developed by the <a href="https://centerforassessment.github.io">Center for Assessment</a>.</p>
+      <footer><div class="packagePages">
+  <p><b>Literasee</b> is a <a href="https://centerforassessment.github.io">Center for Assessment</a> thing.</p>
 </div>
 
 <div class="author">
-  <p>Developed by Damian W. Betebenner, Adam R. Van Iwaarden.</p>
+  <p>Developed by <a href="https://github.com/dbetebenner"><img src="https://centerforassessment.github.io/public/dbetebenner.png" height="20"> Damian W. Betebenner</a> &amp; <a href="https://github.com/adamvi"><img src="https://centerforassessment.github.io/public/adamvi.png" height="20"> Adam R. Van Iwaarden</a>.</p>
 </div>
 
 <script>
@@ -148,7 +169,6 @@
 
   ga('create', 'UA-98997021-1', 'auto');
   ga('send', 'pageview');
-
 </script></footer>
 </div>
 

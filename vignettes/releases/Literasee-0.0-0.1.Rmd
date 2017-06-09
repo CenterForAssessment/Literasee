@@ -1,7 +1,3 @@
----
-title: "Literasee v0.0-0.1"
----
-
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 ```
@@ -10,8 +6,8 @@ knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
 
   * Package Released.
 
-We're pleased to announce the first release of the Literasee package. The package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee) 
-yet so you'll need to install it off of GitHub. 
+We're pleased to announce the first release of the Literasee package. The package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee)
+yet so you'll need to install it off of GitHub.
 
 ```
 devtools::install_github("centerforassessment/Literasee")
@@ -26,4 +22,4 @@ reportSGP()
 
 You can see the documentation for more info on the `reportSGP` arguments.
 
-Literasee is under active development. We :heart: feedback and are happy to answer questions. 
+Literasee is under active development. We :heart: feedback and are happy to answer questions.
