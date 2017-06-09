@@ -62,7 +62,6 @@ renderPDF <- function (
   ##
   ##    Create .md file taylored for conversion to .pdf
   ##
-  trimWhiteSpace <- function(line) gsub("(^ +)|( +$)", "", line)
 
   input.md <- gsub(".Rmd", ".md", input, ignore.case=TRUE)
 
@@ -91,6 +90,9 @@ renderPDF <- function (
   for(j in grep("<br></br>", md.text)) md.text[j] <- gsub("<br></br>", "\\\\", md.text[j])
   for(j in grep("<em>", md.text)) md.text[j] <- gsub("<em>", "\\\\emph{", md.text[j])
   for(j in grep("</em>", md.text)) md.text[j] <- gsub("</em>", "}", md.text[j])
+  for(j in grep("<strong>", md.text)) md.text[j] <- gsub("<strong>", "\\\\bf{", md.text[j])
+  for(j in grep("</strong>", md.text)) md.text[j] <- gsub("</strong>", "}", md.text[j])
+
   for(j in grep("\\label[{]my[}]", md.text)) {
     md.text[j] <- gsub("[{]my[}]", paste("{table", strsplit(strsplit(md.text[j], "[*][*]Table ")[[1]][2], ":[*][*]")[[1]][1], "}", sep=""), md.text[j])
   }
