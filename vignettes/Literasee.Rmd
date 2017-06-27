@@ -1,4 +1,5 @@
 ---
+title: "Basic Literasee"
 author: "Damian W Betebenner & Adam R Van Iwaarden"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
