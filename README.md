@@ -25,7 +25,7 @@ The development version of the package must be installed from github.
 To install the development version of **Literasee**: 
 
 ```R
-devtools::install_github("CenterForAssessment/Literasee")
+> devtools::install_github("CenterForAssessment/Literasee")
 ```
 
 # Usage
