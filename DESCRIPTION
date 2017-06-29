@@ -8,8 +8,7 @@ Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebe
 		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
 Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
 Depends: R (>= 3.3)
-Suggests: knitr, rmarkdown
-Imports: crayon, Hmisc, Gmisc, htmlTable, jpeg, data.table (>= 1.10.0), SGP (>= 1.7-0.0)
+Imports: crayon, Hmisc, Gmisc, htmlTable, jpeg, data.table (>= 1.10.0), knitr, rmarkdown, SGP (>= 1.7-0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc, libcurl and git for creating Literasee backed Github repositories
 LazyData: Yes
 LazyDataCompression: xz
