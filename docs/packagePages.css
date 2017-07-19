@@ -3194,7 +3194,7 @@ tbody.collapse.in {
   list-style: none;
   font-size: 15px;
   text-align: left;
-  background-color: #ebfbfb;
+  background-color: rgba(235, 251, 251, 0.92);
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -6418,11 +6418,10 @@ input[type="checkbox"],
 
 .dropdown-menu {
   margin-top: 0;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   border-right: 1px solid #bdd;
   border-left: 1px solid #bdd;
-  border-bottom: 1px solid #bdd; }
+  border-bottom: 1px solid #bdd;
+  border-top: transparent; }
 
 .alert {
   border: none;
