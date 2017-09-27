@@ -1,7 +1,7 @@
 ---
 title: "Advanced Literasee 1"
 author: "Adam R Van Iwaarden"
-date: "`r Sys.Date()`"
+date: "July 1st, 2017"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Literasee: Advanced Vignette 1}
