@@ -1,3 +1,7 @@
+# Literasee 0.0-3.0
+
+* Tidying up vignettes with proper dates.
+
 # Literasee 0.0-2.0
 
 * Subtle modifications to get package working with new packagePages/centerPackageTemplate combo.

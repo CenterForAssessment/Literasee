@@ -1,6 +1,6 @@
 ---
-title: "Literasee 0.0-0.1"
-date: "June 1st, 2017"
+title: "Literasee 0.0-3.0"
+date: "September 27th, 2017"
 ---
 
 ```{r include = FALSE}
@@ -21,23 +21,13 @@ date: "June 1st, 2017"
     }
 ```
 
+* Tidying up vignettes and updating with latest version of [packagePages](https://github.com/CenterForAssessment/packagePages).
 
-* Package Released.
-
-We're pleased to announce the first release of the Literasee package. The package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee)
+The Literasee package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee)
 yet so you'll need to install it off of GitHub.
 
 ```
 devtools::install_github("centerforassessment/Literasee")
 ```
-
-There’s not much in the package yet: Just a single function `reportSGP`.
-
-```r
-library(Literasee)
-reportSGP()
-```
-
-You can see the documentation for more info on the `reportSGP` arguments.
 
 Literasee is under active development. We :heart: feedback and are happy to answer questions.
