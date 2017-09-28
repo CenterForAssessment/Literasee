@@ -9,7 +9,9 @@ The function reportSGP is used to create automatic or customized technical repor
 reportSGP(
   sgp_object,
   sgp.year,
-  output_file="docs/SGP_Report.Rmd",
+  state=NULL,
+  output_directory="Documents/reports/SGP_Report.Rmd",
+  output_file_name=NULL,
   content="tech_report",
   references=TRUE)
 }
@@ -19,8 +21,13 @@ reportSGP(
   }
   \item{sgp.year}{The value of the YEAR in the SGP object @Data to use for the report.
   }
-  \item{output_file}{Character - the name that should be assigned to the .Rmd output file.
+  \item{state}{Acronym indicating state associated with the data. This can be supplied to the function
+  automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to \code{sgp_object}.
+  }
+  \item{output_directory}{Character - the directory path name where the output file is saved.
     May be a (relative) file path, in which case directories will be created as needed.
+  }
+  \item{output_file_name}{Character - the name of the output file to be saved in the \code{output_directory}.
   }
   \item{content}{Character - the type of report to create.  Pulls content .Rmd files ('bones') from one of the
     content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.

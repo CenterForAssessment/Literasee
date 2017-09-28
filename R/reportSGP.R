@@ -1,16 +1,37 @@
 `reportSGP` <- function(
 	sgp_object,
 	sgp.year,
-	output_file="docs/SGP_Report.Rmd",
+	state=NULL,
+	output_directory="Documents/reports/SGP_Report.Rmd",
+	output_file_name=NULL,
 	content="tech_report",
 	references=TRUE
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
+
 	YEAR <- NULL
 
+
+	### Create state (if NULL) from sgp_object (if possible)
+
+	if (is.null(state)) {
+		tmp.name <- toupper(gsub("_", " ", deparse(substitute(sgp_object))))
+		state <- SGP::getStateAbbreviation(tmp.name, "reportSGP")
+	}
+
+
+	### Create output_file
+
+	if (is.null(output_file_name)) {
+		output_file_name <- paste0(paste(state, "SGP_Report", sgp.year, sep="_"), ".Rmd")
+	}
+	output_file <- file.path(output_directory, output_file_name)
+
+
+
 	###  Begin new .Rmd output_file
-	if (!dir.exists(dirname(output_file))) dir.create(dirname(output_file), showWarnings = FALSE, recursive = TRUE)
+	if (!dir.exists(dirname(output_directory))) dir.create(dirname(output_directory), showWarnings = FALSE, recursive = TRUE)
 	content_bones <- system.file("rmarkdown", "content", content, package = "Literasee")
 	cat(readLines(file.path(content_bones, "skeleton.yml")), sep = "\n", file=output_file)
 
