@@ -8,9 +8,9 @@ The function reportSGP is used to create automatic or customized technical repor
 \usage{
 reportSGP(
   sgp_object,
-  sgp.year,
+  year,
   state=NULL,
-  output_directory="Documents/reports",
+  output_directory="documents/reports",
   output_file_name=NULL,
   content="tech_report",
   references=TRUE)
@@ -19,12 +19,12 @@ reportSGP(
 \arguments{
   \item{sgp_object}{An SGP object resulting from SGP analyses.
   }
-  \item{sgp.year}{The value of the YEAR in the SGP object @Data to use for the report.
+  \item{year}{The value of the YEAR in the SGP object @Data to use for the report.
   }
   \item{state}{Acronym indicating state associated with the data. This can be supplied to the function
   automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to \code{sgp_object}.
   }
-  \item{output_directory}{Character - the directory path name where the output file is saved.
+  \item{output_directory}{Character - the directory path name where the output file is saved. Defaults to \code{documents/reports}.
     May be a (relative) file path, in which case directories will be created as needed.
   }
   \item{output_file_name}{Character - the name of the output file to be saved in the \code{output_directory}.
