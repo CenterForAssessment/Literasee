@@ -1,8 +1,8 @@
 `reportSGP` <- function(
 	sgp_object,
-	sgp.year,
+	year,
 	state=NULL,
-	output_directory="Documents/reports",
+	output_directory="documents/reports",
 	output_file_name=NULL,
 	content="tech_report",
 	references=TRUE
@@ -11,6 +11,13 @@
 	### Set variables to NULL to prevent R CMD check warnings
 
 	YEAR <- NULL
+
+
+	### Utility functions
+
+	strtail <- function (s, n = 1) {
+		if (n < 0) substring(s, 1 - n) else substring(s, nchar(s) - n + 1)
+	}
 
 
 	### Create state (if NULL) from sgp_object (if possible)
@@ -24,7 +31,7 @@
 	### Create output_file
 
 	if (is.null(output_file_name)) {
-		output_file_name <- paste0(paste(state, "SGP_Report", sgp.year, sep="_"), ".Rmd")
+		output_file_name <- paste0(paste(getStateAbbreviation(state, type="LONG"), "SGP_Report", strtail(year, 4), sep="_"), ".Rmd")
 	}
 	output_file <- file.path(output_directory, output_file_name)
 
@@ -40,7 +47,7 @@
 	######
 
 	###  Check for EOCT grades
-	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==sgp.year]$GRADE))
+	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
 	cat(readLines(file.path(content_bones, "SGP_Object_Tests.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Check for SIMEX SGPs
@@ -71,7 +78,7 @@
 
 	###  Scrub-a-dub
 	sgp.rmd <- readLines(output_file)
-	sgp.rmd <- gsub("sgp.year", shQuote(sgp.year), sgp.rmd)
+	sgp.rmd <- gsub("year", shQuote(year), sgp.rmd)
 	sgp.rmd <- gsub("sgp_object", as.character(as.list(match.call())[["sgp_object"]]), sgp.rmd)
 	cat(sgp.rmd, sep = "\n", file=output_file)
 
