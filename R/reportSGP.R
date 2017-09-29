@@ -4,7 +4,7 @@
 	state=NULL,
 	output_directory="documents/reports",
 	output_file_name=NULL,
-	content="tech_report",
+	content="sgp_report",
 	references=TRUE
 ) {
 
