@@ -131,8 +131,10 @@
 
     <pre class="usage"><span class='fu'>reportSGP</span>(
   <span class='no'>sgp_object</span>,
-  <span class='no'>sgp.year</span>,
-  <span class='kw'>output_file</span><span class='kw'>=</span><span class='st'>"docs/SGP_Report.Rmd"</span>,
+  <span class='no'>year</span>,
+  <span class='kw'>state</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+  <span class='kw'>output_directory</span><span class='kw'>=</span><span class='st'>"documents/reports"</span>,
+  <span class='kw'>output_file_name</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>content</span><span class='kw'>=</span><span class='st'>"tech_report"</span>,
   <span class='kw'>references</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
     
@@ -144,13 +146,22 @@
       <td><p>An SGP object resulting from SGP analyses.</p></td>
     </tr>
     <tr>
-      <th>sgp.year</th>
+      <th>year</th>
       <td><p>The value of the YEAR in the SGP object @Data to use for the report.</p></td>
     </tr>
     <tr>
-      <th>output_file</th>
-      <td><p>Character - the name that should be assigned to the .Rmd output file.
+      <th>state</th>
+      <td><p>Acronym indicating state associated with the data. This can be supplied to the function
+  automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to <code>sgp_object</code>.</p></td>
+    </tr>
+    <tr>
+      <th>output_directory</th>
+      <td><p>Character - the directory path name where the output file is saved. Defaults to <code>documents/reports</code>.
     May be a (relative) file path, in which case directories will be created as needed.</p></td>
+    </tr>
+    <tr>
+      <th>output_file_name</th>
+      <td><p>Character - the name of the output file to be saved in the <code>output_directory</code>.</p></td>
     </tr>
     <tr>
       <th>content</th>
