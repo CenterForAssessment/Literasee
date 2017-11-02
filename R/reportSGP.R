@@ -2,7 +2,7 @@
 	sgp_object,
 	year,
 	state=NULL,
-	output_directory="documents/reports",
+	output_directory="Documents/reports",
 	output_file_name=NULL,
 	content="sgp_report",
 	references=TRUE,

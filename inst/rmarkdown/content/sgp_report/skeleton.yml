@@ -1,10 +1,16 @@
 ---
-title: "Report Title:"
-subtitle: "A Subtitle to the Report"
+title: "Demonstration SGP"
+subtitle: "Analysis & Results 2017"
+abstract: "This document provides details on the analysis and results associated with the Demonstration SGP program."
 author:
-  - name: Report First Author
-  - name: Report Second Author
-date: Date
+    - name: "Damian W Betebenner"
+    - name: "Adam R VanIwaarden"
+date: "`r toOrdinal::toOrdinalDate('2017-10-12')`"
+keywords: "Demonstration, SGP, student growth percentiles, student growth projections, R"
+style: "tufte"
+includes:
+  in_header: "SGP_REPORT_COVER_PAGE.tex"
+  before_body: "LICENCSE.tex"
 ---
 
 <!--SGPreport-->
