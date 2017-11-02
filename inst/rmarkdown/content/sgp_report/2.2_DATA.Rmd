@@ -11,7 +11,7 @@ Growth analyses on assessment data require data that are linked to individual st
 Table `r tblNum(1)` shows the number of valid student records available for analysis after applying the data preparation business rules.^[This number does not represent the number of SGPs produced, however, because students are required to have at least one prior score available as well.]
 
 ```{r, cache=TRUE, echo=FALSE, include=FALSE}
-	n_tbl_EOG <- table(sgp_object@Data[YEAR==sgp.year & CONTENT_AREA %in% GL_subjects & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==sgp.year & CONTENT_AREA %in% GL_subjects & VALID_CASE=='VALID_CASE']$GRADE)
+	n_tbl_EOG <- table(sgp_object@Data[YEAR==year & CONTENT_AREA %in% GL_subjects & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==year & CONTENT_AREA %in% GL_subjects & VALID_CASE=='VALID_CASE']$GRADE)
 ```
 ```{r, results='asis', echo=FALSE, N_tableEOG}
 	n_tbl_EOG_B <- n_tbl_EOG[match(GL_subjects, row.names(n_tbl_EOG)) ,]
@@ -32,7 +32,7 @@ Table `r tblNum(1)` shows the number of valid student records available for anal
 Table `r tblNum(1)` shows the total number of valid End of Course Test (EOCT) student records available for analysis after applying the general and EOCT specific business rules.
 
 ```{r, cache=TRUE, echo=FALSE, include=FALSE}
-	n_tbl_EOCT <- table(sgp_object@Data[YEAR==sgp.year & CONTENT_AREA %in% EOCT_subjects & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==sgp.year & CONTENT_AREA %in% EOCT_subjects & VALID_CASE=='VALID_CASE']$GRADE)
+	n_tbl_EOCT <- table(sgp_object@Data[YEAR==year & CONTENT_AREA %in% EOCT_subjects & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==year & CONTENT_AREA %in% EOCT_subjects & VALID_CASE=='VALID_CASE']$GRADE)
 ```
 ```{r, results='asis', echo=FALSE, N_tableEOCT}
 	n_tbl_EOCT_B <- n_tbl_EOCT[match(EOCT_subjects, row.names(n_tbl_EOCT)) ,]

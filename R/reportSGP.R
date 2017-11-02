@@ -2,10 +2,11 @@
 	sgp_object,
 	year,
 	state=NULL,
-	output_directory="documents/reports",
+	output_directory="Documents/reports",
 	output_file_name=NULL,
-	content="tech_report",
-	references=TRUE
+	content="sgp_report",
+	references=TRUE,
+	cover_page="SGP_REPORT_COVER_PAGE.tex"
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -48,7 +49,7 @@
 
 	###  Check for EOCT grades
 	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
-	cat(readLines(file.path(content_bones, "SGP_Object_Tests.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(readLines(file.path(content_bones, "SGP_OBJECT_TESTS.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Check for SIMEX SGPs
 
@@ -62,7 +63,7 @@
 	######
 
 	###  Introduction
-	cat(readLines(file.path(content_bones, "1_INTRO.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(readLines(file.path(content_bones, "1_INTRODUCTION.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Data
 	if (eoct.tf) {
@@ -74,6 +75,14 @@
 
 	###  References
 	if (references) cat("\n\n#  References \n", file=output_file, append = TRUE)
+
+	### Cover Page
+
+	if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
+		cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
+	} else {
+		cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), append = TRUE)
+	}
 
 
 	###  Scrub-a-dub

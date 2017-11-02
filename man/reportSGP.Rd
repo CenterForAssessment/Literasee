@@ -13,7 +13,8 @@ reportSGP(
   output_directory="documents/reports",
   output_file_name=NULL,
   content="tech_report",
-  references=TRUE)
+  references=TRUE,
+  cover_page="sgp_report_cover_page.tex")
 }
 
 \arguments{
@@ -33,6 +34,8 @@ reportSGP(
     content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
   }
   \item{references}{Boolean. Include a 'References' section in the report.
+  }
+  \item{cover_page}{Path to .tex file providing cover page. File is place in student report YAML: \code{includes: in_header: cover_page.tex}
   }
 }
 

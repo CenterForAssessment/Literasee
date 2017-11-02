@@ -10,7 +10,7 @@ Growth analyses on assessment data require data that are linked to individual st
 Table `r tblNum(1)` shows the number of valid student records available for analysis after applying the data preparation business rules.^[This number does not represent the number of SGPs produced, however, because students are required to have at least one prior score available as well.]
 
 ```{r, cache=TRUE, echo=FALSE, include=FALSE}
-	n_tbl <- table(sgp_object@Data[YEAR==sgp.year & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==sgp.year & VALID_CASE=='VALID_CASE']$GRADE)
+	n_tbl <- table(sgp_object@Data[YEAR==year & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==year & VALID_CASE=='VALID_CASE']$GRADE)
 ```
 ```{r, results='asis', echo=FALSE, N_table}
 	n_tbl_B <- n_tbl[match(GL_subjects, row.names(n_tbl)) ,]
