@@ -32,7 +32,7 @@
 	### Create output_file
 
 	if (is.null(output_file_name)) {
-		output_file_name <- paste0(paste(getStateAbbreviation(state, type="LONG"), "SGP_Report", strtail(year, 4), sep="_"), ".Rmd")
+		output_file_name <- paste0(paste(SGP::getStateAbbreviation(state, type="LONG"), "SGP_Report", strtail(year, 4), sep="_"), ".Rmd")
 	}
 	output_file <- file.path(output_directory, output_file_name)
 
