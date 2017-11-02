@@ -5,7 +5,8 @@
 	output_directory="documents/reports",
 	output_file_name=NULL,
 	content="sgp_report",
-	references=TRUE
+	references=TRUE,
+	cover_page="SGP_REPORT_COVER_PAGE.tex"
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -74,6 +75,14 @@
 
 	###  References
 	if (references) cat("\n\n#  References \n", file=output_file, append = TRUE)
+
+	### Cover Page
+
+	if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
+		cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
+	} else {
+		cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), append = TRUE)
+	}
 
 
 	###  Scrub-a-dub
