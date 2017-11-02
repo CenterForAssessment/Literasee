@@ -49,7 +49,7 @@
 
 	###  Check for EOCT grades
 	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
-	cat(readLines(file.path(content_bones, "SGP_Object_Tests.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(readLines(file.path(content_bones, "SGP_OBJECT_TESTS.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Check for SIMEX SGPs
 
@@ -63,7 +63,7 @@
 	######
 
 	###  Introduction
-	cat(readLines(file.path(content_bones, "1_INTRO.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(readLines(file.path(content_bones, "1_INTRODUCTION.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Data
 	if (eoct.tf) {

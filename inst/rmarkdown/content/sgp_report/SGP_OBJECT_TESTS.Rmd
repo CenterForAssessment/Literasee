@@ -7,7 +7,7 @@
 	options(fig_caption_no_sprintf = "**Figure %s:**   %s")
 	options("fig_caption_no_roman"=FALSE)
 
-	##  Identify whether or not there are EOCT courses in the data
+	##  Identify whether there are EOCT courses in the data
 	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
 	if (eoct.tf) {
 		GL_subjects <- unique(sgp_object@Data[YEAR==year & GRADE != "EOCT", CONTENT_AREA])
