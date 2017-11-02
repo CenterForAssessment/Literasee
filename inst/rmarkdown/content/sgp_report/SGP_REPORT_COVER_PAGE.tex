@@ -37,14 +37,13 @@
 % From "user11232" at:
 % http://tex.stackexchange.com/questions/167526/how-to-write-dedication-properly
 
-\newenvironment{dedication}
+\newenvironment{License}
   {%\clearpage           % we want a new page          %% I commented this
    \thispagestyle{empty}% no header and footer
-   \vspace*{\stretch{1}}% some space at the top
-   \itshape             % the text is in italics
-   \raggedleft          % flush to the right margin
+   \vspace*{\stretch{3}}% some space at the top
+   \raggedright          % flush to the right margin
   }
   {\par % end the paragraph
-   \vspace{\stretch{3}} % space at bottom is three times that at the top
+   \vspace{\stretch{1}} % space at bottom is 1/3 times that at the top
    \clearpage           % finish off the page
   }
