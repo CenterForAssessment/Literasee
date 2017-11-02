@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://centerforassessment.github.io/public/favicon.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
 <title>Literasee • Function for automatic technical report generation from SGP analyses. — reportSGP</title>
 
@@ -13,7 +13,6 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 
 <!-- Bootstrap -->
-<link href="../packagePages.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,6 +22,7 @@
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400" rel="stylesheet" type="text/css">
 
 <!-- packagePages -->
+<link href="../packagePages.css" rel="stylesheet">
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
@@ -136,7 +136,8 @@
   <span class='kw'>output_directory</span><span class='kw'>=</span><span class='st'>"documents/reports"</span>,
   <span class='kw'>output_file_name</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>content</span><span class='kw'>=</span><span class='st'>"tech_report"</span>,
-  <span class='kw'>references</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
+  <span class='kw'>references</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
+  <span class='kw'>cover_page</span><span class='kw'>=</span><span class='st'>"sgp_report_cover_page.tex"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -171,6 +172,10 @@
     <tr>
       <th>references</th>
       <td><p>Boolean. Include a 'References' section in the report.</p></td>
+    </tr>
+    <tr>
+      <th>cover_page</th>
+      <td><p>Path to .tex file providing cover page. File is place in student report YAML: <code>includes: in_header: cover_page.tex</code></p></td>
     </tr>
     </table>
     
