@@ -3,7 +3,8 @@
 	sgp.year,
 	output_file="docs/SGP_Report.Rmd",
 	content="tech_report",
-	references=TRUE
+	GoFit.Examples=NULL, # file paths for examples of good fit/misfit
+	references=TRUE,
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -44,6 +45,26 @@
 	###  Analytics
 	cat(readLines(file.path(content_bones, "3_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
+	###  Goodness of Fit
+	cat(readLines(file.path(content_bones, "4_GoFIT.Rmd")), sep = "\n", file=output_file, append = TRUE)
+
+	if (!is.null(GoFit.Examples)) {
+
+	cat("
+	As an example, Figure `r getCounter('figure')+1` shows exemplary model fit.
+	Figure `r getCounter('figure')+2` demonstrates minor model misfit.",
+	file=output_file, append = TRUE)
+
+	cat("
+	```{r, results='asis', echo=FALSE, G8_Marginal_Distributions}
+		placeFigure(
+			files = './img/Math_G8_Marginal_Distributions-2_Prior.pdf',
+			caption = 'Comparison of the Uniformity of Distributions for 8<sup>th</sup> Grade Mathematics Estimates.')
+	```
+	")
+
+	}
+	
 	###  References
 	if (references) cat("\n\n#  References \n", file=output_file, append = TRUE)
 

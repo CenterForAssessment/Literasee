@@ -8,19 +8,19 @@ placeFigure <- function(
 	pdf.width=NULL,
 	html.width=NULL,
 	page.break=FALSE){
-	
+
 	###  Some checks
-	
-	if (length(files) != as.numeric(rows)*as.numeric(columns)) stop("Number of image file(s) does not match the specified rows/columns configuration.")
-	
+
+	# if (length(files) != as.numeric(rows)*as.numeric(columns)) stop("Number of image file(s) does not match the specified rows/columns configuration.")
+
 	if (is.null(pdf.width)) pdf.width <- 1/columns
 	if (is.null(html.width)) html.width <- round((650 - 10*columns)/columns, 0)
-	
+
 	if (tolower(caption.position)=="top") caption.top <- TRUE else caption.top <- FALSE
 	###  Universal variables
 	if (is.null(caption)) {
 		html.caption <- getOption("fig_caption_no_sprintf")
-	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdownToHTML(text=figCapNo(caption), fragment.only=TRUE)))
+	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=figCapNo(caption), fragment.only=TRUE)))
 	###  HTML image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
 
 	cat("
@@ -30,11 +30,13 @@ placeFigure <- function(
 		cat("
 <div class='caption'>", html.caption, "</div>")
 	}
-	
+
 	cat(paste0("
 <div class='content-node image'", ifelse(!is.null(figure.id), paste0(" id = '", figure.id,"'"), ""), ">"))
 	cat("
 <div class='image-content'>")
+
+	###  Might need to look into how h6 captions set up to put multiple images in a matrix.
 
 	for (img in files) {
 		cat(paste0("
@@ -56,11 +58,11 @@ placeFigure <- function(
 	} else cat("\n")
 
 	###  LaTeX image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
-	
-	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
-	# 	tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{\\\\label{fig:", figure.id, "} ", "{\\\\bf{"), gsub(":[*][*]", ":}}", 
+
+	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
+	# 	tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{\\\\label{fig:", figure.id, "} ", "{\\\\bf{"), gsub(":[*][*]", ":}}",
 	# 		sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""))), caption, "}")
-	# } else tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{{\\\\bf{"), gsub(":[*][*]", ":}}", 
+	# } else tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{{\\\\bf{"), gsub(":[*][*]", ":}}",
 	# 		sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""))), caption, "}")
 	tex.caption <- gsub("<strong>", "{\\\\bf{", gsub("</strong>", "}}", tex.caption))
 	tex.caption <- gsub("<em>", "{\\\\textit{", gsub("</em>", "}}", tex.caption))
@@ -72,7 +74,7 @@ placeFigure <- function(
 	if (!is.null(figure.id)){
 		tex.caption <- paste0("\\", cap.type, "{\\label{fig:", figure.id, "} ", tex.caption, "}")
 	} else tex.caption <- paste0("\\", cap.type, "{", tex.caption, "}")
-	
+
 	cat("
 <!-- LaTeX_Start
 \\begin{figure}[H]\n")
@@ -86,7 +88,7 @@ placeFigure <- function(
   \\begin{subfigure}[b]{", pdf.width, "\\textwidth}"))
 		cat(paste0("
     \\includegraphics[width=\\textwidth]{", img, "}
-  \\end{subfigure}\n"))
+  \\end{subfigure}"))
 	}
 
 	if (!caption.top) {
@@ -103,5 +105,5 @@ placeFigure <- function(
 
 	cat("
 LaTeX_End -->\n")
-	
+
 } ###  END placeFigure
