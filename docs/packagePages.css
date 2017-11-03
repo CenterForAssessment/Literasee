@@ -3966,10 +3966,13 @@ tbody.collapse.in {
   .navbar-default .navbar-nav > li > a {
     color: #444;
     padding-top: 5px;
-    margin-top: 5px; }
-    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #222;
-      background-color: transparent; }
+    margin-top: 5px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent; }
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #222;
+    background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #212121;
     background-color: #fcfcfc; }

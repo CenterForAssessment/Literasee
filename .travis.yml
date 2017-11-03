@@ -10,6 +10,7 @@ r:
 
 r_github_packages:
 #     - Rdatatable/data.table
+     - CenterForAssessment/SGP
 
 before_deploy:
        - R -e "staticdocs::build_site(examples = TRUE)"
