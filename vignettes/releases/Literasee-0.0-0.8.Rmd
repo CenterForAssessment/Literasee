@@ -1,44 +1,34 @@
-```{r, echo = FALSE}
-knitr::opts_chunk$set(comment = "#>", collapse = TRUE)
+---
+title: "Literasee 0.0-0.8"
+date: "August 1st, 2017"
+---
+
+```{r include = FALSE}
+    library(SGP)
+
+    is_html_output = function() {
+        knitr::opts_knit$get("rmarkdown.pandoc.to")=="html"
+    }
+
+    knitr::opts_chunk$set(
+        collapse=TRUE,
+        comment="",
+        prompt=TRUE,
+        fig.dpi=96)
+
+    if (is_html_output()) {
+        options(width=1000)
+    }
 ```
 
-# Changes in version: Literasee 0.0-0.8
+* Add VERY preliminary .Rmd bones for skeleton technical report construction.
+* Fix documentation so that pkgdown documentation generation works correctly.
 
-  * Add VERY preliminary .Rmd bones for skeleton technical report construction.
-  * Fix documentation so that pkgdown documentation generation works correctly.
-
-The package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee) 
-yet so you'll need to install it off of GitHub. 
+The package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee)
+yet so you'll need to install it off of GitHub.
 
 ```
 devtools::install_github("centerforassessment/Literasee")
 ```
 
-The main function, `reportSGP`, can be tested with the following code:
-
-```r
-library(Literasee)
-library(SGP)
-
-###  Run testSGP(3) in order to get a test SGP object
-
-testSGP(3)
-
-
-###  Load Data (Demonstration_SGP from testSGP(1) or testSGP(3) ) and package
-load("Data/Demonstration_SGP.Rdata") # Use to test EOCT Documentation
-require(Literasee)
-
-
-###  Create .Rmd "skeleton" report from boilerplate content
-reportSGP(Demonstration_SGP, output_file="docs/SGP_Report.Rmd", sgp.year = tail(unique(Demonstration_SGP@Data$YEAR), 1))
-
-###  Render .Rmd file into PDF and HTML formatted reports.
-setwd("docs")
-renderMultiDocument(rmd_input = "SGP_Report.Rmd", report_format = c("HTML", "PDF"))
-
-reportSGP()
-```
-
-
-Literasee is under active development. We :heart: feedback and are happy to answer questions. 
+Literasee is under active development. We :heart: feedback and are happy to answer questions.

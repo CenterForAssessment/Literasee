@@ -1491,7 +1491,7 @@ pre {
   padding: 10px;
   margin: 0 5px 13.5px 5px;
   font-size: 13px;
-  line-height: 1.846;
+  line-height: 1.4;
   word-break: break-all;
   word-wrap: break-word;
   color: #212121;
@@ -3189,12 +3189,12 @@ tbody.collapse.in {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
+  padding: 10px 0;
   margin: 2px 0 0;
   list-style: none;
   font-size: 15px;
   text-align: left;
-  background-color: #ebfbfb;
+  background-color: rgba(235, 251, 251, 0.92);
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -3255,7 +3255,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   font-size: 13px;
   line-height: 1.846;
-  color: #bbb;
+  color: #111;
   white-space: nowrap; }
 
 .dropdown-backdrop {
@@ -3571,10 +3571,10 @@ tbody.collapse.in {
     .nav > li > a {
       position: relative;
       display: block;
-      padding: 10px 15px; }
+      padding: 10px 15px;
+      border-color: #9dd; }
       .nav > li > a:hover, .nav > li > a:focus {
-        text-decoration: none;
-        background-color: #eeeeee; }
+        text-decoration: none; }
     .nav > li.disabled > a {
       color: #bbb; }
       .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
@@ -3680,7 +3680,7 @@ tbody.collapse.in {
 .navbar {
   position: relative;
   min-height: 110px;
-  margin-bottom: 27px;
+  margin-bottom: 20px;
   border: 1px solid transparent; }
   .navbar:before, .navbar:after {
     content: " ";
@@ -3964,10 +3964,15 @@ tbody.collapse.in {
   .navbar-default .navbar-text {
     color: #bbb; }
   .navbar-default .navbar-nav > li > a {
-    color: #444; }
-    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-      color: #222;
-      background-color: transparent; }
+    color: #444;
+    padding-top: 5px;
+    margin-top: 5px;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent; }
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #222;
+    background-color: transparent; }
   .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #212121;
     background-color: #fcfcfc; }
@@ -3985,9 +3990,14 @@ tbody.collapse.in {
     border-color: transparent; }
   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     background-color: #ebfbfb;
-    color: #212121;
+    color: #111;
     border-left: 1px solid #bdd;
-    border-right: 1px solid #bdd; }
+    border-right: 1px solid #bdd;
+    border-top: 1px solid #bdd;
+    border-radius: 5px 5px 0px 0px;
+    padding-bottom: 0px;
+    padding-top: 5px;
+    margin-top: 5px; }
   @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
       color: #444; }
@@ -5814,11 +5824,11 @@ button.close {
   border-bottom: 1px solid #444;
   -webkit-box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 12px 0px rgba(0, 0, 0, 0.1);
-  min-height: 55px;
+  min-height: 50px;
   padding: 10px 0;
   transition: all 0.35s ease; }
   .navbar-brand {
-    font-family: "Josefin Sans";
+    font-family: "Josefin Sans", sans-serif;
     font-weight: 400;
     padding: 0 0 0 60px;
     height: 48px;
@@ -5828,7 +5838,7 @@ button.close {
     background-repeat: no-repeat;
     background-position: 15px center; }
   .navbar-label {
-    font-family: "Josefin Sans", monospace;
+    font-family: "Josefin Sans", sans-serif;
     font-weight: 400;
     font-size: 38px;
     padding: 0 0 0 0px;
@@ -5989,9 +5999,7 @@ button {
   letter-spacing: .1px; }
 
 a {
-  -webkit-transition: all 0.25s;
-  -o-transition: all 0.25s;
-  transition: all 0.25s; }
+  -o-transition: all 0.25s; }
 
 .table-hover > tbody > tr,
 .table-hover > tbody > tr > th,
@@ -6411,9 +6419,10 @@ input[type="checkbox"],
 
 .dropdown-menu {
   margin-top: 0;
-  border: none;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
+  border-right: 1px solid #bdd;
+  border-left: 1px solid #bdd;
+  border-bottom: 1px solid #bdd;
+  border-top: transparent; }
 
 .alert {
   border: none;

@@ -8,24 +8,34 @@ The function reportSGP is used to create automatic or customized technical repor
 \usage{
 reportSGP(
   sgp_object,
-  sgp.year,
-  output_file="docs/SGP_Report.Rmd",
+  year,
+  state=NULL,
+  output_directory="documents/reports",
+  output_file_name=NULL,
   content="tech_report",
-  references=TRUE)
+  references=TRUE,
+  cover_page="sgp_report_cover_page.tex")
 }
 
 \arguments{
   \item{sgp_object}{An SGP object resulting from SGP analyses.
   }
-  \item{sgp.year}{The value of the YEAR in the SGP object @Data to use for the report.
+  \item{year}{The value of the YEAR in the SGP object @Data to use for the report.
   }
-  \item{output_file}{Character - the name that should be assigned to the .Rmd output file.
+  \item{state}{Acronym indicating state associated with the data. This can be supplied to the function
+  automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to \code{sgp_object}.
+  }
+  \item{output_directory}{Character - the directory path name where the output file is saved. Defaults to \code{documents/reports}.
     May be a (relative) file path, in which case directories will be created as needed.
+  }
+  \item{output_file_name}{Character - the name of the output file to be saved in the \code{output_directory}.
   }
   \item{content}{Character - the type of report to create.  Pulls content .Rmd files ('bones') from one of the
     content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
   }
   \item{references}{Boolean. Include a 'References' section in the report.
+  }
+  \item{cover_page}{Path to .tex file providing cover page. File is place in student report YAML: \code{includes: in_header: cover_page.tex}
   }
 }
 
