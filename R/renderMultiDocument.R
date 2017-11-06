@@ -1,6 +1,6 @@
 renderMultiDocument <- function (
   rmd_input,
-  report_format = c("HTML", "EPUB", "PDF"), # Can also produce "DOCX"
+  report_format = c("HTML", "PDF"), # Can also produce "EPUB", "DOCX"
   cleanup_aux_files = TRUE,
   number_sections = TRUE,
   number_section_depth=3,
@@ -21,7 +21,7 @@ renderMultiDocument <- function (
   add_cover_title = FALSE,
   bibliography = "default",
   csl = "default",
-  pandoc_args = NULL,
+  pandoc_args = NULL, # "--webtex" for LaTeX math in both HTML and PDF
   ...) {
 
 	###  Checks of alternative css and/or pandoc template done in externalized functions

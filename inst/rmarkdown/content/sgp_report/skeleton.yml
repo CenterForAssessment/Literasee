@@ -10,7 +10,7 @@ keywords: "Demonstration, SGP, student growth percentiles, student growth projec
 style: "tufte"
 includes:
   in_header: "SGP_REPORT_COVER_PAGE.tex"
-  before_body: "LICENCSE.tex"
+  before_body: "LICENSE.tex"
 ---
 
 <!--SGPreport-->

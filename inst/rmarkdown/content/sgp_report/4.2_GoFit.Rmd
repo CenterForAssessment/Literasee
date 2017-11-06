@@ -1,0 +1,28 @@
+## Growth and Prior Achievement at the Student Level
+
+To investigate the possibility that individual level misfit might impact summary level results, student level SGP results were examined relative to prior achievement.  With perfect fit to data, the correlation between students' most recent prior achievement scores and their student growth percentiles is zero (i.e., the goodness of fit tables would have a uniform distribution of percentiles across all previous scale score levels).  To investigate in another way, correlations between **a)** prior and current scale scores (achievement) and **b)** prior score and student growth percentiles were calculated.  Evidence of good model fit begins with a strong positive relationship between prior and current achievement, which suggests that growth is detectable and modeling it is reasonable to begin with.  A lack of relationship (zero correlation) between prior achievement and growth confirms that the model has fit the data well and produced a uniform distribution of percentiles across all previous scale score levels.
+
+Student-level correlations are presented in Table `r tblNum(1)`, and the results are generally as expected.  Strong relationships exist between prior and current scale scores for the grade level analyses (column 3).  With cohort-referenced (uncorrected) percentiles, the correlation between students' most recent prior achievement scores and their student growth percentiles is zero when the model is perfectly fit to the data.  This also indicates that students can demonstrate high (or low) growth regardless of prior achievement.  Correlations for XXX-SGP_STATE-XXX's SGPs are all essentially zero (column 4).
+
+
+### Grade level subjects
+
+```{r, results='asis', echo=FALSE, Student_GL}
+	student.cor.grd <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==year & CONTENT_AREA %in% GL_subjects][, list(
+		`$\\\rr_ { Test Scores}$` = round(cor(SCALE_SCORE, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
+		`$\\\rr_ { SGP}$` = round(cor(SGP, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
+		N_Size = sum(!is.na(SGP))), keyby = list(CONTENT_AREA, GRADE)]
+
+	gl_tmp_tbl <- student.cor.grd[!is.na(student.cor.grd[["$\\\rr_ { SGP}$"]])]
+	gl_tmp_tbl[, GRADE := as.numeric(GRADE)]
+	setkey(gl_tmp_tbl, CONTENT_AREA, GRADE)
+	gl_tmp_tbl <- gl_tmp_tbl[][order(match(gl_tmp_tbl$CONTENT_AREA, GL_subjects))]
+
+	tmp.cap <- "Student Level Correlations between Prior Standardized Scale Score and 1) Current Scale Score and 2) SGP."
+	gl_tmp_tbl$CONTENT_AREA <- sapply(gl_tmp_tbl$CONTENT_AREA, capwords, USE.NAMES=FALSE)
+	gl_tmp_tbl$CONTENT_AREA[duplicated(gl_tmp_tbl$CONTENT_AREA)] <- ""
+	gl_tmp_tbl$N_Size <- prettyNum(gl_tmp_tbl$N_Size, preserve.width = "individual", big.mark=',')
+	setnames(gl_tmp_tbl, c(1:2,5), sapply(names(gl_tmp_tbl)[c(1:2,5)], capwords))
+
+  cat(dualTable(as.matrix(gl_tmp_tbl), align=paste(rep('r', dim(gl_tmp_tbl)[2]), collapse=''), caption = tmp.cap))
+```

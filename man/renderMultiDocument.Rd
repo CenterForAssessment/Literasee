@@ -3,7 +3,7 @@
 \title{Render R Markdown in Multiple Output Formats}
 \usage{
 renderMultiDocument(rmd_input,
-  report_format = c("HTML", "EPUB", "PDF"),
+  report_format = c("HTML", "PDF"),
   cleanup_aux_files = TRUE,
   number_sections = TRUE,
   number_section_depth=3,
@@ -31,10 +31,10 @@ renderMultiDocument(rmd_input,
   \item{rmd_input}{Input file. Must be an R Markdown (.Rmd) file located in the working directory).}
 
   \item{report_format}{Report output format(s) to convert Rmd file to. Pass
-  a vector of format names to render multiple formats.  Defaults to the three
-  polished versions (c("HTML", "EPUB", "PDF")).  "DOCX" is also available,
-  but is intended to be a draft-version document as it does not support many
-  of the stylization features included in the other formats.}
+  a vector of format names to render multiple formats.  Defaults to the two
+  polished versions ("HTML" and "PDF").  "EPUB" and "DOCX" are also available.
+  MS Word DOCX is intended to be a draft-version document as it does not
+  support many of the stylization features included in the other formats.}
 
   \item{cleanup_aux_files}{Boolean.  Defaults to TRUE to delete the
   intermediate markdown files and directories be upon successful completion.}

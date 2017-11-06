@@ -4,9 +4,11 @@
 	state=NULL,
 	output_directory="Documents/reports",
 	output_file_name=NULL,
+	output_knit=TRUE,
 	content="sgp_report",
-	references=TRUE,
-	cover_page="SGP_REPORT_COVER_PAGE.tex"
+	cover_page="default",
+	license="default",
+	references=TRUE
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -32,16 +34,15 @@
 	### Create output_file
 
 	if (is.null(output_file_name)) {
-		output_file_name <- paste0(paste(SGP::getStateAbbreviation(state, type="LONG"), "SGP_Report", strtail(year, 4), sep="_"), ".Rmd")
+		output_file_name <- paste0(paste(SGP::getStateAbbreviation(state, type="LONG"), "SGP_Technical_Report", strtail(year, 4), sep="_"), ".Rmd")
 	}
 	output_file <- file.path(output_directory, output_file_name)
 
-
-
-	###  Begin new .Rmd output_file
 	if (!dir.exists(dirname(output_directory))) dir.create(dirname(output_directory), showWarnings = FALSE, recursive = TRUE)
 	content_bones <- system.file("rmarkdown", "content", content, package = "Literasee")
+
 	cat(readLines(file.path(content_bones, "skeleton.yml")), sep = "\n", file=output_file)
+
 
 	######
 	###			Identify key characteristics of SGP Object - load required packages, etc.
@@ -67,28 +68,73 @@
 
 	###  Data
 	if (eoct.tf) {
-		cat(readLines(file.path(content_bones, "2.2_DATA.Rmd")), sep = "\n", file=output_file, append = TRUE)
-	} else cat(readLines(file.path(content_bones, "2.1_DATA.Rmd")), sep = "\n", file=output_file, append = TRUE)
+		cat(readLines(file.path(content_bones, "2_DATA_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	} else cat(readLines(file.path(content_bones, "2_DATA.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Analytics
-	cat(readLines(file.path(content_bones, "3_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(readLines(file.path(content_bones, "3.1_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+
+	if (eoct.tf) {
+		cat(readLines(file.path(content_bones, "3.2_ANALYTICS_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	} else {
+		cat(readLines(file.path(content_bones, "3.2_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	}
+	cat(readLines(file.path(content_bones, "3.3_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+
+
+	###  Goodness of Fit
+	cat(readLines(file.path(content_bones, "4.1_GoFit.Rmd")), sep = "\n", file=output_file, append = TRUE)
+
+	# Section for examples of good/bad fit (e.g. Georgia)?  Put in manually?
+
+	if (eoct.tf) {
+		cat(readLines(file.path(content_bones, "4.2_GoFit_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	} else cat(readLines(file.path(content_bones, "4.2_GoFit.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  References
 	if (references) cat("\n\n#  References \n", file=output_file, append = TRUE)
 
 	### Cover Page
 
-	if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
-		cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
+	# if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
+	# 	cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
+	# } else {
+	# 	cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "LICENCSE.tex"), append = TRUE)
+	# }
+
+	if (identical(cover_page, "default")) {
+		file.copy(file.path(content_bones, "SGP_REPORT_COVER_PAGE.tex"), file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
 	} else {
-		cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), append = TRUE)
+		if (!is.null(cover_page) & file.exists(cover_page)) {
+			file.copy(cover_page, file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
+		} else {
+		if (!is.null(cover_page)) stop("Cover Page file specified does not exist.")
+		}
+	}
+
+
+	if (identical(license, "default")) {
+		file.copy(file.path(content_bones, "LICENSE.tex"), file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
+	} else {
+		if (!is.null(license) & file.exists(license)) {
+			file.copy(license, file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
+		} else {
+		if (!is.null(license)) stop("License file specified does not exist.")
+		}
 	}
 
 
 	###  Scrub-a-dub
 	sgp.rmd <- readLines(output_file)
 	sgp.rmd <- gsub("year", shQuote(year), sgp.rmd)
-	sgp.rmd <- gsub("sgp_object", as.character(as.list(match.call())[["sgp_object"]]), sgp.rmd)
+	sgp.rmd <- gsub("XXX-SGP_STATE-XXX", SGP::getStateAbbreviation(state, type="Long"), sgp.rmd)
+	if (!output_knit) sgp.rmd <- gsub("sgp_object", as.character(as.list(match.call())[["sgp_object"]]), sgp.rmd)
+	if (is.null(cover_page) & is.null(license)) sgp.rmd <- sgp.rmd[-grep("includes:", sgp.rmd)]
+	if (is.null(cover_page)) sgp.rmd <- sgp.rmd[-grep("in_header: \"SGP_REPORT_COVER_PAGE.tex\"", sgp.rmd)]
+	if (is.null(license)) sgp.rmd <- sgp.rmd[-grep("before_body: \"LICENSE.tex\"", sgp.rmd)]
+
 	cat(sgp.rmd, sep = "\n", file=output_file)
+
+	if(output_knit) knitr::knit(input=output_file, output=output_file)
 
 } ### END reportSGP
