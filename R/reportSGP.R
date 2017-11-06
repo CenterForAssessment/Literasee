@@ -6,9 +6,9 @@
 	output_file_name=NULL,
 	output_knit=TRUE,
 	content="sgp_report",
-	cover_page="default",
 	license="default",
-	references=TRUE
+	references=TRUE,
+	cover_page="default"
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -96,19 +96,13 @@
 
 	### Cover Page
 
-	# if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
-	# 	cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
-	# } else {
-	# 	cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "LICENCSE.tex"), append = TRUE)
-	# }
-
 	if (identical(cover_page, "default")) {
 		file.copy(file.path(content_bones, "SGP_REPORT_COVER_PAGE.tex"), file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
 	} else {
 		if (!is.null(cover_page) & file.exists(cover_page)) {
 			file.copy(cover_page, file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
 		} else {
-		if (!is.null(cover_page)) stop("Cover Page file specified does not exist.")
+			if (!is.null(cover_page)) stop("Cover Page file specified does not exist.")
 		}
 	}
 
