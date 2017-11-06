@@ -10,11 +10,13 @@ reportSGP(
   sgp_object,
   year,
   state=NULL,
-  output_directory="documents/reports",
+  output_directory="Documents/reports",
   output_file_name=NULL,
-  content="tech_report",
+  output_knit=TRUE,
+  content="sgp_report",
+  license="default",
   references=TRUE,
-  cover_page="sgp_report_cover_page.tex")
+  cover_page="default")
 }
 
 \arguments{
@@ -30,12 +32,16 @@ reportSGP(
   }
   \item{output_file_name}{Character - the name of the output file to be saved in the \code{output_directory}.
   }
+  \item{output_knit}{Boolean -- indicating whether to knit Rmd file. Default is TRUE.
+  }
   \item{content}{Character - the type of report to create.  Pulls content .Rmd files ('bones') from one of the
     content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
   }
+  \item{license}{Path to .tex file or "default" providing a licence page following the cover page.
+  }
   \item{references}{Boolean. Include a 'References' section in the report.
   }
-  \item{cover_page}{Path to .tex file providing cover page. File is place in student report YAML: \code{includes: in_header: cover_page.tex}
+  \item{cover_page}{Path to .tex file providing cover page or "default". File is placed in student report YAML: \code{includes: in_header: cover_page.tex}
   }
 }
 
