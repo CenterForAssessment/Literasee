@@ -6,6 +6,5 @@ This report includes four sections:
 
 - ***Data - *** includes details on the decision rules used in the raw data preparation and student record validation.
 - ***Analytics - *** introduces some of the basic statistical methods and the computational process implemented in the 2016 analyses.^[More in-depth treatment of the SGP Methodology can be found [here](https://github.com/CenterForAssessment/SGP_Resources/tree/master/articles).]
-- ***Goodness of Fit - *** investigates how well the statistical models used to produce SGPs fit Georgia students' data.  This includes discussion of goodness of fit plots and the student-level correlations between SGP and prior achievement.
+- ***Goodness of Fit - *** investigates how well the statistical models used to produce SGPs fit XXX-SGP_STATE-XXX students' data.  This includes discussion of goodness of fit plots and the student-level correlations between SGP and prior achievement.
 - ***SGP Results - *** provides basic descriptive statistics from the 2016 analyses at both the state and school levels.
-
