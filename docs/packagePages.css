@@ -5836,7 +5836,8 @@ button.close {
     background-image: url(./img/logo.png);
     background-size: 38px auto;
     background-repeat: no-repeat;
-    background-position: 15px center; }
+    background-position: 15px center;
+    transition: all 0.35s; }
   .navbar-label {
     font-family: "Josefin Sans", sans-serif;
     font-weight: 400;
