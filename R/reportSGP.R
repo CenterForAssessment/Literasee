@@ -6,9 +6,9 @@
 	output_file_name=NULL,
 	output_knit=TRUE,
 	content="sgp_report",
-	cover_page="default",
 	license="default",
-	references=TRUE
+	references=TRUE,
+	cover_page="default"
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
@@ -96,12 +96,6 @@
 
 	### Cover Page
 
-	# if (identical(cover_page, "SGP_REPORT_COVER_PAGE.tex")) {
-	# 	cat(readLines(file.path(content_bones, cover_page)), sep = "\n", file=file.path(output_directory, cover_page), append = TRUE)
-	# } else {
-	# 	cat(readLines(cover_page), sep = "\n", file=file.path(output_directory, "LICENCSE.tex"), append = TRUE)
-	# }
-
 	if (identical(cover_page, "default")) {
 		file.copy(file.path(content_bones, "SGP_REPORT_COVER_PAGE.tex"), file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
 		file.copy(file.path(content_bones, "images", "CFA_Logo.png"), file.path(output_directory, "images", "CFA_Logo.png"), recursive = TRUE)
@@ -116,7 +110,7 @@
 
 	if (identical(license, "default")) {
 		file.copy(file.path(content_bones, "LICENSE.tex"), file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
-		file.copy(file.path(content_bones, "images", "doclicense-CC-by-sa.pdf"), file.path(output_directory, "images", "doclicense-CC-by-sa.pdf"), recursive = TRUE)		
+		file.copy(file.path(content_bones, "images", "doclicense-CC-by-sa.pdf"), file.path(output_directory, "images", "doclicense-CC-by-sa.pdf"), recursive = TRUE)
 	} else {
 		if (!is.null(license)) {
 			if (file.exists(license)) {
