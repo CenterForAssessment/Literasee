@@ -98,22 +98,24 @@
 
 	if (identical(cover_page, "default")) {
 		file.copy(file.path(content_bones, "SGP_REPORT_COVER_PAGE.tex"), file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
+		file.copy(file.path(content_bones, "images", "CFA_Logo.png"), file.path(output_directory, "images", "CFA_Logo.png"), recursive = TRUE)
 	} else {
-		if (!is.null(cover_page) & file.exists(cover_page)) {
-			file.copy(cover_page, file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
-		} else {
-			if (!is.null(cover_page)) stop("Cover Page file specified does not exist.")
+		if (!is.null(cover_page)) {
+			if (file.exists(cover_page)) {
+				file.copy(cover_page, file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
+			} else stop("Cover Page file specified does not exist.")
 		}
 	}
 
 
 	if (identical(license, "default")) {
 		file.copy(file.path(content_bones, "LICENSE.tex"), file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
+		file.copy(file.path(content_bones, "images", "doclicense-CC-by-sa.pdf"), file.path(output_directory, "images", "doclicense-CC-by-sa.pdf"), recursive = TRUE)
 	} else {
-		if (!is.null(license) & file.exists(license)) {
-			file.copy(license, file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
-		} else {
-		if (!is.null(license)) stop("License file specified does not exist.")
+		if (!is.null(license)) {
+			if (file.exists(license)) {
+				file.copy(license, file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
+			} else stop("License file specified does not exist.")
 		}
 	}
 
