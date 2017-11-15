@@ -6,7 +6,9 @@
 	setCounters(tbl.counter=0, fig.counter=0, eqn.counter=0)
 	options(fig_caption_no_sprintf = "**Figure %s:**   %s")
 	options("fig_caption_no_roman"=FALSE)
-
+	options(xtable.comment = FALSE)
+	options(xtable.booktabs = TRUE)
+	
 	##  Identify whether there are EOCT courses in the data
 	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
 	if (eoct.tf) {

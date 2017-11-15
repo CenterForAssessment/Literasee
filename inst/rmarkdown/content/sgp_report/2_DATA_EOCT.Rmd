@@ -15,14 +15,14 @@ Table `r tblNum(1)` shows the number of valid student records available for anal
 
 	n_tbl_EOG_B <- n_tbl_EOG[match(GL_subjects, row.names(n_tbl_EOG)) ,]
 	n_tbl_EOG_B <- cbind('Content Area'=sapply(GL_subjects, SGP::capwords, special.words=c("ELA", "US")), n_tbl_EOG_B)
-	n_tbl_EOG_B <- prettyNum(n_tbl_EOG_B, preserve.width = "individual",big.mark=',')
+	n_tbl_EOG_B <- prettyNum(n_tbl_EOG_B, preserve.width = "individual", big.mark=',')
 	n_tbl_EOG_B[which(n_tbl_EOG_B==0)] <- ''
 	row.names(n_tbl_EOG_B) <- NULL
 
   cat(dualTable(as.matrix(n_tbl_EOG_B),
   	align=paste(rep('r', dim(n_tbl_EOG_B)[2]), collapse=''),
 		n.cgroup=c(1, dim(n_tbl_EOG_B)[2]-1), cgroup=c("", "Grades"),
-		caption='Number of Valid EOG Student Records by Grade and Subject'))
+		caption='Number of Valid Student Records by Grade and Subject'))
 ```
 
 
