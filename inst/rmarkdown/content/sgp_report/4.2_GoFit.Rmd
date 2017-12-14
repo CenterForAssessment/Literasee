@@ -8,7 +8,7 @@ Student-level correlations are presented in Table `r tblNum(1)`, and the results
 ### Grade level subjects
 
 ```{r, results='asis', echo=FALSE, Student_GL}
-	student.cor.grd <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==year & CONTENT_AREA %in% GL_subjects][, list(
+	student.cor.grd <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==sgp_year & CONTENT_AREA %in% GL_subjects][, list(
 		`$\\\rr_ { Test Scores}$` = round(cor(SCALE_SCORE, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		`$\\\rr_ { SGP}$` = round(cor(SGP, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		N_Size = sum(!is.na(SGP))), keyby = list(CONTENT_AREA, GRADE)]
@@ -24,5 +24,5 @@ Student-level correlations are presented in Table `r tblNum(1)`, and the results
 	gl_tmp_tbl$N_Size <- prettyNum(gl_tmp_tbl$N_Size, preserve.width = "individual", big.mark=',')
 	setnames(gl_tmp_tbl, c(1:2,5), sapply(names(gl_tmp_tbl)[c(1:2,5)], capwords))
 
-  cat(dualTable(as.matrix(gl_tmp_tbl), align=paste(rep('r', dim(gl_tmp_tbl)[2]), collapse=''), caption = tmp.cap))
+  cat(dualTable(as.matrix(gl_tmp_tbl), align=paste(rep('r', dim(gl_tmp_tbl)[2]), collapse=''), caption = tmp.cap, use.xtable = TRUE))
 ```

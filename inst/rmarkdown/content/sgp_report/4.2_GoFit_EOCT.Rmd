@@ -6,7 +6,7 @@ To investigate the possibility that individual level misfit might impact summary
 Student-level correlations for grade level subjects are presented in Table `r tblNum(1)`, and the results are generally as expected.  Strong relationships exist between prior and current scale scores for the grade level analyses (column 3).  With cohort-referenced (uncorrected) percentiles, the correlation between students' most recent prior achievement scores and their student growth percentiles is zero when the model is perfectly fit to the data.  This also indicates that students can demonstrate high (or low) growth regardless of prior achievement.  Correlations for XXX-SGP_STATE-XXX's SGPs are all essentially zero (column 4).
 
 ```{r, results='asis', echo=FALSE, Student_Cor_GL}
-	student.cor.grd <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==year & CONTENT_AREA %in% GL_subjects][, list(
+	student.cor.grd <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==sgp_year & CONTENT_AREA %in% GL_subjects][, list(
 		`$\\\rr_ { Test Scores}$` = round(cor(SCALE_SCORE, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		`$\\\rr_ { SGP}$` = round(cor(SGP, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		N_Size = sum(!is.na(SGP))), keyby = list(CONTENT_AREA, GRADE)]
@@ -22,7 +22,7 @@ Student-level correlations for grade level subjects are presented in Table `r tb
 	gl_tmp_tbl$N_Size <- prettyNum(gl_tmp_tbl$N_Size, preserve.width = "individual", big.mark=',')
 	setnames(gl_tmp_tbl, c(1:2,5), sapply(names(gl_tmp_tbl)[c(1:2,5)], capwords))
 
-  cat(dualTable(as.matrix(gl_tmp_tbl), align=paste(rep('r', dim(gl_tmp_tbl)[2]), collapse=''), caption = tmp.cap))
+  cat(dualTable(as.matrix(gl_tmp_tbl), align=paste(rep('r', dim(gl_tmp_tbl)[2]), collapse=''), caption = tmp.cap, use.xtable = TRUE))
 ```
 
 ### EOCT subjects
@@ -32,7 +32,7 @@ Each end of course test subject is analyzed using more than one sequence of prio
 The relationships between growth and prior achievement reported in Table `r tblNum(1)` are still non-existent for cohort referenced SGPs.  These results are as expected for appropriate fit to the respective models as discussed in the grade level subject section above.
 
 ```{r, cache=TRUE, echo=FALSE, include=FALSE, Student_Cor_EOCT}
-	student.cor.eoct <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==year & CONTENT_AREA %in% EOCT_subjects][, list(
+	student.cor.eoct <- sgp_object@Data[VALID_CASE=='VALID_CASE' & YEAR==sgp_year & CONTENT_AREA %in% EOCT_subjects][, list(
 		`$\\\rr_ {  Test Scores}$` = round(cor(SCALE_SCORE, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		`$\\\rr_ {  SGP}$` = round(cor(SGP, SCALE_SCORE_PRIOR_STANDARDIZED, use='pairwise.complete'), 2),
 		N_Size = sum(!is.na(SGP))), keyby = list(CONTENT_AREA, Most_Recent_Prior)]
@@ -56,7 +56,7 @@ The relationships between growth and prior achievement reported in Table `r tblN
 	eoct_tmp_tbl$N_Size <- prettyNum(eoct_tmp_tbl$N_Size, preserve.width = "individual", big.mark=',')
 	setnames(eoct_tmp_tbl, c(1:2,5), sapply(names(eoct_tmp_tbl)[c(1:2,5)], capwords))
 
-	cat(dualTable(as.matrix(eoct_tmp_tbl), align=paste(rep('r', dim(eoct_tmp_tbl)[2]), collapse=''), caption = tmp.cap))
+	cat(dualTable(as.matrix(eoct_tmp_tbl), align=paste(rep('r', dim(eoct_tmp_tbl)[2]), collapse=''), caption = tmp.cap, use.xtable = TRUE))
 
 	pageBreak()
 ```

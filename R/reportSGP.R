@@ -1,6 +1,6 @@
 `reportSGP` <- function(
 	sgp_object,
-	year,
+	sgp_year,
 	state=NULL,
 	output_directory="Documents/reports",
 	output_file_name=NULL,
@@ -34,7 +34,7 @@
 	### Create output_file
 
 	if (is.null(output_file_name)) {
-		output_file_name <- paste0(paste(SGP::getStateAbbreviation(state, type="LONG"), "SGP_Technical_Report", strtail(year, 4), sep="_"), ".Rmd")
+		output_file_name <- paste0(paste(SGP::getStateAbbreviation(state, type="LONG"), "SGP_Technical_Report", strtail(sgp_year, 4), sep="_"), ".Rmd")
 	}
 	output_file <- file.path(output_directory, output_file_name)
 
@@ -49,7 +49,7 @@
 	######
 
 	###  Check for EOCT grades
-	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
+	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==sgp_year]$GRADE))
 	cat(readLines(file.path(content_bones, "SGP_OBJECT_TESTS.Rmd")), sep = "\n", file=output_file, append = TRUE)
 
 	###  Check for SIMEX SGPs
@@ -64,32 +64,32 @@
 	######
 
 	###  Introduction
-	cat(readLines(file.path(content_bones, "1_INTRODUCTION.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(c("\n\n", readLines(file.path(content_bones, "1_INTRODUCTION.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 	###  Data
 	if (eoct.tf) {
-		cat(readLines(file.path(content_bones, "2_DATA_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
-	} else cat(readLines(file.path(content_bones, "2_DATA.Rmd")), sep = "\n", file=output_file, append = TRUE)
+		cat(c("\n\n", readLines(file.path(content_bones, "2_DATA_EOCT.Rmd"))), sep = "\n", file=output_file, append = TRUE)
+	} else cat(c("\n\n", readLines(file.path(content_bones, "2_DATA.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 	###  Analytics
-	cat(readLines(file.path(content_bones, "3.1_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(c("\n\n", readLines(file.path(content_bones, "3.1_ANALYTICS.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 	if (eoct.tf) {
-		cat(readLines(file.path(content_bones, "3.2_ANALYTICS_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
+		cat(c("\n\n", readLines(file.path(content_bones, "3.2_ANALYTICS_EOCT.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 	} else {
-		cat(readLines(file.path(content_bones, "3.2_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+		cat(c("\n\n", readLines(file.path(content_bones, "3.2_ANALYTICS.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 	}
-	cat(readLines(file.path(content_bones, "3.3_ANALYTICS.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(c("\n\n", readLines(file.path(content_bones, "3.3_ANALYTICS.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 
 	###  Goodness of Fit
-	cat(readLines(file.path(content_bones, "4.1_GoFit.Rmd")), sep = "\n", file=output_file, append = TRUE)
+	cat(c("\n\n", readLines(file.path(content_bones, "4.1_GoFit.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 	# Section for examples of good/bad fit (e.g. Georgia)?  Put in manually?
 
 	if (eoct.tf) {
-		cat(readLines(file.path(content_bones, "4.2_GoFit_EOCT.Rmd")), sep = "\n", file=output_file, append = TRUE)
-	} else cat(readLines(file.path(content_bones, "4.2_GoFit.Rmd")), sep = "\n", file=output_file, append = TRUE)
+		cat(c("\n\n", readLines(file.path(content_bones, "4.2_GoFit_EOCT.Rmd"))), sep = "\n", file=output_file, append = TRUE)
+	} else cat(c("\n\n", readLines(file.path(content_bones, "4.2_GoFit.Rmd"))), sep = "\n", file=output_file, append = TRUE)
 
 	###  References
 	if (references) cat("\n\n#  References \n", file=output_file, append = TRUE)
@@ -98,7 +98,7 @@
 
 	if (identical(cover_page, "default")) {
 		file.copy(file.path(content_bones, "SGP_REPORT_COVER_PAGE.tex"), file.path(output_directory, "SGP_REPORT_COVER_PAGE.tex"), overwrite = TRUE)
-		file.copy(file.path(content_bones, "images", "CFA_Logo.png"), file.path(output_directory, "images", "CFA_Logo.png"), recursive = TRUE)
+		file.copy(file.path(content_bones, "images", "CFA_Logo.png"), file.path(output_directory, "images", "CFA_Logo.png"), overwrite = TRUE)
 	} else {
 		if (!is.null(cover_page)) {
 			if (file.exists(cover_page)) {
@@ -110,7 +110,7 @@
 
 	if (identical(license, "default")) {
 		file.copy(file.path(content_bones, "LICENSE.tex"), file.path(output_directory, "LICENSE.tex"), overwrite = TRUE)
-		file.copy(file.path(content_bones, "images", "doclicense-CC-by-sa.pdf"), file.path(output_directory, "images", "doclicense-CC-by-sa.pdf"), recursive = TRUE)
+		file.copy(file.path(content_bones, "images", "doclicense-CC-by-sa.pdf"), file.path(output_directory, "images", "doclicense-CC-by-sa.pdf"), overwrite = TRUE)
 	} else {
 		if (!is.null(license)) {
 			if (file.exists(license)) {
@@ -122,7 +122,7 @@
 
 	###  Scrub-a-dub
 	sgp.rmd <- readLines(output_file)
-	sgp.rmd <- gsub("year", shQuote(year), sgp.rmd)
+	sgp.rmd <- gsub("sgp_year", shQuote(sgp_year), sgp.rmd)
 	sgp.rmd <- gsub("XXX-SGP_STATE-XXX", SGP::getStateAbbreviation(state, type="Long"), sgp.rmd)
 	if (!output_knit) sgp.rmd <- gsub("sgp_object", as.character(as.list(match.call())[["sgp_object"]]), sgp.rmd)
 	if (is.null(cover_page) & is.null(license)) sgp.rmd <- sgp.rmd[-grep("includes:", sgp.rmd)]

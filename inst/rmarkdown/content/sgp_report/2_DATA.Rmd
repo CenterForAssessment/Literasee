@@ -7,10 +7,10 @@ Student Growth Percentiles have been produced for students that have a current s
 Growth analyses on assessment data require data that are linked to individual students over time.  Student growth percentile analyses require, at a minimum two, and preferably three years of assessment data for analysis of student progress.  To this end it is necessary that a unique student identifier be available so that student data records across years can be merged with one another and subsequently examined.  Because some records in the assessment data set contain students with more than one test score in a content area in a given year, a process to create unique student records in each content area by year combination was required in order to carry out subsequent growth analyses.  Furthermore, student records may be invalidated for other reasons.  The following business rules were used to either invalidate particular student records or select the appropriate record for use in the analyses.
 
 
-Table `r tblNum(1)` shows the number of valid student records available for analysis after applying the data preparation business rules.^[This number does not represent the number of SGPs produced, however, because students are required to have at least one prior score available as well.]
+Table `r tblNum(1)` shows the number of valid student records available for analysis after applying the data preparation business rules.  Note that this number does not represent the number of SGPs produced, however, because students are required to have at least one prior score available as well.
 
 ```{r, results='asis', echo=FALSE, N_table}
-	n_tbl <- table(sgp_object@Data[YEAR==year & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==year & VALID_CASE=='VALID_CASE']$GRADE)
+	n_tbl <- table(sgp_object@Data[YEAR==sgp_year & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==sgp_year & VALID_CASE=='VALID_CASE']$GRADE)
 
 	n_tbl_B <- n_tbl[match(GL_subjects, row.names(n_tbl)) ,]
 	n_tbl_B <- cbind('Content Area'=sapply(GL_subjects, SGP::capwords, special.words=c("ELA", "US")), n_tbl_B)
@@ -21,5 +21,5 @@ Table `r tblNum(1)` shows the number of valid student records available for anal
   cat(dualTable(as.matrix(n_tbl_B),
   	align=paste(rep('r', dim(n_tbl_B)[2]), collapse=''),
 		n.cgroup=c(1, dim(n_tbl_B)[2]-1), cgroup=c("", "Grades"),
-		caption='Number of Valid Student Records by Grade and Subject'))
+		caption='Number of Valid Student Records by Grade and Subject', use.xtable = TRUE))
 ```

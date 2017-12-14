@@ -1,18 +1,26 @@
 ```{r, echo=FALSE, include=FALSE, SGP_Object_Tests}
   ##  Load any R packages and functions required to render or 'knit' report.
 	require(SGP)
+	require(Literasee)
 
 	##  Set Table, Figure and Equation Counters.  Control naming and numbering conventions.
 	setCounters(tbl.counter=0, fig.counter=0, eqn.counter=0)
+
 	options(fig_caption_no_sprintf = "**Figure %s:**   %s")
 	options("fig_caption_no_roman"=FALSE)
+
 	options(xtable.comment = FALSE)
 	options(xtable.booktabs = TRUE)
-	
+	options(xtable.caption.placement = "top")
+	options(xtable.include.rownames = FALSE)
+
 	##  Identify whether there are EOCT courses in the data
-	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==year]$GRADE))
+	eoct.tf <- any(grepl("EOCT", sgp_object@Data[YEAR==sgp_year]$GRADE))
 	if (eoct.tf) {
-		GL_subjects <- unique(sgp_object@Data[YEAR==year & GRADE != "EOCT", CONTENT_AREA])
-		EOCT_subjects <- unique(sgp_object@Data[YEAR==year & GRADE == "EOCT", CONTENT_AREA])
-	} else GL_subjects <- unique(sgp_object@Data[YEAR==year, CONTENT_AREA])
+		GL_subjects <- unique(sgp_object@Data[YEAR==sgp_year & GRADE != "EOCT", CONTENT_AREA])
+		EOCT_subjects <- unique(sgp_object@Data[YEAR==sgp_year & GRADE == "EOCT", CONTENT_AREA])
+	} else {
+		GL_subjects <- unique(sgp_object@Data[YEAR==sgp_year, CONTENT_AREA])
+		data.table::set(sgp_object@Data, j="GRADE", value=as.numeric(sgp_object@Data$GRADE))
+	}
 ```
