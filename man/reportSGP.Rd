@@ -8,7 +8,7 @@ The function reportSGP is used to create automatic or customized technical repor
 \usage{
 reportSGP(
   sgp_object,
-  year,
+  sgp_year,
   state=NULL,
   output_directory="Documents/reports",
   output_file_name=NULL,
@@ -22,7 +22,7 @@ reportSGP(
 \arguments{
   \item{sgp_object}{An SGP object resulting from SGP analyses.
   }
-  \item{year}{The value of the YEAR in the SGP object @Data to use for the report.
+  \item{sgp_year}{The value of the YEAR in the SGP object @Data to use for the report.
   }
   \item{state}{Acronym indicating state associated with the data. This can be supplied to the function
   automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to \code{sgp_object}.

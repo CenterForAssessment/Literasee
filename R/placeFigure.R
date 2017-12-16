@@ -7,7 +7,7 @@ placeFigure <- function(
 	caption.position="top", # "bottom"
 	pdf.width=NULL,
 	html.width=NULL,
-	page.break=FALSE){
+	page.break=FALSE) {
 
 	###  Some checks
 

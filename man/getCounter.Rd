@@ -1,0 +1,14 @@
+\name{getCounter}
+\alias{getCounter}
+\title{Returns the counter associated with a table, figure, or equation}
+\usage{
+getCounter(
+    type = c("table", "figure", "equation")
+  )
+}
+\arguments{
+  \item{type}{Character string indicating either a 'table', 'figure', or 'equation'.}
+}
+\description{
+Returns the counter associated with a table, figure, or equation
+}
