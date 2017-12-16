@@ -3,13 +3,11 @@
 `dualTable` <- function(
   my_tbl,
   where="H",
-  align=paste(rep('c', ncol(my_tbl)),
-  collapse=''),
+  align=paste(rep('c', ncol(my_tbl)), collapse=''),
   caption="",
-  css.class = "gmisc_table breakboth",
+  css.class="gmisc_table breakboth",
   use.xtable=FALSE,
-  ...
-) {
+  ...) {
   tmp_caption <- tblCap(caption)
   if (all(nchar(align) > 1) & length(align)==1){
   	tex.align <- strsplit(align, "")[[1]]

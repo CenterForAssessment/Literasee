@@ -6,8 +6,9 @@ dualTable(
     my_tbl,
     where="H",
     align=paste(rep('c', ncol(my_tbl)), collapse=''),
-    caption,
-    css.class = "gmisc_table breakboth",
+    caption="",
+    css.class="gmisc_table breakboth",
+    use.xtable=FALSE,
     ...)
 }
 
@@ -28,6 +29,8 @@ dualTable(
           Default includes \code{breakboth} class.  This inserts a page break before and after the table, which
           prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.}
 
+  \item{use.xtable}{Boolean argument (defaults to FALSE) indicating whether xtable is used.}
+  
   \item{...}{Passed onto \code{\link[htmlTable]{htmlTable}} and/or
   \code{\link[Hmisc]{latex}}.}
 }
