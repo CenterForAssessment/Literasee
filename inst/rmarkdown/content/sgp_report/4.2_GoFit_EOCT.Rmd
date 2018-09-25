@@ -39,7 +39,7 @@ The relationships between growth and prior achievement reported in Table `r tblN
 
 	eoct_tmp_tbl <- student.cor.eoct[!is.na(student.cor.eoct[["$\\\rr_ {  SGP}$"]])] # & CONTENT_AREA %in% c("GRADE_9_LIT", "AMERICAN_LIT") # Don't need to break up into two tables in 2017
 
-	eoct_tmp_tbl <- eoct_tmp_tbl[][order(match(eoct_tmp_tbl$CONTENT_AREA, EOC_subjects))]
+	eoct_tmp_tbl <- eoct_tmp_tbl[][order(match(eoct_tmp_tbl$CONTENT_AREA, EOCT_subjects))]
 	eoct_tmp_tbl$CONTENT_AREA <- sapply(eoct_tmp_tbl$CONTENT_AREA, capwords, USE.NAMES=FALSE)
 
 	tmp.cap <- "EOCT Student Level Correlations between Prior Standardized Scale Score and 1) Current Scale Score and 2) SGP - Disaggregated by Norm Group."
@@ -57,6 +57,4 @@ The relationships between growth and prior achievement reported in Table `r tblN
 	setnames(eoct_tmp_tbl, c(1:2,5), sapply(names(eoct_tmp_tbl)[c(1:2,5)], capwords))
 
 	cat(dualTable(as.matrix(eoct_tmp_tbl), align=paste(rep('r', dim(eoct_tmp_tbl)[2]), collapse=''), caption = tmp.cap, use.xtable = TRUE))
-
-	pageBreak()
 ```
