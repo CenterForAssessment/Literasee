@@ -59,7 +59,7 @@ placeFigure <- function(
 
 	###  LaTeX image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
 
-	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
+	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf", ""), figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
 	# 	tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{\\\\label{fig:", figure.id, "} ", "{\\\\bf{"), gsub(":[*][*]", ":}}",
 	# 		sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""))), caption, "}")
 	# } else tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{{\\\\bf{"), gsub(":[*][*]", ":}}",
