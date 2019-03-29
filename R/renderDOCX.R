@@ -69,7 +69,7 @@ renderDOCX <- function(
 
   ###  Get YAML from .Rmd file
   file <- file(input) # input file
-  rmd.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  rmd.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
   close(file)
   # Valid YAML could end in "---" or "..."  - test for both.
   rmd.yaml <- rmd.text[grep("---", rmd.text)[1]:ifelse(length(grep("---", rmd.text))>=2, grep("---", rmd.text)[2], grep("[.][.][.]", rmd.text)[1])]
@@ -78,7 +78,7 @@ renderDOCX <- function(
 
   ###  Get .md file rendered from .rmd for html output
   file <- file(file.path("HTML", "markdown", input.md))
-  md.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  md.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
   close(file)
 
   if (any(grepl("<!-- HTML_Start", md.text))) {
