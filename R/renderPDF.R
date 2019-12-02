@@ -37,15 +37,15 @@ renderPDF <- function (
     } else {
       highlight <- "--highlight-style tango"
     }
-    if(any(grepl("--latex-engine", pandoc_args))) {
-      latex_engine <- pandoc_args[grepl("--latex-engine", pandoc_args)]
-      pandoc_args <- pandoc_args[!grepl("--latex-engine", pandoc_args)]
+    if(any(grepl("--pdf-engine", pandoc_args))) {
+      latex_engine <- pandoc_args[grepl("--pdf-engine", pandoc_args)]
+      pandoc_args <- pandoc_args[!grepl("--pdf-engine", pandoc_args)]
     } else {
-      latex_engine <- "--latex-engine pdflatex"
+      latex_engine <- "--pdf-engine pdflatex"
     }
   } else {
     highlight <- "--highlight-style tango"
-    latex_engine <- "--latex-engine pdflatex"
+    latex_engine <- "--pdf-engine pdflatex"
   }
 
   ###
@@ -167,11 +167,11 @@ renderPDF <- function (
         biblio <- paste("--filter", my.pandoc_citeproc, "--bibliography", bibliography)
       } else stop("'bibliography:' file not found.")
     }
-  }
+  } else biblio <- NULL
 
   message(paste("\n\t Rendering PDF with system call to pandoc:\n\n",
           my.pandoc,pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args, "\n"))
 
     system(paste(my.pandoc, pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args))
-    if(!keep_tex)	file.remove(file.path("PDF", gsub(".Rmd", ".tex", input, ignore.case=TRUE)))
+    # if(!keep_tex)	file.remove(file.path("PDF", gsub(".Rmd", ".tex", input, ignore.case=TRUE))) # .tex file not output from pandoc anymore.
 }### End renderPDF
