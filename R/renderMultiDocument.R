@@ -54,7 +54,7 @@ renderMultiDocument <- function (
   }
 
   if ("PDF" %in% toupper(report_format)) {
-    renderPDF(input=rmd_input, keep_tex=cleanup_aux_files, number_sections, convert_header_levels,
+    renderPDF(input=rmd_input, keep_tex=!cleanup_aux_files, number_sections, convert_header_levels,
     					literasee_template, pdf_template, bibliography, csl, pandoc_args)
   }
 

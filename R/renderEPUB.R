@@ -70,7 +70,7 @@ renderEPUB <- function(
 
   ###  Get YAML from .Rmd file
   file <- file(file.path("..", input)) # input file
-  rmd.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  rmd.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
   rmd.yaml <- rmarkdown:::parse_yaml_front_matter(rmd.text)
   close(file)
 
@@ -111,7 +111,7 @@ renderEPUB <- function(
 
   ###  Get .md file rendered from .rmd for html output
   file <- file(file.path("..", "HTML", "markdown", input.md))
-  md.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  md.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
   close(file)
 
   if (any(grepl("<!-- HTML_Start", md.text))) {

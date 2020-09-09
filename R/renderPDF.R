@@ -37,15 +37,15 @@ renderPDF <- function (
     } else {
       highlight <- "--highlight-style tango"
     }
-    if(any(grepl("--latex-engine", pandoc_args))) {
-      latex_engine <- pandoc_args[grepl("--latex-engine", pandoc_args)]
-      pandoc_args <- pandoc_args[!grepl("--latex-engine", pandoc_args)]
+    if(any(grepl("--pdf-engine", pandoc_args))) {
+      latex_engine <- pandoc_args[grepl("--pdf-engine", pandoc_args)]
+      pandoc_args <- pandoc_args[!grepl("--pdf-engine", pandoc_args)]
     } else {
-      latex_engine <- "--latex-engine pdflatex"
+      latex_engine <- "--pdf-engine pdflatex"
     }
   } else {
     highlight <- "--highlight-style tango"
-    latex_engine <- "--latex-engine pdflatex"
+    latex_engine <- "--pdf-engine pdflatex"
   }
 
   ###
@@ -54,7 +54,7 @@ renderPDF <- function (
 
   ###  Get YAML from .Rmd file
   file <- file(file.path(".", input)) # input file
-  rmd.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  rmd.text <- rmarkdown:::read_utf8(file) # , getOption("encoding")
   # Valid YAML could end in "---" or "..."  - test for both.
   rmd.yaml <- rmd.text[grep("---", rmd.text)[1]:ifelse(length(grep("---", rmd.text))>=2, grep("---", rmd.text)[2], grep("[.][.][.]", rmd.text)[1])]
   close(file)
@@ -68,7 +68,7 @@ renderPDF <- function (
   dir.create(file.path("PDF", "markdown"), recursive=TRUE, showWarnings=FALSE)
 
   file <- file(file.path("HTML","markdown", input.md))
-  md.text <- rmarkdown:::read_lines_utf8(file, getOption("encoding"))
+  md.text <- rmarkdown:::read_utf8(file) # , getOption("encoding")
   close(file)
 
   ### Combine rmd.yaml and md.text so that HTML tags get reformated too.
@@ -167,11 +167,11 @@ renderPDF <- function (
         biblio <- paste("--filter", my.pandoc_citeproc, "--bibliography", bibliography)
       } else stop("'bibliography:' file not found.")
     }
-  }
+  } else biblio <- NULL
 
   message(paste("\n\t Rendering PDF with system call to pandoc:\n\n",
           my.pandoc,pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args, "\n"))
 
     system(paste(my.pandoc, pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args))
-    if(!keep_tex)	file.remove(file.path("PDF", gsub(".Rmd", ".tex", input, ignore.case=TRUE)))
+    # if(!keep_tex)	file.remove(file.path("PDF", gsub(".Rmd", ".tex", input, ignore.case=TRUE))) # .tex file not output from pandoc anymore.
 }### End renderPDF

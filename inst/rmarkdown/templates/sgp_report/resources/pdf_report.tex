@@ -11,7 +11,7 @@
 %%
 
 \usepackage[%
-pdfstartview={FitV}, 
+pdfstartview={FitV},
 colorlinks=true,
 menucolor=DarkGray,
 linkcolor=MidnightBlue,
@@ -72,14 +72,14 @@ urlcolor=OrangeRed]{hyperref}
        backgroundcolor=\color{Cornsilk},
        basicstyle=\small\color{DarkSlateGrey},
        keywordstyle=\ttfamily\color{DarkSlateGrey},
-       identifierstyle=\ttfamily\color{DarkSlateGrey}\bfseries, 
+       identifierstyle=\ttfamily\color{DarkSlateGrey}\bfseries,
        commentstyle=\color{Fuchsia},
        stringstyle=\ttfamily,
        showstringspaces=false}
 
 %%
-%% Header and Footer Specification 
-%% TO ACTIVATE THE HEADER/FOOTER, ONE MUST PLACE \pagestyle{plain} 
+%% Header and Footer Specification
+%% TO ACTIVATE THE HEADER/FOOTER, ONE MUST PLACE \pagestyle{plain}
 %% followed by \pagestyle{damian} in the document
 %%
 
@@ -115,7 +115,7 @@ urlcolor=OrangeRed]{hyperref}
 \newcommand{\Sweave}{{\sffamily \textup{Sweave}}}
 \newcommand{\sssty}{\scriptscriptstyle}
 \newcommand{\bigdot}{\ensuremath{\hspace{-.3ex}\bm{.}\hspace{-.05ex}}}
-\renewcommand{\abstractname}{$if(abstract.name)$$abstract.name$$else$Abstract$endif$}
+\renewcommand{\abstractname}{$if(abstract_name)$$abstract_name$$else$Abstract$endif$}
 \renewcommand{\lstlistingname}{\R~Code Example}
 \renewcommand{\arraystretch}{1.2}
 \setlength{\fboxsep}{4mm}
@@ -138,6 +138,7 @@ urlcolor=OrangeRed]{hyperref}
 \usepackage{booktabs}
 \usepackage{subcaption}
 \usepackage{dcolumn}
+\usepackage[bottom]{footmisc}
 
 $if(numbersections)$
 \setcounter{secnumdepth}{3}
@@ -167,7 +168,7 @@ $endif$
 
 \providecommand{\tightlist}{% Error in pandoc - http://tex.stackexchange.com/questions/257418/error-tightlist-converting-md-file-into-pdf-using-pandoc
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-  
+
 $if(macros)$
 \input $macros$
 $endif$
@@ -215,5 +216,3 @@ $endif$
 
 
 \end{document}
-
-
