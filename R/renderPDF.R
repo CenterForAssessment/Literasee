@@ -54,7 +54,7 @@ renderPDF <- function (
 
   ###  Get YAML from .Rmd file
   file <- file(file.path(".", input)) # input file
-  rmd.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
+  rmd.text <- rmarkdown:::read_utf8(file) # , getOption("encoding")
   # Valid YAML could end in "---" or "..."  - test for both.
   rmd.yaml <- rmd.text[grep("---", rmd.text)[1]:ifelse(length(grep("---", rmd.text))>=2, grep("---", rmd.text)[2], grep("[.][.][.]", rmd.text)[1])]
   close(file)
@@ -68,7 +68,7 @@ renderPDF <- function (
   dir.create(file.path("PDF", "markdown"), recursive=TRUE, showWarnings=FALSE)
 
   file <- file(file.path("HTML","markdown", input.md))
-  md.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
+  md.text <- rmarkdown:::read_utf8(file) # , getOption("encoding")
   close(file)
 
   ### Combine rmd.yaml and md.text so that HTML tags get reformated too.
