@@ -20,7 +20,7 @@ placeFigure <- function(
 	###  Universal variables
 	if (is.null(caption)) {
 		html.caption <- getOption("fig_caption_no_sprintf")
-	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=figCapNo(caption), fragment.only=TRUE)))
+	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=Gmisc::figCapNo(caption), fragment.only=TRUE)))
 	###  HTML image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
 
 	cat("
@@ -59,11 +59,11 @@ placeFigure <- function(
 
 	###  LaTeX image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
 
-	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf", ""), figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
+	tex.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=paste0("{", sprintf(getOption("fig_caption_no_sprintf", ""), Gmisc::figCapNoLast(), ""), "} ", caption), fragment.only=TRUE)))
 	# 	tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{\\\\label{fig:", figure.id, "} ", "{\\\\bf{"), gsub(":[*][*]", ":}}",
-	# 		sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""))), caption, "}")
+	# 		sprintf(getOption("fig_caption_no_sprintf"), Gmisc::figCapNoLast(), ""))), caption, "}")
 	# } else tex.caption <- paste0(gsub("[*][*]", paste0("\\\\caption*{{\\\\bf{"), gsub(":[*][*]", ":}}",
-	# 		sprintf(getOption("fig_caption_no_sprintf"), figCapNoLast(), ""))), caption, "}")
+	# 		sprintf(getOption("fig_caption_no_sprintf"), Gmisc::figCapNoLast(), ""))), caption, "}")
 	tex.caption <- gsub("<strong>", "{\\\\bf{", gsub("</strong>", "}}", tex.caption))
 	tex.caption <- gsub("<em>", "{\\\\textit{", gsub("</em>", "}}", tex.caption))
 	tex.caption <- gsub("<sup>th</sup>", "$^{th}$", tex.caption)
