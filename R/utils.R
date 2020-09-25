@@ -5,6 +5,11 @@ tblNumIncrement <- function(advance.counter=1) {options("table_number" = getOpti
 tblCap <- function(caption.text=NULL, advance.counter=1) {
   if (as.integer(advance.counter) != 0L) tblNumIncrement(advance.counter=advance.counter)
   if (is.null(caption.text))  return(NULL)
+  if (!is.null(getOption("table_counter_str"))) {
+    tmp.caption <- paste(getOption("table_counter_str"), caption.text)
+    tmp.caption <- gsub("[%]s", getOption("table_number"), tmp.caption)
+    return(tmp.caption)
+  }
   return(paste0("**Table ", getOption("table_number"), ":** ", caption.text))
 }
 
@@ -20,6 +25,38 @@ setCounters <- function(tbl.counter=0, fig.counter=0, eqn.counter=0) {
   options("table_number" = tbl.counter)
   options("fig_caption_no" = fig.counter)
   options("equation_counter" = eqn.counter)
+}
+
+startAppendix <- function(appendix.number=1L, use.alpha=TRUE, set.counters=TRUE, table.name=NULL, figure.name=NULL) {
+  if (set.counters)  setCounters()
+  options(table_counter=FALSE)
+
+  if (is.null(table.name) & use.alpha) { # Default
+    options(table_counter_str = paste0("**Table ", LETTERS[appendix.number], "%s:**")) # "**Table A%s:**"
+  } else {
+    if (!is.null(table.name)) options(table_counter_str = table.name)
+  }
+
+  if (is.null(figure.name) & use.alpha) { # Default
+    options(fig_caption_no_sprintf = paste0("**Figure ", LETTERS[appendix.number], "%d:** %s")) # "**Figure A%d:** %s"
+  } else {
+    if (!is.null(figure.name)) options(fig_caption_no_sprintf = figure.name)
+  }
+
+  ###  NOTE:  ALL 'cat()' text must be flush left in R script!
+  cat("
+<!-- HTML_Start -->
+<!-- LaTeX_Start
+\\renewcommand{\\thesection}{", LETTERS[appendix.number], "}
+\\pagenumbering{arabic}
+\\renewcommand*{\\thepage}{\\thesection\\arabic{page}}
+LaTeX_End -->\n", sep=""
+	)
+}
+
+endAppendix <- function() {
+  options(table_counter_str = NULL)
+  options(fig_caption_no_sprintf = NULL)
 }
 
 pageBreak <- function() {
