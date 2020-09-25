@@ -43,15 +43,15 @@ To install the development version of **Literasee**:
 
 The **Literasee** Package is crafted with :heart: by:
 
-* [Damian Betebenner](https://github.com/dbetebenner)
 * [Adam VanIwaarden](https://github.com/adamvi)
+* [Damian Betebenner](https://github.com/dbetebenner)
 
 We love feedback and are happy to answer questions.
 
 
 # References
 
-Betebenner, D. W. and VanIwaarden, A. (2017). Literasee: Assessment Literacy content development via R.
+Betebenner, D. W. and VanIwaarden, A. (2020). Literasee: Assessment Literacy content development via R.
 
-R Development Core Team (2017). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+R Development Core Team (2020). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 3-900051-07-0.
