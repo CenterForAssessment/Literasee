@@ -181,6 +181,17 @@ $endif$
 \thispagestyle{plain}
 \pagestyle{damian}
 
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+{$if(csl-hanging-indent)$\setlength{\parindent}{0pt}%
+\everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces$endif$}%
+{\par}
+$endif$
+
+
 \begin{document}
 
 \title{\textsf{\LARGE $title$ $if(subtitle)$ \\\medskip $subtitle$ $endif$}}
@@ -205,7 +216,6 @@ $if(bibliography)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 \bibliography{$bibliography$}
 $endif$
-
 
 $if(appendix)$
 \appendix

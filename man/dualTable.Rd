@@ -17,9 +17,9 @@ dualTable(
 
   \item{where}{Passed to \code{\link[Hmisc]{latex}}.  Specifies placement of floats if a table environment is used. Default is  \code{"H"}, which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of text you might specify  \code{where="!htbp"} to  \code{latex.default}.}
 
-  \item{align}{A character strings specifying column alignments, defaulting to "paste(rep('c',ncol(my_tbl)),collapse='')" to center.
-          Valid alignments are l = left, c = center and r = right. You can also specify "align='c|c'" and other LaTeX tabular
-          formatting. If you want to set the alignment of the rownames this string needst to be "ncol(x) + 1", otherwise it
+  \item{align}{A character strings specifying column alignments, defaulting to \code{paste(rep('c',ncol(my_tbl)),collapse='')} to center.
+          Valid alignments are l = left, c = center and r = right. You can also specify \code{align='c|c'} and other LaTeX tabular
+          formatting. If you want to set the alignment of the rownames this string needst to be \sQuote{ncol(x) + 1}, otherwise it
           automatically pads the string with a left alignment for the rownames.}
 
   \item{caption}{Adds a table caption.}
@@ -30,7 +30,7 @@ dualTable(
           prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.}
 
   \item{use.xtable}{Boolean argument (defaults to FALSE) indicating whether xtable is used.}
-  
+
   \item{...}{Passed onto \code{\link[htmlTable]{htmlTable}} and/or
   \code{\link[Hmisc]{latex}}.}
 }
@@ -43,11 +43,10 @@ text files using  \code{renderMultiDocument}.
 }
 \description{
 This is a function for outputting a more advanced table
-than what \pkg{xtable}, \pkg{ztable}, or \pkg{knitr}'s
-\code{\link[knitr]{kable}()} allows. It's aim is to provide the
-combined functionality of the the \pkg{Hmisc} \code{\link[Hmisc]{latex}()}
-and  \pkg{htmlTable} \code{\link[htmlTable]{htmlTable}} . See those
-function's documentation for more details.
+than what \pkg{xtable}, \pkg{ztable}, or \code{\link[knitr]{kable}()} allows.
+It's aim is to provide the combined functionality of the the \pkg{Hmisc}
+\code{\link[Hmisc]{latex}()} and  \pkg{htmlTable} \code{\link[htmlTable]{htmlTable}}.
+See documentation of those functions for more details.
 }
 
 \examples{

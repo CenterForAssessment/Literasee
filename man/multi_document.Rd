@@ -27,17 +27,17 @@ multi_document(
   \item{self_contained}{Produce a standalone HTML file with no external dependencies, using data:
     URIs to incorporate the contents of linked scripts, stylesheets, images, and videos.}
   \item{dev}{Graphics device to use for figure output (defaults to png).}
-  \item{literasee_template}{Name of Literasee package style template to use for rendering. Default is "sgp_report"
+  \item{literasee_template}{Name of Literasee package style template to use for rendering. Default is \sQuote{sgp_report}
     (currently the only option available).  Located at \code{system.file('rmarkdown', 'templates', 'sgp_report', 'resources', package = 'Literasee')}.
-    Note that alternative templates must adopt the same naming conventions ('html_report.html', 'pdf_report.tex', etc).}
-  \item{html_template}{Pandoc HTML template to use for rendering. Pass "default" to use the Literasee package default
-    template.  Note that if you don't use the "default" template then the features of \code{multi_document} won't be available.}
+    Note that alternative templates must adopt the same naming conventions (\sQuote{html_report.html}, \sQuote{pdf_report.tex}, etc).}
+  \item{html_template}{Pandoc HTML template to use for rendering. Pass \code{"default"} to use the Literasee package default
+    template.  Note that if you do not use the default template then the features of \code{multi_document} will not be available.}
   \item{css}{The CSS if other that the default within the package.}
   \item{bibliography}{The LaTeX style bibliography file (.bib, .bibtex, etc.) to include. The default file included
     in the package includes references often used by the author and will likely be insufficient for most users.}
   \item{csl}{The CSL (citation style language) to use to format bibliography (if included).  Defaults to APA 5th edition.  See
     \href{https://github.com/citation-style-language/styles}{this Github repository} for alternatives.
-    If NULL pandoc's defaults will be used.}
+    If NULL pandoc defaults will be used.}
   \item{pandoc_args}{Additional command line options to pass to pandoc}
 }
 \value{

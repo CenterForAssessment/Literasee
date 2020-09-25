@@ -174,4 +174,5 @@ renderPDF <- function (
 
     system(paste(my.pandoc, pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".pdf", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, latex_engine, pandoc_args))
     # if(!keep_tex)	file.remove(file.path("PDF", gsub(".Rmd", ".tex", input, ignore.case=TRUE))) # .tex file not output from pandoc anymore.
+    if(keep_tex)  system(paste(my.pandoc, pdf_md_path, "--to latex --from markdown+autolink_bare_uris+ascii_identifiers --output ", file.path("PDF", gsub(".md", ".tex", input.md, ignore.case=TRUE)), biblio, " ", csl, "--template ", pdf_template,  pdf_number_sections, highlight, pandoc_args))
 }### End renderPDF

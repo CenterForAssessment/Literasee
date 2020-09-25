@@ -1,12 +1,12 @@
 Package: Literasee
 Type: Package
 Title: Assessment Literacy Content Development via R
-Version: 0.0-4.91
-Date: 2020-9-14
+Version: 0.0-4.96
+Date: 2020-9-25
 Description: Assessment Literacy Content Development via R.
-Authors@R: c(person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role=c("aut", "cre")),
-		person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role="aut"))
-Maintainer: Damian W. Betebenner <dbetebenner@nciea.org>
+Authors@R: c(person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role=c("aut", "cre")),
+		person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role="aut"))
+Maintainer: Adam R. Van Iwaarden <avaniwaarden@gmail.com>
 Depends: R (>= 3.3), rmarkdown
 Suggests: knitr
 Imports: crayon, Hmisc, Gmisc, htmlTable, jpeg, markdown, xtable, data.table (>= 1.10.0), SGP (>= 1.7-0.0)

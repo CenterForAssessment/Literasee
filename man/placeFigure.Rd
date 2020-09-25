@@ -8,7 +8,7 @@ placeFigure(
     columns=1,
     figure.id=NULL,
     caption=NULL,
-    caption.position="top", # "bottom"
+    caption.position="top",
     pdf.width=NULL,
     html.width=NULL,
     page.break=FALSE
@@ -20,7 +20,7 @@ placeFigure(
   \item{columns}{Positive integer defining number of columsns, defaults to 1.}
   \item{figure.id}{Figure identifier.}
   \item{caption}{Figure caption.}
-  \item{caption.position}{Figure caption position.Either 'top' (the default) or bottom.}
+  \item{caption.position}{Figure caption position. Either \sQuote{top} (the default) or \sQuote{bottom}.}
   \item{pdf.width}{The width of the PDF output.}
   \item{html.width}{The width of the HTML output.}
   \item{page.break}{Boolean variable indicating whether there should be page breaks (defaults to FALSE).}

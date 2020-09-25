@@ -7,7 +7,7 @@ getCounter(
   )
 }
 \arguments{
-  \item{type}{Character string indicating either a 'table', 'figure', or 'equation'.}
+  \item{type}{Character string indicating either a \sQuote{table}, \sQuote{figure}, or \sQuote{equation}.}
 }
 \description{
 Returns the counter associated with a table, figure, or equation

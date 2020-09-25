@@ -34,14 +34,14 @@ reportSGP(
   }
   \item{output_knit}{Boolean -- indicating whether to knit Rmd file. Default is TRUE.
   }
-  \item{content}{Character - the type of report to create.  Pulls content .Rmd files ('bones') from one of the
+  \item{content}{Character - the type of report to create.  Pulls content .Rmd files (\sQuote{bones}) from one of the
     content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
   }
-  \item{license}{Path to .tex file or "default" providing a licence page following the cover page.
+  \item{license}{Path to .tex file or \sQuote{default} providing a licence page following the cover page.
   }
-  \item{references}{Boolean. Include a 'References' section in the report.
+  \item{references}{Boolean. Include a \sQuote{References} section in the report.
   }
-  \item{cover_page}{Path to .tex file providing cover page or "default". File is placed in student report YAML: \code{includes: in_header: cover_page.tex}
+  \item{cover_page}{Path to .tex file providing cover page or \sQuote{default}. File is placed in student report YAML: \code{includes: in_header: cover_page.tex}
   }
 }
 
