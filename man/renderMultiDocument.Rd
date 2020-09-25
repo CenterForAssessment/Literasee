@@ -31,8 +31,8 @@ renderMultiDocument(rmd_input,
   \item{rmd_input}{Input file. Must be an R Markdown (.Rmd) file located in the working directory).}
 
   \item{report_format}{Report output format(s) to convert Rmd file to. Pass
-  a vector of format names to render multiple formats.  Defaults to the two
-  polished versions ("HTML" and "PDF").  "EPUB" and "DOCX" are also available.
+  a vector of format names to render multiple formats. Defaults to the two
+  polished versions (\sQuote{HTML} and \sQuote{PDF}). \sQuote{EPUB} and \sQuote{DOCX} are also available.
   MS Word DOCX is intended to be a draft-version document as it does not
   support many of the stylization features included in the other formats.}
 
@@ -55,16 +55,16 @@ renderMultiDocument(rmd_input,
   dependencies.  Allows copy and paste of HTML content to Word document
   without serving the local directory.}
   \item{dev}{Graphics device to use for figure output (defaults to png).}
-  \item{literasee_template}{Name of Literasee package style templates to use for rendering. Default is "sgp_report"
+  \item{literasee_template}{Name of Literasee package style templates to use for rendering. Default is \sQuote{sgp_report}
     (currently the only option available).  Located at \code{system.file('rmarkdown', 'templates', 'sgp_report', 'resources', package = 'Literasee')}.
-    Note that alternative templates must adopt the same naming conventions ('html_report.html', 'pdf_report.tex', etc).}
-  \item{html_template}{Pandoc template to use for HTML rendering. Pass "default"
-    to use the Literasee package default template.  Note that if you don't
-    use the "default" template then the features of \code{multi_document}
-    won't be available.  Additionally, there is a 'simple' version that does not include the
+    Note that alternative templates must adopt the same naming conventions (\sQuote{html_report.html}, \sQuote{pdf_report.tex}, etc).}
+  \item{html_template}{Pandoc template to use for HTML rendering. Pass \sQuote{default}
+    to use the Literasee package default template.  Note that if you do not
+    use the default template then the features of \code{multi_document}
+    will not be available.  Additionally, there is a \code{'simple'} version that does not include the
     table of contents or the two-toned background (useful for printing/PDF via browser).}
-  \item{epub_template}{Pandoc template to use for EPUB rendering. The "default" uses Pandoc's base template.}
-  \item{pdf_template}{Pandoc template to use for PDF rendering. Pass "default" to use the Literasee package default template.}
+  \item{epub_template}{Pandoc template to use for EPUB rendering. The default uses the Pandoc base template.}
+  \item{pdf_template}{Pandoc template to use for PDF rendering. Pass \sQuote{default} to use the Literasee package default template.}
   \item{html_css}{The CSS for HTML format if other than the default within the package.}
   \item{epub_css}{The CSS for EPUB format if other than the default within the package.}
   \item{docx_css}{The CSS for DOCX format if other than the default within the \code{Grmd} package.}
@@ -74,7 +74,7 @@ renderMultiDocument(rmd_input,
   \item{bibliography}{The LaTeX style bibliography file (.bib, .bibtex, etc.) to include. The default file included
     in the package includes references often used by the author and will likely be insufficient for most users.}
   \item{csl}{The CSL (citation style language) to use to format bibliography (if included).  Defaults to APA 5th edition. See
-    \href{https://github.com/citation-style-language/styles}{this Github repository} for alternatives.  If NULL pandoc's defaults will be used.}
+    \href{https://github.com/citation-style-language/styles}{this Github repository} for alternatives.  If NULL pandoc defaults will be used.}
   \item{pandoc_args}{Additional command line options to pass to pandoc}
   \item{...}{Passed onto\code{\link{multi_document}} and/or
   \code{\link[rmarkdown]{html_document}}.}
