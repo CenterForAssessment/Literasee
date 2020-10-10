@@ -1,16 +1,16 @@
 Package: Literasee
 Type: Package
 Title: Assessment Literacy Content Development via R
-Version: 0.0-4.96
-Date: 2020-9-25
+Version: 0.0-4.99
+Date: 2020-10-10
 Description: Assessment Literacy Content Development via R.
-Authors@R: c(person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@gmail.com", role=c("aut", "cre")),
+Authors@R: c(person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwaarden@nciea.org", role=c("aut", "cre")),
 		person(given=c("Damian", "W."), family="Betebenner", email="dbetebenner@nciea.org", role="aut"))
-Maintainer: Adam R. Van Iwaarden <avaniwaarden@gmail.com>
-Depends: R (>= 3.3), rmarkdown
-Suggests: knitr
-Imports: crayon, Hmisc, Gmisc, htmlTable, jpeg, markdown, xtable, data.table (>= 1.10.0), SGP (>= 1.7-0.0)
-SystemRequirements: pandoc (>= 1.12.3) - http://johnmacfarlane.net/pandoc, libcurl and git for creating Literasee backed Github repositories
+Maintainer: Adam R. Van Iwaarden <avaniwaarden@nciea.org>
+Depends: R (>= 3.6), rmarkdown
+Suggests: toOrdinal
+Imports: crayon, data.table (>= 1.13.0), Gmisc, Hmisc, htmlTable, jpeg, knitr, markdown, SGP (>= 1.9-0.0), xfun, xtable
+SystemRequirements: pandoc (>= 1.14) - http://johnmacfarlane.net/pandoc, libcurl and git for creating Literasee backed Github repositories
 LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3

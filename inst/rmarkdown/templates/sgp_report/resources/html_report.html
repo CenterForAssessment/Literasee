@@ -75,19 +75,9 @@ $endfor$
 <body>
 
 $if(toc)$
-
 <div id="TOC", class="TOC">
 <p>Table of Contents:</p>
 $toc$
-<!--
-$if(bibliography)$
-<ul>
-<li></li>
-<li><a href="#references">References</a></li>
-<li></li>
-</ul>
-$endif$
--->
 </div>
 $endif$
 
@@ -118,10 +108,22 @@ $else$
 <div class="authors" id="authors">$author$</div>
 $endif$
 $endfor$
+$for(organization)$
+$if(organization.name)$
+<div class="author_afil" id="organizations">$organization.name$</div>
+$else$
+<div class="author_afil" id="organizations">$organization$</div>
+$endif$
+$endfor$
 $if(date)$
 <p class="published" style='text-indent: 0px;'>$date$</p>
 $endif$
 $if(abstract)$
+$if(abstract_name)$
+<div class="lead" id="document_lead_title"><p style='text-align:center;'>$abstract_name$</div>
+$else$
+<div class="lead" id="document_lead_title"><p style="text-align:center;"> Abstract </div>
+$endif$
 <div class="lead" id="document_lead"><p style='text-align:center;'>$abstract$</p></div>
 $endif$
 </div>
