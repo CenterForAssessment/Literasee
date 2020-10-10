@@ -9,13 +9,16 @@ dualTable(
     caption="",
     css.class="gmisc_table breakboth",
     use.xtable=FALSE,
+    files="",
     ...)
 }
 
 \arguments{
   \item{my_tbl}{The matrix/data.frame with the data.}
 
-  \item{where}{Passed to \code{\link[Hmisc]{latex}}.  Specifies placement of floats if a table environment is used. Default is  \code{"H"}, which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of text you might specify  \code{where="!htbp"} to  \code{latex.default}.}
+  \item{where}{Passed to \code{\link[Hmisc]{latex}}. Specifies placement of floats if a table environment is used. Default is  \code{"H"},
+          which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of
+          text you might specify \code{where="!htbp"} to \code{latex.default}.}
 
   \item{align}{A character strings specifying column alignments, defaulting to \code{paste(rep('c',ncol(my_tbl)),collapse='')} to center.
           Valid alignments are l = left, c = center and r = right. You can also specify \code{align='c|c'} and other LaTeX tabular
@@ -24,29 +27,26 @@ dualTable(
 
   \item{caption}{Adds a table caption.}
 
-  \item{css.class}{The html CSS class for the table. This allows directing html formatting through
-          \href{https://www.w3schools.com/cssref/css_selectors.asp}{CSS} directly at all instances of that class.
-          Default includes \code{breakboth} class.  This inserts a page break before and after the table, which
-          prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.}
+  \item{css.class}{The html CSS class for the table. This allows directing html formatting through \href{https://www.w3schools.com/cssref/css_selectors.asp}{CSS}
+          directly at all instances of that class. Default includes \code{breakboth} class. This inserts a page break before and after
+          the table, which prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.}
 
   \item{use.xtable}{Boolean argument (defaults to FALSE) indicating whether xtable is used.}
 
-  \item{...}{Passed onto \code{\link[htmlTable]{htmlTable}} and/or
-  \code{\link[Hmisc]{latex}}.}
+  \item{files}{Path to output file(s) to save text to. Default is \sQuote{""}, which is prints to the standard output connection (typically the rendered .md file).
+          Multiple files, or file(s) and stdout, are supported.}
+
+  \item{...}{Passed onto \code{\link[htmlTable]{htmlTable}} and/or \code{\link[Hmisc]{latex}}.}
 }
 \value{
-\code{string} Returns a character string containing the text for
-both the table to be rendered in HTML or PDF via LaTeX.  String also
-contains HTML/Markdown comments to demarcate the location of
-the each code type, which is used later for post-processing markdown
+\code{string} Returns a character string containing the text for both the table to be rendered in HTML or PDF via LaTeX.  String also
+contains HTML/Markdown comments to demarcate the location of the each code type, which is used later for post-processing markdown
 text files using  \code{renderMultiDocument}.
 }
 \description{
-This is a function for outputting a more advanced table
-than what \pkg{xtable}, \pkg{ztable}, or \code{\link[knitr]{kable}()} allows.
-It's aim is to provide the combined functionality of the the \pkg{Hmisc}
-\code{\link[Hmisc]{latex}()} and  \pkg{htmlTable} \code{\link[htmlTable]{htmlTable}}.
-See documentation of those functions for more details.
+This is a function for outputting a more advanced table than what \pkg{xtable}, \pkg{ztable}, or \code{\link[knitr]{kable}()} allows.
+It's aim is to provide the combined functionality of the the \pkg{Hmisc} \code{\link[Hmisc]{latex}()} and
+\pkg{htmlTable} \code{\link[htmlTable]{htmlTable}}. See documentation of those functions for more details.
 }
 
 \examples{
