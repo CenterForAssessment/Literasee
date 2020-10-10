@@ -11,7 +11,8 @@ placeFigure(
     caption.position="top",
     pdf.width=NULL,
     html.width=NULL,
-    page.break=FALSE
+    page.break=FALSE,
+    normalize.path=TRUE
   )
 }
 \arguments{
@@ -24,6 +25,8 @@ placeFigure(
   \item{pdf.width}{The width of the PDF output.}
   \item{html.width}{The width of the HTML output.}
   \item{page.break}{Boolean variable indicating whether there should be page breaks (defaults to FALSE).}
+  \item{normalize.path}{Boolean variable indicating whether the should paths in \code{files} should be normalized with
+          \link[base:normalizePath]{normalizePath} (defaults to TRUE).}
 }
 \description{
 Places figure appropriately within file with caption.

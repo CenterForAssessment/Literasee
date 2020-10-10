@@ -48,7 +48,7 @@ reportSGP(
 \value{Returns a technical report in multiple output formats including HTML and PDF.
 }
 
-\author{Damian W. Betebenner \email{dbetebenner@nciea.org} and Adam Van Iwaarden \email{avaniwaarden@gmail.com}}
+\author{Adam Van Iwaarden \email{avaniwaarden@nciea.org} and Damian W. Betebenner \email{dbetebenner@nciea.org}}
 
 \examples{
   \dontrun{
