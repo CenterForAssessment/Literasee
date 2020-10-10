@@ -26,6 +26,7 @@ renderMultiDocument(
   add_cover_title = FALSE,
   bibliography = "default",
   csl = "default",
+  md_extensions=NULL,
   pandoc_args = NULL,
   report_params=NULL,
   ...)

@@ -1,6 +1,5 @@
 renderRMD <- function (
   input,
-  keep_knit,
   report_params
 ) {
 
@@ -73,8 +72,11 @@ renderRMD <- function (
     html.index <- grep("<!-- HTML_Start", rmd.text)[1]
     latex.start<- grep("<!-- LaTeX_Start", rmd.text)[1]
     latex.stop <- grep("LaTeX_End -->", rmd.text)[1]
+    if (latex.stop != length(rmd.text)) {  #  Needed if input ends at 'LaTeX_End -->'
+      final.text.chunk <- rmd.text[(latex.stop+1):length(rmd.text)]
+    } else final.text.chunk <- ""
 
-    if (grepl("dualTable", rmd.text[latex.start])) {   #  Extract source code for placement of tables from dualTable
+    if (grepl("dualTable", rmd.text[latex.start])) {  #  Extract source code for placement of tables from dualTable
       table.count <- table.count+1L
       if (table.count==1L) {
         dir.create(file.path("Draft", "assets", "src", "tables"), recursive=TRUE, showWarnings=FALSE)
@@ -96,7 +98,7 @@ renderRMD <- function (
 
       rmd.text <- c(rmd.text[1:(html.index-1)], paste("<!-- ", tmp.cap), tmp.table.md, "-->", "",
                    "```{r, cache=FALSE, results='asis', echo=FALSE}", paste0("    cat(readLines('", table.file, "'), sep = '\\n')"), "```",
-                   rmd.text[(latex.stop+1):length(rmd.text)])
+                   final.text.chunk)
       next
     }
     if (grepl("placeFigure", rmd.text[latex.start])) {  #  Extract source code for placement of figures from placeFigure
@@ -112,26 +114,25 @@ renderRMD <- function (
 
       rmd.text <- c(rmd.text[1:(html.index-1)], paste("<!-- ", tmp.cap, " -->"), "",
                    "```{r, cache=FALSE, results='asis', echo=FALSE}", paste0("    cat(readLines('", fig.file, "'), sep = '\\n')"), "```",
-                   rmd.text[(latex.stop+1):length(rmd.text)])
+                   final.text.chunk)
       next
     }
     if (grepl("pageBreak", rmd.text[latex.start])) {  #  Re-insert pageBreak
       rmd.text <- c(rmd.text[1:(html.index-1)],
                    "```{r, cache=FALSE, results='asis', echo=FALSE}", "    pageBreak()", "```",
-                   rmd.text[(latex.stop+1):length(rmd.text)])
+                   final.text.chunk)
       next
     }
     if (grepl("startAppendix", rmd.text[latex.start])) {  #  Re-insert startAppendix
       apdx.count <- apdx.count+1L
       rmd.text <- c(rmd.text[1:(html.index-1)],
                    "```{r, cache=FALSE, results='asis', echo=FALSE}", paste0("    startAppendix(appendix.number=", apdx.count, ")"), "```",
-                   rmd.text[(latex.stop+1):length(rmd.text)])
+                   final.text.chunk)
     }
     if (grepl("endAppendix", rmd.text[latex.start])) {  #  Re-insert endAppendix
-      apdx.count <- apdx.count+1L
       rmd.text <- c(rmd.text[1:(html.index-1)],
-                   "```{r, cache=FALSE, results='asis', echo=FALSE}    endAppendix()```",
-                   rmd.text[(latex.stop+1):length(rmd.text)])
+                   "```{r, cache=FALSE, results='asis', echo=FALSE}", "    endAppendix()", "```",
+                   final.text.chunk)
     }
   }
   # if (apdx.count > 0L) rmd.text <- c(rmd.text, "```{r, cache=FALSE, results='asis', echo=FALSE}", "    endAppendix()", "```\n")

@@ -38,7 +38,7 @@ renderMultiDocument <- function (
 
   ###  Make changes and copy files required when make_draft_final = TRUE
   if (make_draft_final) {
-    tmp.messages <- "#####   Argument make_draft_final = TRUE provided.  The Following changes have been made:   #####\n\n"
+    tmp.messages <- "\t#####   Argument make_draft_final = TRUE provided.  The Following changes have been made:   #####\n\n"
     #  Force working directory to top level 'SGP_Report'
     if (tail(strsplit(getwd(), "[/]|[\\]")[[1]], 1) == "Draft") {
       tmp.messages <- c(tmp.messages, "\t\tWorking directory changed from 'Draft' to main dir (e.g. 'SGP_Report')\n")
@@ -146,7 +146,7 @@ renderMultiDocument <- function (
       pre_rendered_input <- file.path("HTML", "markdown", gsub(".Rmd", ".md", rmd_input, ignore.case=TRUE))
     } else pre_rendered_input <- base_input
 
-    renderRMD(input=pre_rendered_input, keep_knit=!cleanup_aux_files, report_params)
+    renderRMD(input=pre_rendered_input, report_params)
   }
 
   ###  Render EPUB/PDF/DOCX using HTML master .md file (if available - if not, -Knitted.Rmd)
@@ -185,7 +185,7 @@ renderMultiDocument <- function (
 
   if (cleanup_aux_files) {
     unlink("Markdown", recursive = TRUE)
-    for(tmp.dir in report_format) {
+    for(tmp.dir in gsub("RMD", "Draft", toupper(report_format))) {
       unlink(file.path(tmp.dir, "markdown"), recursive = TRUE)
     }
   }
