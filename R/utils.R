@@ -21,55 +21,6 @@ eqnNum <- function(advance.counter=0, eqn.name="t1", em.space=150) {
   return(cat('\\hspace{', em.space, 'em} \\text{(', getOption('equation_counter')+advance.counter, ')}', sep=""))
 }
 
-setCounters <- function(tbl.counter=0, fig.counter=0, eqn.counter=0) {
-  options("table_number" = tbl.counter)
-  options("fig_caption_no" = fig.counter)
-  options("equation_counter" = eqn.counter)
-}
-
-startAppendix <- function(appendix.number=1L, use.alpha=TRUE, set.counters=TRUE, table.name=NULL, figure.name=NULL) {
-  if (set.counters)  setCounters()
-  options(table_counter=FALSE)
-
-  if (is.null(table.name) & use.alpha) { # Default
-    options(table_counter_str = paste0("**Table ", LETTERS[appendix.number], "%s:**")) # "**Table A%s:**"
-  } else {
-    if (!is.null(table.name)) options(table_counter_str = table.name)
-  }
-
-  if (is.null(figure.name) & use.alpha) { # Default
-    options(fig_caption_no_sprintf = paste0("**Figure ", LETTERS[appendix.number], "%d:** %s")) # "**Figure A%d:** %s"
-  } else {
-    if (!is.null(figure.name)) options(fig_caption_no_sprintf = figure.name)
-  }
-
-  ###  NOTE:  ALL 'cat()' text must be flush left in R script!
-  cat("
-<!-- HTML_Start -->
-<!-- LaTeX_Start
-\\renewcommand{\\thesection}{", LETTERS[appendix.number], "}
-\\pagenumbering{arabic}
-\\renewcommand*{\\thepage}{\\thesection\\arabic{page}}
-LaTeX_End -->\n", sep=""
-	)
-}
-
-endAppendix <- function() {
-  options(table_counter_str = NULL)
-  options(fig_caption_no_sprintf = NULL)
-}
-
-pageBreak <- function() {
-	###  NOTE:  ALL 'cat()' text must be flush left in R script!
-	cat("
-<!-- HTML_Start -->
-<div class='breakboth' ></div>
-<!-- LaTeX_Start
-\\pagebreak
-LaTeX_End -->\n"
-	)
-}
-
 trimWhiteSpace <- function(line) gsub("(^ +)|( +$)", "", line)
 
 read.markdown.table <- function(file, stringsAsFactors = FALSE, strip.white = TRUE, ...){
@@ -86,4 +37,26 @@ read.markdown.table <- function(file, stringsAsFactors = FALSE, strip.white = TR
     lines <- gsub('(^\\s*?\\|)|(\\|\\s*?$)', '', lines)
     read.delim(text = paste(lines, collapse = '\n'), sep = '|',
                stringsAsFactors = stringsAsFactors, strip.white = strip.white, ...)
+}
+
+
+#####
+###   Functions borrowed from `rmarkdown` package to avoid use of :::
+#####
+
+#  https://github.com/rstudio/rmarkdown/blob/1707d0b5189e3f12caf16a6cd53391f5be2b2f08/R/util.R#L90
+read_utf8 <- function(file) {
+  if (inherits(file, 'connection')) con <- file else {
+    con <- base::file(file, encoding = 'UTF-8'); on.exit(close(con), add = TRUE)
+  }
+  enc2utf8(readLines(con, warn = FALSE))
+}
+
+# https://github.com/rstudio/rmarkdown/blob/97013fa09961246aa96dd59c1f48b7845a167607/R/pandoc.R#L664
+# get the path to the pandoc-citeproc binary
+pandoc_citeproc <- function() {
+  bin <- "pandoc-citeproc"
+  p <- file.path(rmarkdown::find_pandoc()$dir, bin)
+  if (xfun::is_windows()) p <- xfun::with_ext(p, "exe")
+  if (file.exists(p)) p else bin
 }

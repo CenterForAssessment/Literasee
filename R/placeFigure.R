@@ -1,4 +1,4 @@
-placeFigure <- function(
+`placeFigure` <- function(
 	files,
 	rows=1,
 	columns=1,
@@ -7,7 +7,8 @@ placeFigure <- function(
 	caption.position="top", # "bottom"
 	pdf.width=NULL,
 	html.width=NULL,
-	page.break=FALSE) {
+	page.break=FALSE,
+	normalize.path=TRUE) {
 
 	###  Some checks
 
@@ -17,14 +18,21 @@ placeFigure <- function(
 	if (is.null(html.width)) html.width <- round((650 - 10*columns)/columns, 0)
 
 	if (tolower(caption.position)=="top") caption.top <- TRUE else caption.top <- FALSE
+
 	###  Universal variables
 	if (is.null(caption)) {
 		html.caption <- getOption("fig_caption_no_sprintf")
 	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=Gmisc::figCapNo(caption), fragment.only=TRUE)))
+
+	###  Normalize Path if requested (default)
+	if (normalize.path) {
+		files <- normalizePath(files)
+	}
+
 	###  HTML image placement  NOTE:  ALL 'cat()' text must be flush left in R script!
 
 	cat("
-<!-- HTML_Start -->\n")
+<!-- HTML_Start -->\n<!-- placeFigure -->\n")
 
 	if (!is.null(caption) & caption.top) {
 		cat("
@@ -76,7 +84,7 @@ placeFigure <- function(
 	} else tex.caption <- paste0("\\", cap.type, "{", tex.caption, "}")
 
 	cat("
-<!-- LaTeX_Start
+<!-- LaTeX_Start placeFigure
 \\begin{figure}[H]\n")
 
 	if (caption.top) {
