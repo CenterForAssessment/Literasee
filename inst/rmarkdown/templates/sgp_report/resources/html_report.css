@@ -1,8 +1,8 @@
-/* document */
-
+/* document - now done below with appendices customization
 #document {
   counter-reset: figure 0 section 0;
 }
+*/
 
 
 /* Increment Figure Counter */
@@ -10,6 +10,7 @@
 .content-node.resource {
   counter-increment: figure;
 }
+
 .content-node .caption {
   margin: 0px 80px;
   padding: 15px 0;
@@ -120,7 +121,7 @@
 }
 #document h1 {
   page-break-before: always;
-  counter-reset: sub-section;
+/*  counter-reset: sub-section; */
   font-size: 24px;
   border-top:none;
   border-bottom:none;
@@ -128,7 +129,7 @@
   padding-top: 175px;
 }
 #document h2 {
-  counter-reset: composite;
+/*  counter-reset: composite; */
   border-top:none;
   border-bottom:none;
   text-transform:none;
@@ -313,7 +314,7 @@ p+p {
   font-size: 18px;
   line-height: 30px;
   text-align: center;
-  margin-top: 50px;
+  margin-bottom: 25px;
 }
 .content-node.document .author_afil {
   font-size: 16px;
@@ -334,15 +335,23 @@ p+p {
   padding-bottom: 50px;
 }
 
+.content-node.document #document_lead_title {
+font-size: 22px;
+line-height: 1.2;
+font-style: italic;
+margin-top: 100px;
+text-align: center;
+color: #999;
+padding: 0 25px 0 25px;
+}
 .content-node.document #document_lead {
-  font-size: 18px;
-  line-height: 1.2;
-  font-style: italic;
-  margin-top: 50px;
-  text-align: center;
-  margin-bottom: 150px;
-  color: #999;
-  padding: 0 25px 0 25px;
+font-size: 18px;
+line-height: 1.2;
+font-style: italic;
+text-align: center;
+margin-bottom: 150px;
+color: #999;
+padding: 0 25px 0 25px;
 }
 
 hr {
@@ -370,6 +379,73 @@ hr {
   padding-left: 35px ;
   text-indent: -35px ;
 }
+#document .unnumbered {
+  counter-reset: section;
+}
+#document .unnumbered::before {
+  counter-increment: section;
+  content: "";
+}
+
+
+/* End Citations & References */
+
+/* Appendix - Reset and switch counters to alpha
+.header-section-number {
+  display: none;
+} */
+body {
+  counter-reset: section apndx;
+}
+h1:not(.title) {
+  counter-increment: section-1;
+  counter-reset: section-2;
+}
+h1:not(.title)::before{
+  content: counter(section-1) ".  ";
+}
+h2 {
+  counter-increment: section-2;
+  counter-reset: section-3;
+}
+h2::before {
+  content: counter(section-1) "." counter(section-2) "  ";
+}
+h3 {
+  counter-increment: section-3;
+}
+h3::before {
+  content: counter(section-1) "." counter(section-2) "." counter(section-3) "  ";
+}
+.appendix-reset {
+  counter-reset: apndx-1 ;
+}
+.appendix-reset::before {
+  counter-increment: apndx;
+  content: "";
+}
+#appendices h1:not(.title) {
+  counter-increment: none;
+  counter-reset: none;
+}
+#appendices h1:not(.title)::before{
+  content: none; /* "" */
+}
+#appendices h2:not(.title) {
+  counter-increment: apndx-1;
+  counter-reset: apndx-2;
+}
+#appendices h2:not(.title)::before{
+  content: counter(apndx, upper-alpha) "." counter(apndx-1) "  ";
+}
+#appendices h3 {
+  counter-increment: apndx-2;
+  counter-reset: apndx-3;
+}
+#appendices h3::before {
+  content: counter(apndx, upper-alpha) "." counter(apndx-1)"." counter(apndx-2) "  ";
+}
+/*End Appendix */
 
 .footnotes ol:before {
   content: "Footnotes";

@@ -194,14 +194,17 @@ $endif$
 
 \begin{document}
 
+$if(title)$
 \title{\textsf{\LARGE $title$ $if(subtitle)$ \\\medskip $subtitle$ $endif$}}
-\author{$for(author)$ $if(author.name)$ $author.name$ $if(author.affiliation)$ \\ $author.affiliation$ \\ $endif$ $else$ $author$ $endif$ $sep$ \\ $endfor$}
+\author{ \vspace{12pt} \\ $for(author)$ $if(author.name)$ $author.name$ $if(author.affiliation)$ \\ $author.affiliation$ \\ $endif$ $else$ $author$ $endif$ $sep$ \\ $endfor$
+         \vspace{15pt} \\ $for(organization)$ $if(organization.name)$ \emph{ $organization.name$ } $else$ \emph{ $organization$ } $endif$ $sep$ \\ $endfor$ \\ \vspace{25pt}}
 
 $if(date)$ \date{$date$} $else$ \date{\today} $endif$
 
 \maketitle
 
 \newpage
+ $endif$
 
 $if(abstract)$
 \begin{abstract}
