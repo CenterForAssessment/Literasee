@@ -1,5 +1,5 @@
 renderDOCX <- function(
-  input,  # same as rmd_input in renderMultiDocument, or has full YAML
+  input,
   self_contained = FALSE,
   number_sections = TRUE,
   number_section_depth = 3,
@@ -8,10 +8,26 @@ renderDOCX <- function(
   csl = "default",
   pandoc_args = NULL) {
 
-  ### Create DOCX directory right away so that we can copy css to it.
-  dir.create(file.path("DOCX", "markdown"), recursive=TRUE, showWarnings=FALSE)
+  ###   Determine .Rmd/.md inputs
 
+  #  rmd_input is same as rmd_input in renderMultiDocument, or has full YAML
+  rmd_input <- sub("-Knitted.Rmd", ".Rmd", sub(file.path("Markdown", "raw_knitted", ""), "", input))
+
+  #  Use HTML rendered .md file if it exists
+  input.md <- file.path("HTML", "markdown", gsub(".Rmd", ".md", rmd_input, ignore.case=TRUE))
+  if (!file.exists(input.md)) {
+    input.md <- input
+  }
+
+  ### Create DOCX directory right away so that we can copy css to it.
+  if (!dir.exists(file.path("DOCX", "markdown"))) {
+    dir.create(file.path("DOCX", "markdown"), recursive=TRUE, showWarnings=FALSE)
+  }
+
+  ##
   ### Initial checks of alternative css
+  ##
+
   ##  CSS check from Gmisc--docx_document - credit to Max Gordon/Gforge https://github.com/gforge
 
   if (docx_css != "default") {
@@ -50,14 +66,7 @@ renderDOCX <- function(
     } else pandoc_args <- c(pandoc_args, "--csl", system.file("rmarkdown", "content", "bibliography", "apa-5th-edition.csl" , package = "Literasee"))
   }
 
-  ###
-  ###   DOCX Drafts
-  ###
-
-  input.md <- gsub(".Rmd", ".md", input, ignore.case=TRUE)
-
-  ###  pandoc args
-
+  ##  pandoc args
   if(!is.null(pandoc_args)){
     if(any(grepl("--highlight-style", pandoc_args))) {
       highlight <- pandoc_args[grepl("--highlight-style", pandoc_args)]
@@ -65,11 +74,15 @@ renderDOCX <- function(
     } else {
       highlight <- "--highlight-style pygments"
     }
-  }
+  }  #  END 'Initial Checks'
+
+  ##
+  ###   DOCX Drafts
+  ##
 
   ###  Get YAML from .Rmd file
-  file <- file(input) # input file
-  rmd.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
+  file <- file(rmd_input) # input file
+  rmd.text <- read_utf8(file)
   close(file)
   # Valid YAML could end in "---" or "..."  - test for both.
   rmd.yaml <- rmd.text[grep("---", rmd.text)[1]:ifelse(length(grep("---", rmd.text))>=2, grep("---", rmd.text)[2], grep("[.][.][.]", rmd.text)[1])]
@@ -77,16 +90,18 @@ renderDOCX <- function(
   if (any(grepl("output:", rmd.yaml))) docx.rmd.yaml <- c(rmd.yaml[1:(grep("output:", rmd.yaml)-1)], "---") else docx.rmd.yaml <- rmd.yaml
 
   ###  Get .md file rendered from .rmd for html output
-  file <- file(file.path("HTML", "markdown", input.md))
-  md.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
+  file <- file(input.md)
+  md.text <- read_utf8(file)
   close(file)
 
+  ###   Check SGP_Report validity of markdown text
   if (any(grepl("<!-- HTML_Start", md.text))) {
     if (length(grep("<!-- HTML_Start", md.text)) != length(grep("<!-- LaTeX_Start", md.text))){
       stop("There must be equal number of '<!-- HTML_Start' and '<!-- LaTeX_Start' elements in the .Rmd file.")
     }
   }
 
+  ##  Scrub LaTeX code
   while(any(grepl("<!-- LaTeX_Start", md.text))) {
     latex.start<-grep("<!-- LaTeX_Start", md.text)[1]
     latex.end <- grep("LaTeX_End -->", md.text)[1]
@@ -105,12 +120,12 @@ renderDOCX <- function(
     md.text <- md.text[-(comment.start:comment.end)]
   }
 
-  writeLines(md.text, file.path("DOCX", "markdown", gsub(".md", "-docx.md", input.md, ignore.case=TRUE)))
+  writeLines(md.text, file.path("DOCX", "markdown", gsub(".Rmd|.md", "-docx.md", rmd_input, ignore.case=TRUE)))
 
   ### Bibliography
 
   if (!is.null(bibliography)) {
-  	my.pandoc_citeproc <- rmarkdown:::pandoc_citeproc()
+  	my.pandoc_citeproc <- pandoc_citeproc()
   	if (bibliography == "default") {
       pandoc_args <-c(pandoc_args, "--filter", my.pandoc_citeproc, "--bibliography",
                       system.file("rmarkdown", "content", "bibliography", "Literasee.bib" , package = "Literasee"))
@@ -125,12 +140,18 @@ renderDOCX <- function(
     }
   }
 
-  message("\n\t Rendering DOCX with call to render(... Gmisc::docx_document):\n")
+  message("\n\tRendering DOCX with call to render(... Gmisc::docx_document):\n\tIntermediate file used: ", input.md, "\n")
 
-  render(file.path("DOCX", "markdown", gsub(".md", "-docx.md", input.md, ignore.case=TRUE)),
-         Gmisc::docx_document(self_contained = self_contained, css=docx_css, number_sections=number_sections, pandoc_args=pandoc_args), output_dir="..")
+  docx.file <- file.path("DOCX", gsub(".Rmd|.md", "-docx.md", rmd_input, ignore.case=TRUE))
+  render(docx.file,
+         Gmisc::docx_document(self_contained = self_contained, css=docx_css, number_sections=number_sections, pandoc_args=pandoc_args),
+         output_dir="..")
 
-  file <- file(file.path("DOCX", gsub(".md", "-docx.html", input.md, ignore.case=TRUE)))
+  ##
+  ###   Additional post-processing
+  ##
+
+  file <- file(docx.file)
   html.text <- readLines(file)
 
   for (header.level in (which(1:6 > number_section_depth))) {

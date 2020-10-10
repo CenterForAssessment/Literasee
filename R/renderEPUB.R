@@ -1,5 +1,5 @@
 renderEPUB <- function(
-  input,  # same as rmd_input in renderMultiDocument, or has full YAML
+  input,
   cover_img = NULL,
   add_cover_title = FALSE,
   number_sections = TRUE,
@@ -11,7 +11,20 @@ renderEPUB <- function(
   csl = "default",
   pandoc_args = NULL) {
 
-  ### Initial checks of alternative css and/or pandoc template
+  ###   Determine .Rmd/.md inputs
+
+  #  rmd_input is same as rmd_input in renderMultiDocument, or has full YAML
+  rmd_input <- sub("-Knitted.Rmd", ".Rmd", sub(file.path("Markdown", "raw_knitted", ""), "", input))
+
+  #  Use HTML rendered .md file if it exists
+  input.md <- file.path("HTML", "markdown", gsub(".Rmd", ".md", rmd_input, ignore.case=TRUE))
+  if (!file.exists(input.md)) {
+    input.md <- input
+  }
+
+  ##
+  ###   Initial checks of alternative css and/or pandoc template
+  ##
 
   ##  CSS check from Gmisc--docx_document - credit to Max Gordon/Gforge https://github.com/gforge
   if (epub_css != "default") {
@@ -49,10 +62,6 @@ renderEPUB <- function(
     } else csl <- paste("--csl", system.file("rmarkdown", "content", "bibliography", "apa-5th-edition.csl" , package = "Literasee"))
   }
 
-  dir.create(file.path("EPUB", "markdown"), recursive=TRUE, showWarnings=FALSE)
-  setwd("EPUB")
-  input.md <- gsub(".Rmd", ".md", input, ignore.case=TRUE)
-
   ### Check defaults
   epub_number_sections <- ifelse(number_sections, "--number-sections", NULL)
 
@@ -66,12 +75,20 @@ renderEPUB <- function(
     }
   } else {
     highlight <- "--highlight-style pygments"
-  }
+  }  ##  End 'Initial checks'
 
-  ###  Get YAML from .Rmd file
-  file <- file(file.path("..", input)) # input file
-  rmd.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
-  rmd.yaml <- rmarkdown:::parse_yaml_front_matter(rmd.text)
+  ##
+  ###   EPUB post-processing of rendered/knitted markdown
+  ##
+
+  if (!dir.exists(file.path("EPUB", "markdown"))) {
+    dir.create(file.path("EPUB", "markdown"), recursive=TRUE, showWarnings=FALSE)
+  }
+  # setwd("EPUB")
+
+  ###  Get YAML from .Rmd file (as a list)
+  file <- file(rmd_input) # original rmd_input file
+  rmd.yaml <- rmarkdown::yaml_front_matter(file)
   close(file)
 
   tmp.yaml <- "---"
@@ -110,16 +127,18 @@ renderEPUB <- function(
   tmp.yaml <- c(tmp.yaml, "language: en-US", "rights:  Creative Commons Non-Commercial Share Alike 3.0", "---")
 
   ###  Get .md file rendered from .rmd for html output
-  file <- file(file.path("..", "HTML", "markdown", input.md))
-  md.text <- rmarkdown:::read_utf8(file, getOption("encoding"))
+  file <- file(input.md) # file.path("..", input.md)
+  md.text <- read_utf8(file)
   close(file)
 
+  ###   Check SGP_Report validity of markdown text
   if (any(grepl("<!-- HTML_Start", md.text))) {
     if (length(grep("<!-- HTML_Start", md.text)) != length(grep("<!-- LaTeX_Start", md.text))){
       stop("There must be equal number of '<!-- HTML_Start' and '<!-- LaTeX_Start' elements in the .Rmd file.")
     }
   }
 
+  ##  Scrub LaTeX code
   while(any(grepl("<!-- LaTeX_Start", md.text))) {
     latex.start<-grep("<!-- LaTeX_Start", md.text)[1]
     latex.end <- grep("LaTeX_End -->", md.text)[1]
@@ -150,13 +169,13 @@ renderEPUB <- function(
   md.text <- gsub("style=''", "style=';'", md.text)
   md.text <- gsub("FALSE>", ">", md.text)
 
-  input.epub <- file.path("markdown", gsub(".md", "-epub.md", input.md, ignore.case=TRUE))
+  input.epub <- file.path("markdown", gsub(".Rmd|.md", "-epub.md", rmd_input, ignore.case=TRUE))
   if ("abstract" %in% names(rmd.yaml)) {
     abstract <- paste("<div class='lead' id='document_lead'><p style='text-align:center;'>", rmd.yaml$abstract, "</p></div>")
     writeLines(c(tmp.yaml, abstract, md.text), input.epub)
   } else writeLines(c(tmp.yaml, md.text), input.epub)
 
-  setwd("..")
+  # setwd("..")
 
   if (!is.null(cover_img)) {
     if (add_cover_title) {
@@ -174,8 +193,8 @@ renderEPUB <- function(
   ###
 
   ### Find pandoc - preference goes to Rstudio version (for now)
-  my.pandoc <- rmarkdown:::pandoc()
-  my.pandoc_citeproc <- rmarkdown:::pandoc_citeproc()
+  my.pandoc <- rmarkdown::pandoc_exec()
+  my.pandoc_citeproc <- pandoc_citeproc()
 
   if(nchar(my.pandoc)==0) stop(
       "The program 'pandoc' was not found. Check 'Sys.getenv(\"RSTUDIO_PANDOC\")'.  If necessary,
@@ -193,8 +212,8 @@ renderEPUB <- function(
     }
   }
 
-  message(paste("\n\t Rendering EPUB with system call to pandoc:\n\n",
-          my.pandoc, "-S -o", file.path("EPUB", gsub(".md", ".epub", input.md, ignore.case=TRUE)), file.path("EPUB", input.epub), tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args, "\n"))
-
-  system(paste(my.pandoc, "-S -o", file.path("EPUB", gsub(".md", ".epub", input.md, ignore.case=TRUE)), file.path("EPUB", input.epub), tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args))
+  syst.call <- paste(my.pandoc, "-S -o", file.path("EPUB", gsub(".Rmd|.md", ".epub", rmd_input, ignore.case=TRUE)), file.path("EPUB", input.epub),
+                     tmp_cover, "--epub-stylesheet ", epub_css, epub_template, epub_number_sections, highlight, biblio, csl, pandoc_args)
+  message(paste("\n\t Rendering EPUB with system call to pandoc:\n\n", syst.call, "\n\n\tIntermediate file used: ", input.md, "\n"))
+  system(syst.call)
 }  # End 'renderEPUB' function

@@ -1,6 +1,6 @@
 renderHTML <- function (
   input,
-  number_sections = TRUE,
+  number_sections = TRUE,  # Now changed to false.  Any of these needed if passed in through renderMultiDocument???
   number_section_depth=3,
   toc = TRUE,
   toc_depth = 2,
@@ -11,11 +11,15 @@ renderHTML <- function (
   html_css = "default",
   bibliography = "default",
   csl = "default",
+  md_extensions=NULL,
   pandoc_args = NULL,
+  report_params = NULL,
   output_dir=file.path(".", "HTML"),
   ...) {
 
+  ##
   ### Initial checks of alternative css and/or pandoc template
+  ##
 
 	##  CSS check from Gmisc::docx_document - credit to Max Gordon/Gforge https://github.com/gforge
 	if (html_css != "default") {
@@ -34,7 +38,11 @@ renderHTML <- function (
 					 "The file(s) '", paste(html_css[!sapply(html_css, file.exists)],
 					 											 collapse = "', '"), "'", " can't be found in the file path provided.")
 		}
-	} else html_css <- system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee")
+	} else {
+    html_css <- system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee")
+    number_sections <- FALSE # Use numbering in html_report_head_level_*.css based on number_section_depth
+    md_extensions <- c(md_extensions, "-native_divs")
+  }
 	if (any(html_css != "-default")) {
 		html_css <- c(html_css, system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee"))
 	}
@@ -53,7 +61,7 @@ renderHTML <- function (
 	### Bibliography
 
 	if (!is.null(bibliography)) {
-		my.pandoc_citeproc <- rmarkdown:::pandoc_citeproc()
+		my.pandoc_citeproc <- pandoc_citeproc()
 		if (bibliography == "default") {
 			pandoc_args <-c(pandoc_args, "--filter", my.pandoc_citeproc, "--bibliography",
 											system.file("rmarkdown", "content", "bibliography", "Literasee.bib" , package = "Literasee"))
@@ -79,26 +87,44 @@ renderHTML <- function (
 			pandoc_args <- c(pandoc_args, "--csl", system.file("rmarkdown", "content", "bibliography", "apa-5th-edition.csl" , package = "Literasee"))
 			csl <- NULL
 		}
-	}
+	}  ##  END 'Initial checks'
 
-	###
+	##
  	###  Render HTML (and master .md file)
-	###
+	##
 
 	message("\n\t Rendering HTML with call to render(..., multi_document):\n")
 
 	render(input,
   			 output_format = multi_document(..., # passed args to rmarkdown::html_document
-  			 				number_sections=number_sections, number_section_depth=number_section_depth, toc=toc, toc_depth=toc_depth,
-  			 				self_contained=self_contained, dev=dev, literasee_template=literasee_template, html_template=html_template,
-  			 				css=html_css, bibliography=bibliography, csl=csl, pandoc_args=pandoc_args), output_dir=output_dir)
+  			 				number_sections=number_sections, number_section_depth=number_section_depth, toc=toc, toc_depth=toc_depth, self_contained=self_contained,
+  			 				dev=dev, literasee_template=literasee_template, html_template=html_template, css=html_css, bibliography=bibliography,
+  			 				csl=csl, md_extensions=md_extensions, pandoc_args=pandoc_args), params = report_params, output_dir=output_dir)
 
-	### Move "master" .md file to HTML/markdown directory
+	###   Move "master" .md file to HTML/markdown directory
 	if (grepl("HTML", output_dir)) {
 		dir.create(file.path(output_dir, "markdown"), showWarnings=FALSE)
-		file.copy(file.path(output_dir, gsub(".Rmd", ".md", input, ignore.case=TRUE)), file.path(output_dir, "markdown"), overwrite=TRUE)
-		file.remove(file.path(output_dir, gsub(".Rmd", ".md", input, ignore.case=TRUE)))
+		if (file.copy(file.path(output_dir, gsub(".Rmd", ".md", input, ignore.case=TRUE)), file.path(output_dir, "markdown"), overwrite=TRUE)) {
+		    file.remove(file.path(output_dir, gsub(".Rmd", ".md", input, ignore.case=TRUE)))
+    }
 	}
+
+  ###   Scrub LaTeX code from HTML
+  ## Get .html text rendered from multi_document above
+  html.file <- file.path(output_dir, gsub(".Rmd", ".html", input, ignore.case=TRUE))
+  file <- file(html.file)
+  html.text <- read_utf8(file)
+  close(file)
+
+  latex.start<-grep("<!-- LaTeX_Start", html.text)
+  latex.end <- grep("LaTeX_End -->", html.text)
+  eval.index <- gsub(", [:]", ":", paste0(c(rbind(paste0("-(", latex.start), paste0(":", latex.end, ")"))), collapse="", sep=", "))
+  eval.index <- paste0("c(", substr(eval.index, 1, nchar(eval.index)-2), ")")
+
+  html.text <- html.text[eval(parse(text=eval.index))]
+
+  ##  Save cleaned HTML code
+  writeLines(html.text, html.file)
 
   return(NULL)
 }### End renderMultiDocument
