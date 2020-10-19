@@ -40,10 +40,17 @@ renderHTML <- function (
 		}
 	} else {
     html_css <- system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee")
-    number_sections <- FALSE # Use numbering in html_report_head_level_*.css based on number_section_depth
+    number_sections <- FALSE # Could use numbering in html_report_head_level_*.css based on number_section_depth
     md_extensions <- c(md_extensions, "-native_divs")
+    if (!self_contained) {
+      if (!dir.exists(file.path(output_dir, "assets", "css"))) {
+        dir.create(file.path(output_dir, "assets", "css"), showWarnings = FALSE, recursive = TRUE)
+      }
+      file.copy(html_css, file.path(output_dir, "assets", "css"))
+      html_css <- file.path(output_dir, "assets", "css", tail(strsplit(html_css, "[/]|[\\]")[[1]], 1))
+    }
   }
-	if (any(html_css != "-default")) {
+	if (length(html_css)>1 & any(html_css != "default")) {
 		html_css <- c(html_css, system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee"))
 	}
 
@@ -121,7 +128,91 @@ renderHTML <- function (
   eval.index <- gsub(", [:]", ":", paste0(c(rbind(paste0("-(", latex.start), paste0(":", latex.end, ")"))), collapse="", sep=", "))
   eval.index <- paste0("c(", substr(eval.index, 1, nchar(eval.index)-2), ")")
 
-  html.text <- html.text[eval(parse(text=eval.index))]
+  html.text <- html.text[eval(parse(text=eval.index))] # tmp.html.text <- html.text # html.text <- tmp.html.text
+
+  if (!self_contained) {
+    render.dir <- gsub(".Rmd", "_files", input, ignore.case=TRUE)
+    asset.dirs <- list.dirs(file.path("HTML", render.dir), full.names = FALSE)
+    nest.test <- sapply(seq(asset.dirs), function(f) grepl(asset.dirs[f], asset.dirs[-f], fixed=TRUE))
+    if(any(nest.test)) asset.dirs <- asset.dirs[-which(nest.test, arr.ind = TRUE)[,2]]
+
+    for (a in asset.dirs) {
+      tmp.path <- file.path("HTML", render.dir, a)
+      files.to.find <- sub(file.path("HTML", ""), "", list.files(tmp.path, full.names = TRUE))
+      for (b in files.to.find) {
+        find.index <- grep(b, html.text, fixed=TRUE)
+        if (length(find.index) == 0) {
+          b <- sub(render.dir, file.path(render.dir, ""), b)
+          find.index <- grep(b, html.text, fixed=TRUE)
+        }
+        if (length(find.index) == 0) next # if still not found go to next directory
+        if (grepl(file.path("HTML", "assets"), b)) {
+          tmp.new.dir <- paste(file.path(head(strsplit(sub(paste0(".*", file.path("HTML", "assets", "")), "", b), "[/]|[\\]")[[1]], -1), ""), collapse="")
+          if (!dir.exists(file.path("HTML", "assets", tmp.new.dir))) {
+            dir.create(file.path("HTML", "assets", tmp.new.dir), showWarnings = FALSE, recursive = TRUE)
+          }
+          new.b <- file.path("HTML", "assets", tmp.new.dir, tail(strsplit(b, "[/]|[\\]")[[1]], 1))
+          if (file.copy(file.path("HTML", b), new.b)) file.remove(file.path("HTML", b))
+          html.text[find.index] <- gsub(b, sub(file.path("HTML", ""), "", new.b), html.text[find.index], fixed=TRUE)
+        }
+        if (any(grepl("[.]csl$|[.]css$|[.]js$|[.]R$", list.files(tmp.path)))) {
+          if (!dir.exists(file.path("HTML", "assets", "src"))) {
+            dir.create(file.path("HTML", "assets", "src"), showWarnings = FALSE, recursive = TRUE)
+          }
+          if (file.copy(file.path("HTML", b), file.path("HTML", "assets", "src"), recursive=TRUE)) file.remove(file.path("HTML", b))
+          html.text[find.index] <- gsub(sub(file.path("HTML", ""), "", tmp.path), file.path("assets", "src"), html.text[find.index], fixed=TRUE)
+        }
+        if (grepl(file.path("SGP_Report", "assets"), b)) {
+          tmp.new.dir <- paste(file.path(head(strsplit(sub(paste0(".*", file.path("SGP_Report", "assets", "")), "", b), "[/]|[\\]")[[1]], -1), ""), collapse="")
+          if (!dir.exists(file.path("HTML", "assets", tmp.new.dir))) {
+            dir.create(file.path("HTML", "assets", tmp.new.dir), showWarnings = FALSE, recursive = TRUE)
+          }
+          new.b <- file.path("HTML", "assets", tmp.new.dir, tail(strsplit(b, "[/]|[\\]")[[1]], 1))
+          if (file.copy(file.path("HTML", b), new.b)) file.remove(file.path("HTML", b))
+          html.text[find.index] <- gsub(b, sub(file.path("HTML", ""), "", new.b), html.text[find.index], fixed=TRUE)
+        }
+        if (grepl("Goodness_of_Fit", b)) {
+          gof.path <- strsplit(b, "[/]|[\\]")[[1]] # get 2 directories back '../../Goodness_of_Fit'
+          gof.path <- paste(file.path(gof.path[(which(gof.path=="Goodness_of_Fit")-2):which(gof.path=="Goodness_of_Fit")], ""), collapse="")
+          tmp.new.dir <- file.path(gof.path, head(strsplit(sub(paste0(".*", gof.path), "", b), "[/]|[\\]")[[1]], -1))
+          if (!dir.exists(file.path("HTML", "assets", "img", tmp.new.dir))) {
+            dir.create(file.path("HTML", "assets", "img", tmp.new.dir), showWarnings = FALSE, recursive = TRUE)
+          }
+          new.b <- file.path("HTML", "assets", "img", tmp.new.dir, tail(strsplit(b, "[/]|[\\]")[[1]], 1))
+          if (file.copy(file.path("HTML", b), new.b)) file.remove(file.path("HTML", b))
+          html.text[find.index] <- gsub(b, sub(file.path("HTML", ""), "", new.b), html.text[find.index], fixed=TRUE)
+        }
+      }
+    }
+    if(any(grepl(render.dir, html.text))) {
+      leftover.text.links <- grep(render.dir, html.text)
+      for (lotl in leftover.text.links) {
+        results <- regmatches(gsub('\"', "'", html.text[lotl]), regexec(paste0(render.dir, "\\s*(.*?)\\s*'"), gsub('\"', "'", html.text[lotl])))[[1]]
+        if (length(results) > 0) {
+          old.file <- gsub("(^'+)|('+$)", "", results[grep(render.dir, results)])
+        } else next
+        tmp.new.dir <- paste(file.path(head(strsplit(sub(file.path(render.dir, ""), "", old.file), "[/]|[\\]")[[1]], -1), ""), collapse="")
+        if (!dir.exists(file.path("HTML", "assets", "misc", tmp.new.dir))) {
+          dir.create(file.path("HTML", "assets", "misc", tmp.new.dir), showWarnings = FALSE, recursive = TRUE)
+        }
+        new.file <- file.path("HTML", "assets", "misc", sub(file.path(render.dir, ""), "", old.file))
+        if (file.copy(file.path("HTML", old.file), new.file)) file.remove(file.path("HTML", old.file))
+        html.text[lotl] <- gsub(old.file, sub(file.path("HTML", ""), "", new.file), html.text[lotl], fixed=TRUE)
+      }
+    }
+    ##  Find remaining Georgia_Skip_Year_SGP_Report_files (render.dir) dependencies and move to assets/misc
+    ##  https://stackoverflow.com/a/59783181
+    if (length(leftover.asset.files <- list.files(file.path("HTML", render.dir), full.names = FALSE, recursive=TRUE)) > 0) {
+      lapply(list.files(file.path("HTML", render.dir), include.dirs=TRUE, full.names=TRUE), function(x) {
+        fi <- file.info(x)
+        if (fi$isdir) {
+            f <- list.files(x, all.files=TRUE, recursive=TRUE, full.names=TRUE)
+            sz <- sum(file.info(f)$size)
+            if (sz==0L) unlink(x, TRUE) # print(x) # as precaution, print to make sure before using unlink(x, TRUE)
+        }
+      })
+    } else unlink(file.path("HTML", render.dir), recursive = TRUE)
+  }
 
   ##  Save cleaned HTML code
   writeLines(html.text, html.file)

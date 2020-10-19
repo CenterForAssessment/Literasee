@@ -42,10 +42,19 @@ multi_document <- function (
                                    collapse = "', '"), "'", " can't be found from the directory '",
            getwd(), "'", " - i.e. the directory where you have your .Rmd-file", alt_css)
     }
-  } else css <- system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee")
-	if (any(css != "-default")) {
-		css <- c(css, system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee"))
-	}
+  } else {
+    css <- system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee")
+    if (!self_contained) {
+      if (!dir.exists(file.path("HTML", "assets", "css"))) {
+        dir.create(file.path("HTML", "assets", "css"), showWarnings = FALSE, recursive = TRUE)
+      }
+      file.copy(css, file.path("HTML", "assets", "css"))
+      css <- file.path("HTML", "assets", "css", tail(strsplit(css, "[/]|[\\]")[[1]], 1))
+    }
+  }
+  if (length(css)>1 & any(css != "default")) {
+    css <- c(css, system.file("rmarkdown", "templates", literasee_template, "resources", "html_report.css" , package = "Literasee"))
+  }
   css <- unique(css)
 
   ##  Check csl file
