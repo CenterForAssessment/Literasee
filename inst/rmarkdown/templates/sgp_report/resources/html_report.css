@@ -67,6 +67,51 @@
   bottom: 30px;
 }
 
+/*  Zoomable grid added 10/15/2020
+https://stackoverflow.com/a/56401601
+https://www.w3schools.com/howto/howto_js_image_grid.asp */
+.click-zoom {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  padding: 0;
+  margin: 20px;
+  margin-top: -40px;
+}
+.click-zoom input[type=checkbox] {
+  display: none
+}
+.click-zoom img {
+  margin: 0;
+  display: block;
+  padding: 5px 5px;
+  text-align: center;
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(2);
+  cursor: zoom-out
+}
+.img-row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+/* Create two equal columns that sits next to each other */
+.img-column {
+  -ms-flex: 50%; /* IE 10 */
+  flex: 50%;
+  padding: 0 4px;
+}
+.img-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+/*  End added zoomable grid */
+
 .figure {
   display: inline-block;
   position: relative;

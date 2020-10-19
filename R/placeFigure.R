@@ -8,7 +8,7 @@
 	pdf.width=NULL,
 	html.width=NULL,
 	page.break=FALSE,
-	normalize.path=TRUE) {
+	normalize.path=FALSE) {
 
 	###  Some checks
 
@@ -24,7 +24,7 @@
 		html.caption <- getOption("fig_caption_no_sprintf")
 	}	else	html.caption <- gsub("</p>\n", "", gsub("<p>", "", markdown::markdownToHTML(text=Gmisc::figCapNo(caption), fragment.only=TRUE)))
 
-	###  Normalize Path if requested (default)
+	###  Normalize Path if requested
 	if (normalize.path) {
 		files <- normalizePath(files)
 	}
@@ -41,14 +41,39 @@
 
 	cat(paste0("
 <div class='content-node image'", ifelse(!is.null(figure.id), paste0(" id = '", figure.id,"'"), ""), ">"))
-	cat("
+
+	if (length(files) > 1L) {
+		##  create a grid with zoomable images
+		html_files <- files
+		suppressWarnings(length(html_files) <- prod(dim(matrix(html_files, ncol = columns))))
+		img.mtx <- matrix(html_files, rows, columns, byrow=TRUE)
+
+		cat("
+<div class='click-zoom'>
+<div class='img-row'>")
+
+		for (k in seq(columns)) {
+			cat("
+<div class='img-column'>")
+			for (img in img.mtx[,k][!is.na(img.mtx[,k])]) {
+				cat("
+<label>
+<input type='checkbox'>", paste0("
+<img src='",img, "' style='width: 100%'/>"), "
+</label>")
+			}
+			cat("
+</div><!-- END img-column-->")
+		}
+		cat("
+</div><!-- END img-row -->\n</div><!-- END click-zoom -->\n")
+	} else {
+		cat("
 <div class='image-content'>")
-
-	###  Might need to look into how h6 captions set up to put multiple images in a matrix.
-
-	for (img in files) {
 		cat(paste0("
-<img src='",img, "' style='width: ", html.width, "px;'/>"))
+<img src='", files, "' style='width: ", html.width, "px;'/>"),"
+</div><!-- END image-content -->\n")
+
 	}
 
 	if (!is.null(caption) & !caption.top) {
@@ -57,8 +82,7 @@
 	}
 
 	cat("
-</div>
-</div>")
+</div><!-- END content-node image -->")
 
 	if (page.break) {
 		cat("
