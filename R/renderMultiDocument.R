@@ -64,7 +64,7 @@ renderMultiDocument <- function (
     rmd_input <- new.rmd.name
     #  Copy Draft/Assets files
     if (file.exists(draft.assets <- file.path("Draft", "assets"))) {
-      tmp.messages <- c(tmp.messages, "\t\t'Draft/assets/* subdirectories and files moved (overwritten) to main directory /assets/*.\n")
+      tmp.messages <- c(tmp.messages, "\t\t'Draft/assets/* subdirectories and files copied (overwritten) to main directory /assets/*.\n")
       if (!dir.exists("assets")) {
         dir.create("assets", showWarnings=FALSE)
       }
@@ -77,8 +77,8 @@ renderMultiDocument <- function (
       if (!all(dir.copy.tf <- file.copy(list.dirs(draft.assets, recursive = FALSE), file.path("assets"), recursive = TRUE))) {
         message(tmp.messages)
         stop(paste("Directory/files in", list.dirs(draft.assets, recursive = FALSE)[!dir.copy.tf], "could not be copied/overwritten."))
-      } else unlink(file.path("Draft"), recursive = TRUE)
-      tmp.messages <- c(tmp.messages, "\t\t'Draft/* directory and subdirectories removed.\n")
+      } # else  unlink(file.path("Draft"), recursive = TRUE) #  Allow multiple versions and keep Draft directory
+      # tmp.messages <- c(tmp.messages, "\t\t'Draft/* directory and subdirectories removed.\n")
     }
     ###   Rename original from '*.Rmd' to '*-Parent.Rmd')
     ###   Not necessary?  Maybe re-add later...
@@ -189,5 +189,8 @@ renderMultiDocument <- function (
       unlink(file.path(tmp.dir, "markdown"), recursive = TRUE)
     }
   }
-  if (make_draft_final) message(tmp.messages) # Re-issue warnings at end of function since knitr/render have so much console output
+
+  ###  Parting messages...
+  if (!is.null(getOption("renderMultiDocument_Message"))) message(cat("\033[0;43m", getOption("renderMultiDocument_Message", "\033[0m\n")))
+  if (make_draft_final) message(cat("\033[0;42m", tmp.messages, "\033[0m\n")) # Re-issue warnings at end of function since knitr/render have so much console output
 }### End renderMultiDocument

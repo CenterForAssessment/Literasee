@@ -144,10 +144,30 @@ renderRMD <- function (
     }
   }
 
-  ## Get rid of random latex(...) comments
+  ##  Get rid of random latex(...) comments
   for(j in grep("%latex", rmd.text)) rmd.text[j] <- ""
 
-  ###   Write out tailored/renerable .Rmd file to disk
-  writeLines(rmd.text, file.path("Draft", sub(".Rmd", "-Compiled_Draft.Rmd", rmd_input, ignore.case = TRUE)))
+  ##  Remove extra blank lines (allow two "" lines)
+  rmd.empty <- which(rmd.text=="")
+  rmd.dup.empty <- rmd.empty[which(diff(rmd.empty)==1)+1]
+  rmd.dup.dup.empty <- rmd.dup.empty[which(diff(rmd.dup.empty)==1)+1]
+  rmd.text2 <- rmd.text[-rmd.dup.dup.empty]
+
+  ###   Write out tailored/renerable .Rmd file to disk.  Save multiple versions
+  draft.file <- file.path("Draft", sub(".Rmd", "-Compiled_Draft.Rmd", rmd_input, ignore.case = TRUE))
+  existing.drafts <- sub(".Rmd", "", list.files(file.path("Draft"), pattern=".Rmd", ignore.case=TRUE))
+  existing.drafts <- agrep(tail(strsplit(draft.file, "[/]|[\\]")[[1]], 1), existing.drafts, value=TRUE)
+
+  if (length(existing.drafts) > 0) {
+    last.version <- sub("v", "", max(sapply(strsplit(existing.drafts, "_"), tail, 1)))
+    if (last.version == "Draft") {
+      last.version <- 1L
+      file.rename(draft.file, sub("-Compiled_Draft", "-Compiled_Draft_v1", draft.file))
+    }
+    next.version <- sum(as.numeric(last.version), 1, na.rm=TRUE)
+    draft.file <- file.path("Draft", sub(".Rmd", paste0("-Compiled_Draft_v", next.version, ".Rmd"), rmd_input, ignore.case = TRUE))
+  }
+
+  writeLines(rmd.text, draft.file)
   message(paste("\n\t RMD draft rendered from intermediate file: ", input, "\n"))
 }### End renderRMD
