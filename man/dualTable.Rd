@@ -15,27 +15,20 @@ dualTable(
 
 \arguments{
   \item{my_tbl}{The matrix/data.frame with the data.}
-
   \item{where}{Passed to \code{\link[Hmisc]{latex}}. Specifies placement of floats if a table environment is used. Default is  \code{"H"},
           which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of
           text you might specify \code{where="!htbp"} to \code{latex.default}.}
-
   \item{align}{A character strings specifying column alignments, defaulting to \code{paste(rep('c',ncol(my_tbl)),collapse='')} to center.
           Valid alignments are l = left, c = center and r = right. You can also specify \code{align='c|c'} and other LaTeX tabular
           formatting. If you want to set the alignment of the rownames this string needst to be \sQuote{ncol(x) + 1}, otherwise it
           automatically pads the string with a left alignment for the rownames.}
-
   \item{caption}{Adds a table caption.}
-
   \item{css.class}{The html CSS class for the table. This allows directing html formatting through \href{https://www.w3schools.com/cssref/css_selectors.asp}{CSS}
           directly at all instances of that class. Default includes \code{breakboth} class. This inserts a page break before and after
           the table, which prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.}
-
   \item{use.xtable}{Boolean argument (defaults to FALSE) indicating whether xtable is used.}
-
   \item{files}{Path to output file(s) to save text to. Default is \sQuote{""}, which is prints to the standard output connection (typically the rendered .md file).
           Multiple files, or file(s) and stdout, are supported.}
-
   \item{...}{Passed onto \code{\link[htmlTable]{htmlTable}} and/or \code{\link[Hmisc]{latex}}.}
 }
 \value{
