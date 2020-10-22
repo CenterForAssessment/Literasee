@@ -23,6 +23,8 @@ eqnNum <- function(advance.counter=0, eqn.name="t1", em.space=150) {
 
 trimWhiteSpace <- function(line) gsub("(^ +)|( +$)", "", line)
 
+"%w/o%" <- function(x,y) x[!x %in% y]
+
 read.markdown.table <- function(file, stringsAsFactors = FALSE, strip.white = TRUE, ...){
     if (length(file) > 1) {
         lines <- file
@@ -59,4 +61,18 @@ pandoc_citeproc <- function() {
   p <- file.path(rmarkdown::find_pandoc()$dir, bin)
   if (xfun::is_windows()) p <- xfun::with_ext(p, "exe")
   if (file.exists(p)) p else bin
+}
+
+getFileNameExtension <- function (filename, dot=TRUE) {
+  # remove a path
+  splitted <- strsplit(x=filename, split='/')[[1]]
+  # or use .Platform$file.sep in stead of '/'
+  filename <- splitted [length(splitted)]
+  ext <- ''
+  splitted <- strsplit(x=filename, split='\\.')[[1]]
+  l <-length (splitted)
+  if (l > 1 && sum(splitted[1:(l-1)] != ''))  ext <-splitted [l]
+  # the extention must be the suffix of a non-empty name
+  if (dot) ext <- paste0(".", ext)
+  ext
 }

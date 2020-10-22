@@ -117,7 +117,7 @@ renderHTML <- function (
 	}
 
   ###   Scrub LaTeX code from HTML
-  ## Get .html text rendered from multi_document above
+  ##  Get .html text rendered from multi_document above
   html.file <- file.path(output_dir, gsub(".Rmd", ".html", input, ignore.case=TRUE))
   file <- file(html.file)
   html.text <- read_utf8(file)
@@ -129,6 +129,12 @@ renderHTML <- function (
   eval.index <- paste0("c(", substr(eval.index, 1, nchar(eval.index)-2), ")")
 
   html.text <- html.text[eval(parse(text=eval.index))] # tmp.html.text <- html.text # html.text <- tmp.html.text
+
+  ##  Remove extra blank lines (allow two "" lines)
+  html.empty <- which(html.text=="")
+  html.dup.empty <- html.empty[which(diff(html.empty)==1)+1]
+  html.dup.dup.empty <- html.dup.empty[which(diff(html.dup.empty)==1)+1]
+  html.text <- html.text[-html.dup.dup.empty]
 
   if (!self_contained) {
     render.dir <- gsub(".Rmd", "_files", input, ignore.case=TRUE)

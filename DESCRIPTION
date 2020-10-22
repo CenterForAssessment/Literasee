@@ -9,8 +9,8 @@ Authors@R: c(person(given=c("Adam", "R."), family="Van Iwaarden", email="avaniwa
 Maintainer: Adam R. Van Iwaarden <avaniwaarden@nciea.org>
 Depends: R (>= 3.6), rmarkdown
 Suggests: toOrdinal
-Imports: crayon, data.table (>= 1.13.0), Gmisc, Hmisc, htmlTable, jpeg, knitr, markdown, SGP (>= 1.9-0.0), xfun, xtable
-SystemRequirements: pandoc (>= 1.14) - http://johnmacfarlane.net/pandoc, libcurl and git for creating Literasee backed Github repositories
+Imports: crayon, data.table (>= 1.13.0), Gmisc, Hmisc, htmlTable, htmltools, httr, jpeg, knitr, markdown, SGP (>= 1.9-0.0), stringr, xfun, xtable
+SystemRequirements: pandoc (>= 1.14) - http://johnmacfarlane.net/pandoc, libcurl and git - https://git-scm.com for creating Literasee backed Github repositories and using diffFile function
 LazyData: Yes
 LazyDataCompression: xz
 License: GPL-3
