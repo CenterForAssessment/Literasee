@@ -1,0 +1,15 @@
+# Analytics
+
+This section provides basic details about the calculation of student growth
+percentiles from assessment data using the [`R` Software Environment](http://www.r-project.org/) [@Rsoftware]
+in conjunction with the [`SGP` package](https://github.com/CenterForAssessment/SGP) [@sgp2020].
+
+Broadly, the SGP analysis of the longitudinal student assessment data takes place in two steps:
+
+1. Data Preparation
+2. Data Analysis
+
+The majority of the effort in the above two step process lies with Step 1: Data
+Preparation.  Following thorough data cleaning and preparation, data analysis using
+the `SGP` package takes clean data and makes it as easy as possible to calculate,
+summarize, output and visualize the results from SGP analyses.

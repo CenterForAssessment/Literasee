@@ -1,0 +1,37 @@
+
+### Conduct SGP analyses
+
+All cohort-referenced`r if(grepl("SIMEX", params$sgp.type)) {
+" (unadjusted) and SIMEX corrected"}``r if(params$eoct.tf)){" grade level and EOC"}`
+SGPs were calculated concurrently.  Data analysis is conducted using the
+[`R` Software Environment](http://www.r-project.org/) in conjunction with the
+[`SGP` package](http://sgp.io/). Broadly, the analysis takes place in 6 steps.
+
+1. `prepareSGP`
+2. `analyzeSGP`
+3. `combineSGP`
+4. `summarizeSGP`
+5. `outputSGP`
+6. `visualizeSGP`
+
+Because these steps are almost always conducted simultaneously, the `SGP` package
+has wrapper functions `abcSGP` and `updateSGP` that "wrap" the above 6 steps into
+a single function call and simplify the source code associated with the analysis.  
+Documentation for all SGP functions are [available online.](https://cran.r-project.org/web/packages/SGP/SGP.pdf)
+
+We use the [`updateSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/updateSGP)
+function to ***a)*** do the final preparation and addition of the cleaned and formatted new annual
+data ([`prepareSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/prepareSGP) and
+***b)*** calculate SGP estimates ([`analyzeSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/analyzeSGP) step)
+
+
+### Merge, output, summarize and visualize results
+
+Once all analyses were completed the results were merged into the master longitudinal
+data set ([`combineSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/combineSGP) step).
+A pipe delimited version of the complete long data is output ([`outputSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/outputSGP) step).
+The data is also summarized using the [`summarizeSGP` function](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/summarizeSGP),
+which produces many tables of descriptive statistics that are disaggregated at the `r params$state.type`,
+district, school and instructor levels (as available), as well as other factors of interest.
+Finally, visualizations (such as bubble charts) are produced from the data and summary tables using
+the [`visualizeSGP`](https://www.rdocumentation.org/packages/SGP/versions/1.9-5.0/topics/visualizeSGP) function.

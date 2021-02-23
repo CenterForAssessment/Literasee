@@ -1,0 +1,90 @@
+### Create SGP configurations
+
+`r if (params$eoct.tf) {
+"Unlike most EOG analyses, EOC analyses are specialized enough so that it is
+necessary to specify the analyses to be performed via explicit configuration
+code scripts that are used as part of the larger SGP analysis to be discussed
+later. Configurations were used for EOG SGP analyses as well, which allows for
+consistency between the EOC subjects and for all analyses (particularly student
+growth projections) to be run concurrently."} else {
+"Analysis configurations for grade level content areas are created automatically
+within the `SGP` functions as part of the larger SGP analysis to be discussed later."}`
+
+Each configuration code chunk specifies a set of parameters that defines the norm
+group of students to be examined. Every potential norm group is defined by, at a
+minimum, the progressions of content area, academic year and grade level`r
+if (params$eoct.tf) " for the EOG analyses"`. Depending on the complexity of a
+particular state's analyses, more configuration information may be required.  
+Therefore, every configuration used contains the first three elements listed below
+and more complex analyses may also contain the forth through eighth elements:
+
+1. **`sgp.content.areas`:** The progression of content areas to be looked at and their order.
+2. **`sgp.panel.years`:** The progression of the years associated with the content
+area progression (`sgp.content.areas`), potentially allowing for skipped or
+repeated years, etc.
+3. **`sgp.grade.sequences`:** The grade progression associated with the configuration
+content areas and years. The value **'EOCT'** stands for 'End Of Course Test'.^[This
+abbreviation is a required convention in the `SGP` package.] The use of the
+generic 'EOCT' allows for secondary students to be compared based on the pattern
+of course taking rather than being dependent upon grade level designation.
+4. **`sgp.panel.years.within`:** The progression of the observation sequence
+associated with each year. Required when multiple test scores are present within
+a given year. Values may be set to `LAST_OBSERVATION` or `FIRST_OBSERVATION`.
+5. **`sgp.exact.grade.progression`:** When set to `TRUE`, this element will force
+the lower level functions to analyze *only* the progression as specified in its
+entirety.  Otherwise these functions will analyze subsets of the progression for
+every possible order (i.e. each number of prior time periods of data available).
+When set to `TRUE`, a norm group preference system is usually required as well.
+6. **`sgp.norm.group.preference`:** Because a student can potentially be included
+in more than one analysis/configuration, multiple SGPs will be produced for some
+students and a system is required to identify the preferred SGP that will be
+matched with the student in the `combineSGP` step.  This argument provides a
+ranking that specifies how preferable SGPs produced from the analysis in question
+is relative to other possible SGPs.  ***Lower numbers correspond with higher
+preference.***  Higher preference is given to:
+    * Progressions with the greatest number of prior scale scores.
+    * Progressions in which a student has repeated a course.
+    * Progressions that do not include a skipped year (i.e. a gap in the scale score history).
+    * Progressions for block-schedule course taking patterns.
+7. **`sgp.projection.grade.sequences`:** This element is used to identify the
+grade sequence that will be used to produce straight and/or lagged student growth
+projections.  It can either be left out or set explicitly to `NULL` to produce
+projections based on the values provided in the `sgp.content.areas` and
+`sgp.grade.sequences` elements. Alternatively, when set to "`NO_PROJECTIONS`",
+no projections will be produced. For EOC analyses, only configurations that
+correspond to the canonical course progressions can produce student growth projections.
+The canonical progressions are codified in the `SGP` package meta-data (i.e.
+`SGPstateData[[`r paste0("\"", params$state.abv, "\"")`]][["SGP_Configuration"]][["content_area.projection.sequence"]]`).
+8. **`sgp.exclude.sequences`:** Lookup table containing the grade, subject, and
+year combinations of students that should be excluded from a cohort. This element
+is used in progressions in which a year or similar time period is skipped (i.e.
+a gap in time exists). For example, in a progression that goes from grade level
+mathematics to an EOC mathematics subject with a skipped year in between, one may
+want to exclude kids that had repeated either test or took other mathematics
+related subjects in the skipped year. Students with different course progressions
+may be inappropriate to include with the cohort of students who truly had no
+mathematics related course in the intervening year.
+
+Here is an example configuration used to define a SGP analysis that includes a
+skipped year and requires all eight configuration elements:
+
+```R
+...
+
+  ALGEBRA.CURRENT_YEAR = list(
+    sgp.content.areas=c('MATHEMATICS', 'MATHEMATICS', 'ALGEBRA'),
+    sgp.panel.years=c('PRIOR_YEAR_3', 'PRIOR_YEAR_2', 'CURRENT_YEAR'),
+    sgp.panel.years.within=c("LAST_OBSERVATION",
+        "LAST_OBSERVATION", "FIRST_OBSERVATION"),
+    sgp.grade.sequences=list(c('7', '8', 'EOCT')),
+    sgp.exact.grade.progression=TRUE,
+    sgp.norm.group.preference=6,
+    sgp.projection.grade.sequences="NO_PROJECTIONS",
+    sgp.exclude.sequences = data.table(
+        VALID_CASE = 'VALID_CASE',
+        CONTENT_AREA=c('MATHEMATICS', 'ALGEBRA', 'GEOMETRY'),
+        YEAR=c('PRIOR_YEAR_1', 'PRIOR_YEAR_1', 'PRIOR_YEAR_1'),
+        GRADE=c('8', 'EOCT', 'EOCT')))
+...
+
+```

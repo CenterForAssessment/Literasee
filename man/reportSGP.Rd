@@ -7,41 +7,21 @@ The function reportSGP is used to create automatic or customized technical repor
 
 \usage{
 reportSGP(
-  sgp_object,
-  sgp_year,
-  state=NULL,
-  output_directory="Documents/reports",
-  output_file_name=NULL,
-  output_knit=TRUE,
-  content="sgp_report",
-  license="default",
-  references=TRUE,
-  cover_page="default")
+  state,
+	sgp_object,
+	report_params,
+	output_knit=TRUE)
 }
 
 \arguments{
-  \item{sgp_object}{An SGP object resulting from SGP analyses.
-  }
-  \item{sgp_year}{The value of the YEAR in the SGP object @Data to use for the report.
-  }
   \item{state}{Acronym indicating state associated with the data. This can be supplied to the function
   automatically by including the full state name (e.g, New_Hampshire_SGP) in the name of the object supplied to \code{sgp_object}.
   }
-  \item{output_directory}{Character - the directory path name where the output file is saved. Defaults to \code{documents/reports}.
-    May be a (relative) file path, in which case directories will be created as needed.
+  \item{sgp_object}{An SGP object resulting from SGP analyses.
   }
-  \item{output_file_name}{Character - the name of the output file to be saved in the \code{output_directory}.
+  \item{report_params}{list - parameters to use for the report. To be built out!
   }
   \item{output_knit}{Boolean -- indicating whether to knit Rmd file. Default is TRUE.
-  }
-  \item{content}{Character - the type of report to create.  Pulls content .Rmd files (\sQuote{bones}) from one of the
-    content repositories located at \code{system.file('rmarkdown', 'content', package = 'Literasee')}.
-  }
-  \item{license}{Path to .tex file or \sQuote{default} providing a licence page following the cover page.
-  }
-  \item{references}{Boolean. Include a \sQuote{References} section in the report.
-  }
-  \item{cover_page}{Path to .tex file providing cover page or \sQuote{default}. File is placed in student report YAML: \code{includes: in_header: cover_page.tex}
   }
 }
 

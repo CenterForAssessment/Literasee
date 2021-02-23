@@ -1,25 +1,18 @@
 #  Data
 
-Student Growth Percentiles have been produced for students that have a current score and at least one prior score in either the same subject or a related content area.
+`r params$state.org.abv` supplied `r params$test.abv[1]``r if(length(params$test.name) > 1) {
+	paste(" and", params$test.abv[2])}``r if (params$eoct.tf) {" end-of-grade (EOG) and end-of-course (EOC) test"}`
+data used in the `r params$year` SGP analyses`r if (!is.null(params$params$analytics.org.name)) {
+	paste(" to the", params$state.org.abv, "in summer of", params$year)}`. These
+test records were added to existing `r params$state` assessment data to create
+the longitudinal data set from which the `r params$year` SGPs were calculated.
+Subsequent years' analyses will augment this multi-year data set allowing
+`r params$state.org.abv` to maintain comprehensive longitudinal data for all students
+taking the`r if (params$eoct.tf) {" EOG and EOC"}``r params$test.abv[1]``r if (length(params$test.name) > 1) {
+	paste(" and", params$test.abv[2])}` assessments.
 
-
-## Longitudinal Data
-Growth analyses on assessment data require data that are linked to individual students over time.  Student growth percentile analyses require, at a minimum two, and preferably three years of assessment data for analysis of student progress.  To this end it is necessary that a unique student identifier be available so that student data records across years can be merged with one another and subsequently examined.  Because some records in the assessment data set contain students with more than one test score in a content area in a given year, a process to create unique student records in each content area by year combination was required in order to carry out subsequent growth analyses.  Furthermore, student records may be invalidated for other reasons.  The following business rules were used to either invalidate particular student records or select the appropriate record for use in the analyses.
-
-
-Table `r tblNum(1)` shows the number of valid student records available for analysis after applying the data preparation business rules.  Note that this number does not represent the number of SGPs produced, however, because students are required to have at least one prior score available as well.
-
-```{r, results='asis', echo=FALSE, N_table}
-	n_tbl <- table(sgp_object@Data[YEAR==sgp_year & VALID_CASE=='VALID_CASE']$CONTENT_AREA, sgp_object@Data[YEAR==sgp_year & VALID_CASE=='VALID_CASE']$GRADE)
-
-	n_tbl_B <- n_tbl[match(GL_subjects, row.names(n_tbl)) ,]
-	n_tbl_B <- cbind('Content Area'=sapply(GL_subjects, SGP::capwords, special.words=c("ELA", "US")), n_tbl_B)
-	n_tbl_B <- prettyNum(n_tbl_B, preserve.width = "individual", big.mark=',')
-	n_tbl_B[which(n_tbl_B==0)] <- ''
-	row.names(n_tbl_B) <- NULL
-
-  cat(dualTable(as.matrix(n_tbl_B),
-  	align=paste(rep('r', dim(n_tbl_B)[2]), collapse=''),
-		n.cgroup=c(1, dim(n_tbl_B)[2]-1), cgroup=c("", "Grades"),
-		caption='Number of Valid Student Records by Grade and Subject', use.xtable = TRUE))
-```
+Student Growth Percentiles have been produced for students that have a current
+score and at least one prior score in either the same subject`r if (params$eoct.tf) {
+	" or a related content area"}`.  For the `r params$year` academic year SGPs
+were produced for grade level `r params$GL_text_long``r if (params$eoct.tf) {
+	paste(", as well as for EOC subjects including", params$EOCT_text_long)}`.

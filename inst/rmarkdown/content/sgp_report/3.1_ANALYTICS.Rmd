@@ -1,18 +1,6 @@
-# Analytics
-
-This section provides basic details about the calculation of student growth percentiles from assessment data using the [`R` Software Environment](http://www.r-project.org/) [@Rsoftware] in conjunction with the [`SGP` package](https://github.com/CenterForAssessment/SGP) [@sgp2017].
-
-Broadly, the SGP analysis of the longitudinal student assessment data takes place in two steps:
-
-1. Data Preparation
-2. Data Analysis
-
-Those familiar with data analysis know that the bulk of the effort in the above two step process lies with Step 1: Data Preparation.  Following thorough data cleaning and preparation, data analysis using the `SGP` package takes clean data and makes it as easy as possible to calculate, summarize, output and visualize the results from SGP analyses.
-
 ## Data Preparation
 
-The data preparation step involves taking data provided and producing a `.Rdata` file that will subsequently be analyzed in Step 2. This process is carried out annually as new data becomes available from the XXX-SGP_STATE-XXX assessment program.  The new data is read into [`R`](http://www.r-project.org/) and modified slightly into the format suitable for analysis with the [`SGP` package](https://github.com/CenterForAssessment/SGP).  With an appropriate longitudinal data set prepared, we move to the calculation of student-level SGPs.
-
-##  Data Analysis
-
-The objective of the student growth percentile (SGP) analysis is to describe how (a)typical a student's growth is by examining his/her current achievement relative to students with a similar achievement history; i.e his/her *academic peers*.^[see [this presentation](https://github.com/CenterForAssessment/SGP_Resources/blob/master/presentations/Academic_Peer_Slides.pdf) for a description of academic peers.] This norm-referenced growth quantity is estimated using quantile regression [@Koenker:2005] to model curvilinear functional relationships between student's prior and current scores.  One hundred such regression models are calculated for each separate analysis (defined as a unique ***year** by **content area** by **grade** by **prior order*** combination).  The end product of these 100 separate regression models is a single coefficient matrix, which serves as a look-up table to relate prior student achievement to current achievement for each percentile. This process ultimately leads to tens of thousands of model calculations during each annual round of analyses.
+The data preparation step involves taking data provided by `r params$state.org.abv`
+and producing a `.Rdata` file that will subsequently be analyzed in Step 2. This
+process is carried out annually as new data becomes available from the `r params$state.type`
+assessment program. `r if (!is.null(params$data.prep.text)) params$data.prep.text`

@@ -1,10 +1,27 @@
 #  Introduction
 
-The SGP methodology is an open source norm- and criterion-referenced student growth analysis that produces student growth percentiles and student growth projections/targets for each student in the state with adequate longitudinal data.  The methodology is currently used for many purposes.  States and districts have used the results in various ways including parent/student diagnostic reporting, institutional improvement, and school and educator accountability.  Specifics about the manner in which growth is included in school and educator accountability can be found in documents related to those accountability systems.  
+This report contains details on the `r params$year.long` implementation of the
+student growth percentile (SGP) model for `r if (!is.null(params$non.state)) {
+  paste0("the ", params$non.state.org, "(", params$non.state.org.abv, ")")} else {
+  paste("the state of", params$state.name)}`. `r if (!is.null(params$params$analytics.org.name)) {
+  paste0("The", params$analytics.org.name, "(", params$analytics.org.abv, ")
+contracted with the ", params$state.org, "(", params$state.org.abv, ") to implement
+the SGP methodology")} else {"The SGP methodology was implemented"}` using data
+derived from the [`r params$test.name[1]` (`r params$test.abv[1]`)](`r noquote(params$test.url[1])`)
+`r if(length(params$test.name) > 1) paste0("and [", params$test.name[2], " (",
+params$test.abv[2], ")](", params$test.url[2], ")")` to create the `r if (!is.null(params$sgp.model.name)) {
+  paste0("[", params$sgp.model.name, "(" params$sgp.model.abv, ")](", noquote(params$sgp.model.url), ")")} else {
+  paste(params$state.name, "Student Growth Model")}`.  `r if (!is.null(params$params$analytics.org.name)) {
+  paste("The goal of the engagement with", params$state.org.abv`, "is to create
+  a set of open source analytics techniques and conduct analyses that will
+  eventually be conducted exclusively by", params$state.org.abv`, "in following years.")}
 
-This report includes four sections:
-
-- ***Data - *** includes details on the decision rules used in the raw data preparation and student record validation.
-- ***Analytics - *** introduces some of the basic statistical methods and the computational process implemented in the 2016 analyses.^[More in-depth treatment of the SGP Methodology can be found [here](https://github.com/CenterForAssessment/SGP_Resources/tree/master/articles).]
-- ***Goodness of Fit - *** investigates how well the statistical models used to produce SGPs fit XXX-SGP_STATE-XXX students' data.  This includes discussion of goodness of fit plots and the student-level correlations between SGP and prior achievement.
-- ***SGP Results - *** provides basic descriptive statistics from the 2016 analyses at both the state and school levels.
+The SGP methodology is an open source norm- and criterion-referenced student
+growth analysis that produces student growth percentiles `r if (!is.null(params$sgp.projections)) {
+  "and student growth projections/targets "}`for each student in the `r params$state.type`
+  with adequate longitudinal data.  The methodology is currently used for many
+  purposes.  States and districts have used the results in various ways
+  including parent/student diagnostic reporting, institutional improvement, and
+  school and educator accountability.  Specifics about the manner in which
+  growth is included in school and educator accountability can be found in
+  documents related to those accountability systems.
