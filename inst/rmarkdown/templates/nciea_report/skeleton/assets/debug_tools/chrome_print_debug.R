@@ -33,5 +33,5 @@ local({
   }
 
   # test
-  chrome_print_log("my_headache.html", "chrome_print_test_2.log")
+  chrome_print_log("my_headache.html", "chrome_print_test_X.log")
 })

@@ -7,7 +7,7 @@
 
 	### Set variables to NULL to prevent R CMD check warnings
 
-	YEAR <- NULL
+	cover_page <- references <- sgp_year <- output_directory <- YEAR <- NULL # Extras here to avoid R CMD check errors temporarily with dev params
 
 ###  Params to Build
 	# output_directory="Documents/reports"

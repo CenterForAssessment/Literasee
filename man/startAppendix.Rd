@@ -26,5 +26,7 @@ The function sets up the document to transition to appendix formatting, includin
 }
 
 \examples{
-startAppendix()
+  \dontrun{
+    startAppendix()
+  }
 }
