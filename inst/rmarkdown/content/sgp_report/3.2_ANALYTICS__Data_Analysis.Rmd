@@ -1,0 +1,34 @@
+##  Data Analysis
+
+The objective of the student growth percentile (SGP) analysis is to describe how
+(a)typical a student's growth is by examining his/her current achievement relative
+to students with a similar achievement history; i.e his/her *academic peers*.^[see
+[this presentation](https://github.com/CenterForAssessment/SGP_Resources/blob/master/presentations/Academic_Peer_Slides.pdf)
+for a description of academic peers.] This norm-referenced growth quantity is
+estimated using quantile regression [@Koenker:2005] to model curvilinear functional
+relationships between student's prior and current scores.  One hundred such
+regression models are calculated for each separate analysis (defined as a unique
+***year** by **content area** by **grade** by **prior order*** combination`r if(!is.na(params$eoct.tf)) {
+  ", with student grade-level ignored in EOC subjects"} `).  The end product of
+these 100 separate regression models is a single coefficient matrix, which serves
+as a look-up table to relate prior student achievement to current achievement for
+each percentile. This process ultimately leads to tens of thousands of model
+calculations `r if() {"(and many more when SIMEX measurement error corrections
+  are performed)"}` during each of `r params$state`'s annual round of analyses.
+For a more in-depth discussion of SGP calculation, see Betebenner
+[-@Betebenner:2009]`r if (!is.null(params$appendix) & agrepl("SGP Methodology", params$appendix.title, ignore.case=TRUE)) {
+  paste(" and", params$appendix[agrep("SGP Methodology", params$appendix.title,
+  ignore.case=TRUE)], "of this report")}``r if(grepl("SIMEX", params$sgp.type)) {
+  ", and see Shang, VanIwaarden and Betebenner [-@ShangVanIBet:2015] for further
+  information on the SIMEX measurement error correction methodology"}`.
+
+
+SGP analyses follow a work flow established in previous years that includes the
+following 3 steps:
+
+1. Update the `r params$state` `r params$state.type` assessment meta-data required
+for SGP calculations using the `SGP` package.
+2. Create annual SGP configurations for analyses.
+3. Conduct all`r ifelse(params$eoct.tf, " EOG and EOC ", " ")`SGP analyses.
+4. Combine results into the master longitudinal data set, summarize results and
+output data.

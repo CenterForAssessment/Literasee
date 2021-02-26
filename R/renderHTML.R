@@ -206,7 +206,7 @@ renderHTML <- function (
         html.text[lotl] <- gsub(old.file, sub(file.path("HTML", ""), "", new.file), html.text[lotl], fixed=TRUE)
       }
     }
-    ##  Find remaining Georgia_Skip_Year_SGP_Report_files (render.dir) dependencies and move to assets/misc
+    ##  Find remaining render.dir dependencies and move to assets/misc
     ##  https://stackoverflow.com/a/59783181
     if (length(leftover.asset.files <- list.files(file.path("HTML", render.dir), full.names = FALSE, recursive=TRUE)) > 0) {
       lapply(list.files(file.path("HTML", render.dir), include.dirs=TRUE, full.names=TRUE), function(x) {

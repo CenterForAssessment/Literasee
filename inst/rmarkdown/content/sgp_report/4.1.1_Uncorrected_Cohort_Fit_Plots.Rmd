@@ -1,0 +1,46 @@
+`r if (params$sgp.type != "SGP") {cat("\n###  Uncorrected model fit\n")}`
+`r if (params$sgp.type != "SGP") {paste0("\n
+Although the *official* SGPs used in ", params$state,"'s accountability system
+incorporate ", ifelse(grepl("BASELINE", toupper(params$sgp.type)), "Baseline", ""),
+ifelse(grepl("SIMEX", toupper(params$sgp.type)), "SIMEX measurement error correction", "calculations"),
+" we provide uncorrected", ifelse(grepl("BASELINE", toupper(params$sgp.type)), ", cohort-referenced ", " "),
+"SGP plots here as exemplars of cohort-referenced model fit, and to compare with",
+ifelse(grepl("BASELINE", toupper(params$sgp.type)), " Baseline-referenced ", ""),
+ifelse(grepl("SIMEX", toupper(params$sgp.type)), " SIMEX corrected and Ranked SIMEX ", ""),
+"models that use the same student data in the subsequent sections.")}`
+
+The model fit plots for `r ifelse(grepl("SIMEX", toupper(params$sgp.type)), "the unadjusted model results in ", "the cohort-referenced model results in ")`
+all subjects are excellent with few exceptions (see Appendix A for all model fit
+plots).  Figure `r getCounter("figure")+1` displays the
+`r if (params$good.fit.example.grade != "EOCT") {paste0(params$good.fit.example.grade, "<sup>th</sup> grade")}`
+`r params$good.fit.example.subject` model as an exemplar of model fit, and Figure
+`r getCounter("figure")+2` is from `r if (params$misfit.example.grade != "EOCT") {paste(params$misfit.example.grade, "<sup>th</sup> grade")}`
+`r misfit.example.subject`, which exemplifies the extent to which model misfit
+is present in the `r params$state` SGP analyses. `r if (!is.null(params$good.fit.example.description)) params$good.fit.example.description`
+
+```{r, results="asis", echo=FALSE}
+	cohort.good_fit.plot <- grep(pattern="SIMEX|BASELINE", value=TRUE, invert=TRUE,
+														   x=list.files(file.path("assets", "img", "Goodness_of_Fit", "good_fit"), recursive=TRUE, full.names = TRUE))
+	cohort.good_fit.text <- ifelse(params$good.fit.example.grade != "EOCT", paste0(params$good.fit.example.grade, "<sup>th</sup> grade "), "")
+	cohort.good_fit.text <- paste0(cohort.good_fit.text, capwords(params$good.fit.example.subject))
+	tmp.caption <- paste0("Goodness of Fit Plot for", params$year, ifelse(params$sgp.type != "SGP", " ***Uncorrected*** ", ""),
+												cohort.good_fit.text, ": Example of good model fit.")
+	placeFigure(page.break= TRUE, pdf.width = 0.875, files = cohort.good_fit.plot, caption = tmp.caption)
+```
+
+Minor misfit in SGP models can be caused by several factors, such as the use of
+a single prior in the model, relatively small cohort size and non-representative
+or homogeneous cohorts (e.g., all advanced learner cohorts). These factors often
+result in clustering of SGPs in some conditional distribution grid cells (dark
+red cells adjacent to dark blue cells) because the norm group data does not
+provide sufficient information to differentiate between students. `r if (!is.null(params$misfit.example.description)) params$misfit.example.description`
+
+```{r, results="asis", echo=FALSE}
+	cohort.misfit.plot <- grep(pattern="SIMEX|BASELINE", value=TRUE, invert=TRUE,
+													   x=list.files(file.path("assets", "img", "Goodness_of_Fit", "misfit"), recursive=TRUE, full.names = TRUE))
+	cohort.misfit.text <- ifelse(params$misfit.example.grade != "EOCT", paste0(params$misfit.example.grade, "<sup>th</sup> grade "), "")
+	cohort.misfit.text <- paste0(cohort.misfit.text, capwords(params$misfit.example.subject))
+	tmp.caption <- paste0("Goodness of Fit Plot for", params$year, ifelse(params$sgp.type != "SGP", " ***Uncorrected*** ", ""),
+												cohort.misfit.text, ": Example of good model fit.")
+	placeFigure(page.break= TRUE, files = cohort.misfit.plot, caption = tmp.caption)
+```

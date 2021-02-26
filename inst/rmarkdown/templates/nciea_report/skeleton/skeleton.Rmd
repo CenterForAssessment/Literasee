@@ -1,0 +1,121 @@
+---
+title: "Document Title"
+subtitle: "Document Subtitle"
+author: ["Report Author 1", "Report Author 2"]
+report_date: "MONTH YEAR is typical format"
+client_name: "Client Name"
+client_organization: "Client Organization"
+client_city: "Client City"
+client_state: "Client State"
+project_team: "Project Team (Optional)"
+project_email: "myname@email.org (Optional)"
+project_code: "Project Code (Optional)"
+acknowledgements: "Names of People to Thank (Optional - client_organization if NULL)"
+photo_background: FALSE
+knit: pagedown::chrome_print
+output:
+  pagedown::html_paged:
+    toc: TRUE
+    toc_depth: 2
+    self_contained: TRUE
+    number_sections: TRUE
+    fig_caption: TRUE
+    template: "assets/pandoc/nciea.html"
+    css: ["assets/css/nciea-style.css", "assets/css/nciea-page.css", "assets/css/nciea-default.css"]
+    include:
+      in_header: "assets/js/meta_lof_js.html"
+customjs: "assets/js/lof.js"
+toc-title: "Inside"
+lot: FALSE
+lof: TRUE
+lof-title: "Figures and Tables"
+paged-footnotes: TRUE
+bibliography: '`r system.file("rmarkdown", "content", "bibliography", "Literasee.bib" , package = "Literasee")`'
+biblio-style: apalike
+link-citations: yes
+abstract: >-
+  ```{r, child = "rmd/abstract.Rmd"}
+  ```
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.topcaption = TRUE,
+                      fig.cap = TRUE,
+                      dpi = 150)
+```
+
+<div class="exec-summary">
+
+# Executive Summary {-}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia felis eget nisl tincidunt rutrum. Aliquam vitae lacinia ante, in pulvinar tortor. Maecenas porta, purus id condimentum euismod, leo urna eleifend nibh, scelerisque blandit lacus nulla nec leo. Vivamus lacus arcu, ultricies ac faucibus et, egestas eget velit. Morbi et accumsan ex. Nulla pellentesque molestie risus, quis interdum erat commodo sit amet. In convallis egestas velit, sit amet condimentum leo aliquet nec. Nunc ultricies ex sit amet pulvinar pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam odio nibh, efficitur vel nunc eu, posuere semper velit. Maecenas ac imperdiet elit, in placerat lacus. Suspendisse consectetur ligula et dolor porta, quis tempus risus elementum. Suspendisse sit amet metus ultricies, porttitor sem a, ultrices turpis
+
+## Executive Summary Sub-Headline {-}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia felis eget nisl tincidunt rutrum. Aliquam vitae lacinia ante, in pulvinar tortor. Maecenas porta, purus id condimentum euismod, leo urna eleifend nibh, scelerisque blandit lacus nulla nec leo. Vivamus lacus arcu, ultricies ac faucibus et, egestas eget velit. Morbi et accumsan ex. Nulla pellentesque molestie risus, quis interdum erat commodo sit amet. In convallis egestas velit, sit amet condimentum leo aliquet nec. Nunc ultricies ex sit amet pulvinar pellentesque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam odio nibh, efficitur vel nunc eu, posuere semper velit. Maecenas ac imperdiet elit, in placerat lacus. Suspendisse consectetur ligula et dolor porta, quis tempus risus elementum. Suspendisse sit amet metus ultricies, porttitor sem a, ultrices turpis
+
+</div>
+
+# First Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+## Second Level Header
+
+<aside>
+
+> Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+<p class="quote-author">-- George Washington</p>
+
+</aside>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
++ list 1
++ list 2
+  + list 2.1
+    + list 2.1.1
+    + list 2.1.2
+  + list 2.2
++ list 3
+  + list 3.1
+  + list 3.2
+    + list 3.2.1
+
+### Third Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo. Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.
+
+```{r fig.height=3, fig.cap = "Table Title", out.extra='data-prefix="Table"'}
+  output <- matrix(1:4,
+                   ncol=2,
+                   dimnames = list(list("Row 1", "Row 2"),
+                                   list("Column 1", "Column 2")))
+
+  Literasee::dualTable(output, caption="Simple Test Table")
+```
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit.
+
+```{r, fig.cap = "Title", out.width="200px", fig.align='center', out.extra='data-prefix="Figure"'}
+  knitr::include_graphics("assets/images/example_figure.png")
+```
+
+#### Fourth Level Header
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Et ligula ullamcorper malesuada proin libero nunc consequat. Proin libero nunc consequat interdum varius sit. Maecenas pharetra convallis posuere morbi leo.
+
+<aside class = "info-callout">
+
+<p class="info-callout-title">Information
+ call-out</p>
+
+Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.
+
+</aside>
+
+Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi. Maecenas pharetra convallis posuere morbi. Bibendum ut tristique et egestas quis ipsum suspendisse.^[This is a footnote]
+
+Ipsum dolor sit amet consectetur. Dolor sit amet consectetur adipiscing elit duis tristique. Sit amet cursus sit amet dictum sit. Non sodales neque sodales ut etiam sit amet. Fermentum odio eu feugiat pretium nibh ipsum. Neque aliquam vestibulum morbi blandit cursus risus at ultrices mi.

@@ -1,0 +1,25 @@
+# Goodness of Fit
+
+Assessment data are generally imperfect and require sophisticated statistical
+methods to deal with the various issues they present. Cubic B-spline basis
+functions are used in the calculation of SGPs to more adequately model the
+heteroscedasticity, non-linearity and skewness. Despite this, assumptions that
+are made in the statistical modeling process can impact how well the percentile
+curves fit the data.^[It should be noted that the independent estimation of the
+regression functions can potentially result in the crossing of the quantile
+functions. This occurs near the extremes of the distributions and is potentially
+more likely to occur given the use of non-linear functions. A potential result
+of allowing the quantile functions to cross would be *lower* estimated growth
+percentiles for *higher* observed scale scores at the extremes (give all else
+equal in prior scores) and vice versa. In order to deal with these contradictory
+estimates, quantile regression results are isotonized to prevent quantile
+crossing following the methods derived by Chernozhukov, Fernandez-Val and Glichon
+[-@chernozhukov2010quantile].] Accordingly a thorough evaluation of the models'
+fit is always required.
+
+Examination of the `r params$state` Student Growth Model goodness-of-fit was
+conducted by first inspecting model fit plots the `SGP` software package produced
+for each analysis, and subsequently inspecting student level correlations between
+growth and achievement. Discussion of the model fit plots in general and examples
+of them are provided below, as are tables of the correlation results. `r if (!is.null(params$appendix)) {
+  "The complete portfolio of model fit plots is provided in Appendix A."}`

@@ -1,0 +1,19 @@
+This report includes four sections:
+
+- ***Data - *** includes details on the decision rules used in the raw data
+preparation and student record validation.
+- ***Analytics - *** introduces some of the basic statistical methods and the
+computational process implemented in the `r params$year` analyses.^[More in-depth
+treatment of the SGP Methodology can be found [here](https://github.com/CenterForAssessment/SGP_Resources/tree/master/articles)
+`r if (!is.null(params$appendix) & agrepl("SGP Methodology", params$appendix.title, ignore.case=TRUE)) {
+  paste(" and in", params$appendix[agrep("SGP Methodology", params$appendix.title, ignore.case=TRUE)], "of this report")}`].
+- ***Goodness of Fit - *** investigates how well the statistical models used to
+produce SGPs fit `r params$state.name` students' data.  This includes discussion
+of goodness of fit plots and the student-level correlations between SGP and
+prior achievement.
+- ***SGP Results - *** provides basic descriptive statistics from the `r params$year`
+analyses at both the `r params$state.type` and school levels.
+
+`r if (!is.null(params$appendix)) {ifelse(length(params$appendix)>1,
+  "This report also includes multiple appendices. ", "This report also includes an appendix. ")}``r if (!is.null(params$appendix.description)) {
+    for (d in params$appendix.description) paste(params$appendix.description[d], sep=" ")}`

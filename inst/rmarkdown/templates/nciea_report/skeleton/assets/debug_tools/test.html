@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', 'Wingdings', serif;
+      }
+    </style>
+    <script>
+      let fontsReady = new Promise((resolve, reject) => {
+        window.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            let fontsLoaded = [];
+            (document.fonts || []).forEach((font) => {
+              console.log("Found a font, status: " + font.status);
+              fontsLoaded.push(font.load())
+            });
+            Promise.all(fontsLoaded).then(
+              (value) => {
+                console.log("All fonts are loaded.");
+                resolve(value);
+              },
+              reject
+            );
+          },
+          {capture: true, once: true}
+        );
+      });
+      fontsReady.catch((r) => {
+        console.log("Error: " + r);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Test</h1>
+  </body>
+</html>

@@ -1,22 +1,48 @@
 `reportSGP` <- function(
+	state,
 	sgp_object,
-	sgp_year,
-	state=NULL,
-	output_directory="Documents/reports",
-	output_file_name=NULL,
-	output_knit=TRUE,
-	content="sgp_report",
-	license="default",
-	references=TRUE,
-	cover_page="default"
+	report_params,
+	output_knit=TRUE
 ) {
 
 	### Set variables to NULL to prevent R CMD check warnings
 
-	YEAR <- NULL
+	cover_page <- references <- sgp_year <- output_directory <- YEAR <- NULL # Extras here to avoid R CMD check errors temporarily with dev params
 
+###  Params to Build
+	# output_directory="Documents/reports"
+	# output_file_name=NULL
+	# content="sgp_report"
+	# license="default"
+	# references=TRUE
+	# cover_page="default"
+	# sgp.year # "2018_2019"
+	# sgp.type # SGP, SGP_SIMEX_RANKED, baselines, etc.
+	# year # "2019"
+	# analytics.org.name/.abv
+	# non.state/.org/.org.abv/.type # 'Partnership for Assessment of Readiness for College and Careers', 'P...A...R...C...C... consortium', 'PARCC', type - 'consortium', 'district'
+	# state.org/.org/.org.abv/.type # also duplicate with non.state/.abv (just leave non.* null for most cases) state.type defaults to 'state'
+	# sgp.model.name/.abv/.url # [Georgia Student Growth Model (GSGM)](http://www.gadoe.org/Curriculum-Instruction-and-Assessment/Assessment/Pages/Georgia-Student-Growth-Model.aspx)
+	# appendix/.title/.description # 'Appendix A', 'Goodness of Fit Plots', 'Appendix A displays Goodness of Fit plots for each analysis conducted for Spring 2019.'
+	# eoct.tf
+	# sgp.cohort.size
+	#
+	# valid.data.rule.general
+	# valid.data.rule.eog
+	# valid.data.rule.eoct
+	# data.prep.text
+	#
+	# good.fit.example.grade
+	# misfit.example.grade
+	# good.fit.example.subject
+	# misfit.example.subject
+	# good.fit.example.norm.group
+	# misfit.example.norm.group
+	# good.fit.example.description
+	# misfit.example.description
 
-	### Utility functions
+### Utility functions
+	"%w/o%" <- function(x,y) x[!x %in% y]
 
 	strtail <- function (s, n = 1) {
 		if (n < 0) substring(s, 1 - n) else substring(s, nchar(s) - n + 1)
@@ -27,8 +53,9 @@
 
 	if (is.null(state)) {
 		tmp.name <- toupper(gsub("_", " ", deparse(substitute(sgp_object))))
-		state <- SGP::getStateAbbreviation(tmp.name, "reportSGP")
+		state <- state.abv <- SGP::getStateAbbreviation(tmp.name, "reportSGP")
 	}
+	state.name <- SGP::getStateAbbreviation(state.abv, type="state")
 
 
 	### Create output_file
@@ -131,6 +158,6 @@
 
 	cat(sgp.rmd, sep = "\n", file=output_file)
 
-	if(output_knit) knitr::knit(input=output_file, output=output_file)
+	if (output_knit) knitr::knit(input=output_file, output=output_file)
 
 } ### END reportSGP
