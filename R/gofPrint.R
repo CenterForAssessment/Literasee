@@ -45,14 +45,14 @@ gofPrint <- function(
           tmp.path <- gsub(tmp.content_area, substr(tmp.content_area, 1, 1), tmp.path)
         }
         if ("PDF" %in% output_format) {
-          pdf(file=paste0(tmp.path, ".pdf"), width=8.5, height=11)
+          grDevices::pdf(file=paste0(tmp.path, ".pdf"), width=8.5, height=11)
           if ("PLOT" %in% names(sgp_object@SGP[["Goodness_of_Fit"]][[i]][[j]])) {
             grid.draw(sgp_object@SGP[["Goodness_of_Fit"]][[i]][[j]][["PLOT"]])
           } else grid.draw(sgp_object@SGP[["Goodness_of_Fit"]][[i]][[j]])
           dev.off()
         }
         if ("PNG" %in% output_format) {
-          Cairo(file=paste0(tmp.path, ".png"),
+          Cairo::Cairo(file=paste0(tmp.path, ".png"),
                 width=8.5, height=11, units="in", dpi=144, pointsize=10.5, bg="transparent")
           if ("PLOT" %in% names(sgp_object@SGP[["Goodness_of_Fit"]][[i]][[j]])) {
             grid.draw(sgp_object@SGP[["Goodness_of_Fit"]][[i]][[j]][["PLOT"]])
@@ -65,7 +65,7 @@ gofPrint <- function(
         }
       }
     } else {
-      messageSGP(paste0("\tNOTE: No Goodness of Fit tables available to print for ", i, ". No tables will be produced."))
+      message(paste0("\tNOTE: No Goodness of Fit tables available to print for ", i, ". No tables will be produced."))
     }
   }
 }
