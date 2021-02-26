@@ -1,0 +1,43 @@
+ <img class = "logo_abstract" src = "assets/images/nciea-logo-long.svg">
+  <img class = "color_rect_abstract" src = "assets/images/red-rectangle.svg">
+  <br>
+  <h1 class = "title" style="margin-top: 1%; margin-left: 1%; margin-right: -12%;" >`r rmarkdown::metadata$title` </h1>
+  <h1 class = "subtitle" style="margin-top: 1%; margin-left: 1%; margin-right: -12%;"> `r rmarkdown::metadata$subtitle` </h1>
+  <br>
+  Submitted to:
+  <br>
+  <br>
+  `r rmarkdown::metadata$client_name`
+  <br>
+  `r rmarkdown::metadata$client_organization`
+  <br>
+  `r ifelse(is.null(rmarkdown::metadata$report_date), format(Sys.time(), format = "%B %Y"), rmarkdown::metadata$report_date)`
+  <br>
+  <br>
+  <br>
+  Author(s): `r paste(paste(head(rmarkdown::metadata$author, -1), collapse=", "), tail(rmarkdown::metadata$author, 1), sep=" and ")`
+  <br>
+  `r if(!is.null(rmarkdown::metadata$project_team)) {paste("Project Team:", rmarkdown::metadata$project_team)}`
+  <br>
+  <br>
+  <br>
+  For More Information:
+  <br>
+  <br>
+  `r if(!is.null(rmarkdown::metadata$project_code)) {paste("Project Code:", rmarkdown::metadata$project_code)}`
+  <br>
+  `r if(!is.null(rmarkdown::metadata$project_email)) {rmarkdown::metadata$project_email}`
+  <br>
+  <br>
+  <br>
+  Acknowledgements:
+  <br>
+  <br>
+  The Center for Assessment wants to thank `r ifelse(is.null(rmarkdown::metadata$acknowledgements), rmarkdown::metadata$client_organization, rmarkdown::metadata$acknowledgements) ` for their contributions to the creation of this report.
+  <br>
+  <br>
+  <br>
+  Suggested Citation:
+  <br>
+  <br>
+  The National Center for the Improvement of Educational Assessment (`r ifelse(is.null(rmarkdown::metadata$report_date), format(Sys.time(), format = "%Y"), strsplit(rmarkdown::metadata$report_date, " ")[[1]][2])`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
