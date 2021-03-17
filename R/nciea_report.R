@@ -7,8 +7,8 @@
 #' @export
 #'
 #' @examples
-new_nciea_report <- function(file_name = "nciea_report",
-                            type_of_report = NULL) {
+new_nciea_report <- function(file_name = "new_report",
+                            type_of_report = "nciea_report") {
 
   if (is.null(type_of_report) | toupper(type_of_report) %in% c("NCIEA_REPORT", "GENERAL")) {
     type_of_report = "nciea_report"

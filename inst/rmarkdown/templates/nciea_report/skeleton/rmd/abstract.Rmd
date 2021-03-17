@@ -11,11 +11,25 @@
   <br>
   `r rmarkdown::metadata$client_organization`
   <br>
-  `r ifelse(is.null(rmarkdown::metadata$report_date), format(Sys.time(), format = "%B %Y"), rmarkdown::metadata$report_date)`
+  `r ifelse(is.null(rmarkdown::metadata$date), format(Sys.time(), format = "%B %Y"), rmarkdown::metadata$date)`
   <br>
   <br>
-  <br>
-  Author(s): `r paste(paste(head(rmarkdown::metadata$author, -1), collapse=", "), tail(rmarkdown::metadata$author, 1), sep=" and ")`
+```{r, cache=FALSE, echo=FALSE}
+  if (is.list(rmarkdown::metadata$author)) {
+    auth.list <- list()
+    for(auth in seq(rmarkdown::metadata$author)) {
+      tmp.name <- rmarkdown::metadata$author[[auth]][["name"]]
+      tmp.affl <- rmarkdown::metadata$author[[auth]][["affiliation"]]
+      auth.list <- c(auth.list, paste0(tmp.name, " (", tmp.affl, ")"))
+    }
+    auth.text <- paste0("<p style='margin-left: 30px;'>", paste(paste(head(auth.list, -1), collapse=",<br>"), tail(auth.list, 1), sep=" and<br>"), "</p>")
+    ###   One line alternative:
+    # auth.text <- paste(paste(head(auth.list, -1), collapse=", "), tail(auth.list, 1), sep=" and ")
+  } else {
+    auth.text <- paste(paste(head(rmarkdown::metadata$author, -1), collapse=", "), tail(rmarkdown::metadata$author, 1), sep=" and ")
+  }
+```  
+  Author(s): `r auth.text`
   <br>
   `r if(!is.null(rmarkdown::metadata$project_team)) {paste("Project Team:", rmarkdown::metadata$project_team)}`
   <br>
@@ -40,4 +54,4 @@
   Suggested Citation:
   <br>
   <br>
-  The National Center for the Improvement of Educational Assessment (`r ifelse(is.null(rmarkdown::metadata$report_date), format(Sys.time(), format = "%Y"), strsplit(rmarkdown::metadata$report_date, " ")[[1]][2])`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
+  The National Center for the Improvement of Educational Assessment (`r ifelse(is.null(rmarkdown::metadata$date), format(Sys.time(), format = "%Y"), strsplit(rmarkdown::metadata$date, " ")[[1]][2])`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`

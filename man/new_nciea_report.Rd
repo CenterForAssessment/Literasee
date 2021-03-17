@@ -2,7 +2,7 @@
 \alias{new_nciea_report}
 \title{Create a new report using the NCIEA RMarkdown template}
 \usage{
-new_nciea_report(file_name = "nciea_report", type_of_report = NULL)
+new_nciea_report(file_name = "new_report", type_of_report = "nciea_report")
 }
 \arguments{
 \item{file_name}{The name of the file for your RMarkdown document. Defaults to \sQuote{report} and creates a file called report.Rmd}

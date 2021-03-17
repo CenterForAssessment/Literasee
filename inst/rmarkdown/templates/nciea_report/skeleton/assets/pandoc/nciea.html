@@ -159,7 +159,7 @@ $if(date)$
 $endif$
 $for(author)$
 $if(author.name)$
-<h2 class="author">$author.name$$if(author.affiliation)$", "$author.affiliation$<br/>$endif$</h2>
+<h2 class="author">$author.name$$if(author.affiliation)$, $author.affiliation$<br/>$endif$</h2>
 $if(author.email)$
 <a class="author-email" href="mailto:#">$author.email$</a>
 </address>
