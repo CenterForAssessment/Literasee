@@ -1,7 +1,11 @@
 ---
 title: "Document Title"
 subtitle: "Document Subtitle"
-author: ["Report Author 1", "Report Author 2"]
+author:
+- name: "Author Number1"
+  affiliation: 'Author1 Organization'
+- name: "Author Number2"
+  affiliation: 'Author2 Organization'
 report_date: "MONTH YEAR is typical format"
 client_name: "Client Name"
 client_organization: "Client Organization"
@@ -31,10 +35,9 @@ lof: TRUE
 lof-title: "Figures and Tables"
 paged-footnotes: TRUE
 bibliography: '`r system.file("rmarkdown", "content", "bibliography", "Literasee.bib" , package = "Literasee")`'
-biblio-style: apalike
 link-citations: yes
 abstract: >-
-  ```{r, child = "rmd/abstract.Rmd"}
+  ```{r, child = "assets/rmd/abstract.Rmd"}
   ```
 ---
 
