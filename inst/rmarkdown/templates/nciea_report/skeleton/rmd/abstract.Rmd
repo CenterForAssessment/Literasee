@@ -35,14 +35,11 @@
   <br>
   <br>
   <br>
-  For More Information:
-  <br>
-  <br>
+  `r if((!is.null(rmarkdown::metadata$project_code)|!is.null(rmarkdown::metadata$project_email))) {paste("For More Information:<br><p style='font-weight: 400;margin-left: 30px;padding-left: 90px;text-indent: -90px;'>")}`
   `r if(!is.null(rmarkdown::metadata$project_code)) {paste("Project Code:", rmarkdown::metadata$project_code)}`
   <br>
   `r if(!is.null(rmarkdown::metadata$project_email)) {rmarkdown::metadata$project_email}`
-  <br>
-  <br>
+  `r if((!is.null(rmarkdown::metadata$project_code)|!is.null(rmarkdown::metadata$project_email))) {paste("</p>")}`
   <br>
   Acknowledgements:
   <br>
@@ -54,4 +51,4 @@
   Suggested Citation:
   <br>
   <br>
-  The National Center for the Improvement of Educational Assessment (`r ifelse(is.null(rmarkdown::metadata$date), format(Sys.time(), format = "%Y"), strsplit(rmarkdown::metadata$date, " ")[[1]][2])`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`
+  The National Center for the Improvement of Educational Assessment (`r ifelse(is.null(rmarkdown::metadata$date), format(Sys.time(), format = "%Y"), strsplit(rmarkdown::metadata$date, " ")[[1]][2])`). `r rmarkdown::metadata$title`. Submitted to `r rmarkdown::metadata$client_organization`, `r rmarkdown::metadata$client_city`, `r rmarkdown::metadata$client_state`.

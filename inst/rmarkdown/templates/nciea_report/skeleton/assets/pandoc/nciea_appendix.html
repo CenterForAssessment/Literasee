@@ -95,6 +95,14 @@ $if(theme)$
 $endif$
 $endif$
 
+$if(appendix-prefix)$
+<style type="text/css">
+  :root {
+    --appendix-prefix: "$appendix-prefix$";
+  }
+</style>
+$endif$
+
 $if(abstract)$
 <style type="text/css">
   h3.abstract{
@@ -110,6 +118,26 @@ $endif$
 $for(css)$
 <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$/>
 $endfor$
+
+<!--  override some css from nciea-style.css and nciea-default.css  -->
+<style type="text/css">
+  h1.title {
+    position: relative;
+    margin-top: 55%;
+    font-size: 32pt;
+    color: #FF0000;
+  }
+  h1.subtitle {
+    position: relative;
+    font-size: 28pt;
+    color: #FF0000;
+  }
+
+  .toc a::after, .lot a::after, .lof a::after {
+    content: var(--appendix-prefix, "A") "-" target-counter(attr(href), page);
+    float: right;
+  }
+</style>
 
 $if(theme)$
 <style type = "text/css">
@@ -146,18 +174,20 @@ $if(title)$
 $if(shorttitle)$
 <h1 class="shorttitle1" style="display: none;">$shorttitle$</h1>
 $endif$
-<h1 class="title">$title$</h1>
+<h1 class="title">Appendix$if(appendix-prefix)$ $appendix-prefix$$endif$
+<br><br/>
+$title$</h1>
 $if(subtitle)$
 <h1 class="subtitle"><span>$subtitle$</span></h1>
 $endif$
 $if(date)$
 <h2 class="date">$date$</h2>
 $endif$
+$if(author)$
 $for(author)$
 $if(author.name)$
 <h2 class="author">$author.name$$if(author.affiliation)$, $author.affiliation$<br/>$endif$</h2>
 $if(author.email)$
-<address class="author_afil">
 <a class="author-email" href="mailto:#">$author.email$</a>
 </address>
 $endif$
@@ -165,6 +195,7 @@ $else$
 <h2 class="author">$author$</h2>
 $endif$
 $endfor$
+$endif$
 </div>
 
 $if(abstract)$
@@ -175,6 +206,18 @@ $abstract$
 $endif$
 $endif$
 </div> <!-- END front-page -->
+
+
+$if(appendix-prefix)$
+<!-- <div class="appendix-prefix" style="display: none;">$appendix-prefix$</div>
+<script>
+(function() {
+    let appdxNum = document.querySelector('.appendix-prefix');
+    let appdxNumCont = appdxNum.textContent;
+    document.documentElement.style.setProperty('--appendix-prefix', appdxNumCont);
+})();
+</script> -->
+$endif$
 
 <div class="front-matter-container">
 $if(toc)$
