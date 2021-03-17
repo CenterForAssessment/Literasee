@@ -1,0 +1,9 @@
+# (APPENDIX) Appendix {-}
+
+```{r, cache=FALSE, results="asis", echo=FALSE}
+  # startAppendix()
+  setCounters()
+  options(table_counter=FALSE)
+  options(table_counter_str = paste0("**Table ", "A", "%s:**")) # "**Table A%s:**" LETTERS[appendix.number]
+  options(fig_caption_no_sprintf = paste0("**Figure ", "A", "%d:** %s")) # "**Figure A%d:** %s"
+```

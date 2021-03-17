@@ -1,7 +1,7 @@
 #' Create a new report using the NCIEA RMarkdown template
 #'
-#' @param file_name The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd
-#' @param type_of_report The type of report you're creating ("General", "Simple Report", or "Cleaning")
+#' @param file_name The name of the file for your RMarkdown document. Defaults to "new_report" and creates a file called report.Rmd
+#' @param type_of_report The type of report you're creating (only "nciea_report" currently)
 #'
 #' @return
 #' @export

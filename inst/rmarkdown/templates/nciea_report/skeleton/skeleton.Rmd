@@ -35,6 +35,7 @@ lof: TRUE
 lof-title: "Figures and Tables"
 paged-footnotes: TRUE
 bibliography: '`r system.file("rmarkdown", "content", "bibliography", "Literasee.bib" , package = "Literasee")`'
+biblio-style: apalike
 link-citations: yes
 abstract: >-
   ```{r, child = "assets/rmd/abstract.Rmd"}
