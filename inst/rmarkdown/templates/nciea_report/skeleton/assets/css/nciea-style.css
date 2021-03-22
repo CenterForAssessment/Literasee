@@ -36,7 +36,8 @@ h1.title {
   font-size: 22pt;
   font-weight: 600;
   margin-left: 40%;
-  margin-top: 65%;
+  margin-right: 0.5in;
+  margin-top: 60%;
   text-align: left;
 }
 
@@ -45,6 +46,7 @@ h1.subtitle {
   font-size: 18pt;
   font-weight: 300;
   margin-left: 40%;
+  margin-right: 0.5in;
   text-align: left;
 }
 
@@ -68,7 +70,7 @@ h2.author {
   font-style: italic;
   color: #FF0000;
   margin-left: 40%;
-  margin-top: 10;
+  margin-top: 15px;
   text-align: left;
   line-height: 0.5;
 }

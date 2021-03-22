@@ -100,8 +100,8 @@
 }
 .toc a.front-matter-ref::after, .lot a.front-matter-ref::after, .lof a.front-matter-ref::after {
   /* content: leader(dotted) target-counter(attr(href), page, lower-roman); */
-  /* content: target-counter(attr(href), page, lower-roman) - 1; /* Gets messed up?  Counts (non-displayed blank pages...)*/
-  content: "iii"; /* temporary cludge */
+  /* content: target-counter(attr(href), page, lower-roman); /* Gets messed up?  Counts (non-displayed blank pages...) */
+  content: "ii"; temporary cludge
 }
 .toc .leaders::before, .lot .leaders::before, .lof .leaders::before {
   float: left;
