@@ -1,5 +1,5 @@
- <img class = "logo_abstract" src = "assets/images/nciea-logo-long.svg">
-  <img class = "color_rect_abstract" src = "assets/images/red-rectangle.svg">
+ <img class = "logo_abstract" src = "../assets/images/nciea-logo-long.svg">
+  <img class = "color_rect_abstract" src = "../assets/images/red-rectangle.svg">
   <br>
   <h1 class = "title" style="margin-top: 1%; margin-left: 1%; margin-right: -12%;" >`r rmarkdown::metadata$title` </h1>
   <h1 class = "subtitle" style="margin-top: 1%; margin-left: 1%; margin-right: -12%;"> `r rmarkdown::metadata$subtitle` </h1>
