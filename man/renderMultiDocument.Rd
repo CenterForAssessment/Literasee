@@ -76,7 +76,7 @@ renderMultiDocument(
   \item{md_extensions}{Markdown extensions to be added or removed from the default definition or R Markdown.}
   \item{pandoc_args}{Additional command line options to pass to pandoc}
   \item{report_params}{Additional report parameters to pass to \code{\link[rmarkdown]{render}} (\sQuote{params}).}
-  \item{...}{Passed onto\code{\link{multi_document}} and/or \code{\link[rmarkdown]{html_document}}.}
+  \item{...}{Passed onto \code{\link{multi_document}} and/or \code{\link[rmarkdown]{html_document}}.}
 }
 \value{
   The compiled documents are written into the working directory.  Additional directories are created for each of the output formats.
