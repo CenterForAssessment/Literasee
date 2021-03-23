@@ -56,11 +56,11 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
       index.rmd.yml <- ymlthis::yml_toplevel(.yml=index.rmd.yml, `abstract-title`= "Executive Summary")
     }
 
-    bd.downloads <- paste0("downloads/", paste0(gsub(" ", "_", report_config$top.level$title), ".pdf"))
+    bd.downloads <- paste0("[\"downloads/", paste0(gsub(" ", "_", report_config$top.level$title), ".pdf"), "\", \"Report\"]")
     if (appdx.tf) {
       for (apdx in seq(length(rmd_file_list$appendices))) {
         tmp.apdx.label <- names(rmd_file_list$appendices[apdx])
-        bd.downloads <- c(bd.downloads, paste0("downloads/", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".pdf")))
+        bd.downloads <- c(bd.downloads, paste0("[\"downloads/", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".pdf"), "\", \"Appendix ",  tmp.apdx.label, "\"]"))
       }
     } # paste0("report/", paste0(gsub(" ", "_", report_config$top.level$title), ".html"))) # Add link to HTML formats?
 
