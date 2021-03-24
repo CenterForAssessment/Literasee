@@ -59,7 +59,7 @@
 				cat("
 <label>
 <input type='checkbox'>", paste0("
-<img src='",img, "' style='width: 100%'/>"), "
+<img src='",img, "' style='width: 100%' data-prefix='Figure'/>"), "
 </label>")
 			}
 			cat("
@@ -71,7 +71,7 @@
 		cat("
 <div class='image-content'>")
 		cat(paste0("
-<img src='", files, "' style='width: ", html.width, "px;'/>"),"
+<img src='", files, "' style='width: ", html.width, "px' data-prefix='Figure'/>"),"
 </div><!-- END image-content -->\n")
 
 	}

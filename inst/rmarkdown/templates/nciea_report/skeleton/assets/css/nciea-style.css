@@ -15,13 +15,13 @@ body {
 .title {
   margin-block-start: 0;
   margin-block-end: 0;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   color: #000000;
   margin-bottom: 0;
 }
 
 .subtitle {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   color: #333333;
   margin-top: 5px;
 }
@@ -36,7 +36,8 @@ h1.title {
   font-size: 22pt;
   font-weight: 600;
   margin-left: 40%;
-  margin-top: 65%;
+  margin-right: 0.5in;
+  margin-top: 60%;
   text-align: left;
 }
 
@@ -45,6 +46,7 @@ h1.subtitle {
   font-size: 18pt;
   font-weight: 300;
   margin-left: 40%;
+  margin-right: 0.5in;
   text-align: left;
 }
 
@@ -68,7 +70,7 @@ h2.author {
   font-style: italic;
   color: #FF0000;
   margin-left: 40%;
-  margin-top: 10;
+  margin-top: 15px;
   text-align: left;
   line-height: 0.5;
 }
@@ -80,6 +82,7 @@ h2.author {
 h1 {
   font-size: 24pt;
   font-weight: 700;
+  text-transform: uppercase;
 /*   background-color: #314160; */
   color: #FF0000;
   padding: 0;
@@ -88,11 +91,13 @@ h1 {
 h2 {
   font-size: 18pt;
   font-weight: 900;
+  text-transform: uppercase;
 }
 
 h3 {
   font-size: 14pt;
   font-weight: 700;
+  font-style: italic;
   text-transform: uppercase;
 }
 
@@ -166,15 +171,18 @@ aside.info-callout {
 table {
   font-family: "Lato", Arial, serif;
   font-weight: 300;
-  font-size: 12pt;
+  font-size: 11pt;
   margin: auto;
   border-top: 1px solid #666;
   border-bottom: 1px solid #666;
-  width: 100%;
+  /* width: 100%; */
+  min-width: 50%;
+  max-width: 100%;
+  line-height: 1.5em;
 }
 
 td {
-  padding: 10pt 0 10pt 0;
+  padding: 5pt 5pt 5pt pt; /* end 'pt' puts double line on top for some reason... */
 }
 
 /* ----------------- Images -------------------- */
@@ -184,9 +192,9 @@ img {
 
 /* -------------------- Captions ----------------------- */
 p.caption {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 600;
-  color: #333333;
+  color: #FF0000;
   text-align: left;
 }
 
@@ -196,6 +204,10 @@ table caption {
   color: #333333;
   text-align: left;
   margin-bottom: 5px;
+}
+
+table {
+  break-inside: avoid;
 }
 
 .figure {
@@ -262,4 +274,19 @@ pre.numberSource a.sourceLine {
 }
 pre.numberSource {
   margin-left: 0 !important;
+}
+
+/* ------------------------  References  ---------------------*/
+
+ /*   Hanging Indent style   */
+.references {
+ text-align:justify;
+ min-height: 22px;
+ padding-bottom: 15px;
+ padding-left: 35px;
+ text-indent: -35px;
+}
+
+.csl-entry {
+ padding-bottom: 10px;
 }

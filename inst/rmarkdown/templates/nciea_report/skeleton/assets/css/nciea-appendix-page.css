@@ -75,7 +75,7 @@ html {
 
 /* Front page or title page */
 .front-page {
-  counter-reset: page -1;
+  counter-reset: page 0;
 }
 
 /* page breaks; aka CSS fragmentation */
@@ -105,13 +105,13 @@ caption {
   break-after: avoid;
 }
 
+
 /* --------------------- Cover Page ------------------ */
 @page:first{ /**/
-  margin: 0 0 0 0;
-  background-color: #ffffff;
-  background-image: url(../images/nciea-cover-bottom.svg);
+  background-image: url(../images/nciea-appendix-cover.svg); /* var(--back-cover); */
+  background-position: center;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: right center;
 
   @top-left {
     content: none;
@@ -125,63 +125,11 @@ caption {
 }
 
 
-/* ------------------ Secondary Cover Page -------------------- */
-
-.abstract {
-	page: insidecover;
-}
-
-@page insidecover {
-  @bottom-center { content: normal }
-}
-
-.pagedjs_insidecover_first_page {
-  display:none;
-}
-
-
-/*  properties of abstract */
-div.abstract {
-  margin: 0 0 0 0;
-  background-color: #ffffff;
-}
-
-/* NCIEA LOGO*/
-img.logo_abstract {
-  margin: 0 auto;
-  display: block;
-  width: 25%;
-}
-
-/* Red rectangle */
-img.color_rect_abstract {
-  margin: 0 auto;
-  display: block;
-  height: 200px;
-  max-width: 100px;
-  position: absolute;
-  top: 20px;
-  left: -110px;
-}
-
-/* remove the h3 title "Abstract" */
-h3.abstract {
-  display: none;
-}
-
 /* ---------------------- Front Matter ----------------- */
 
 .front-matter-container {
 	page: frontmatter;
 }
-
-/* body {
-  counter-reset: frntPg;
-}
-
-.pagedjs_frontmatter_page {
-  counter-increment: frntPg;
-} */
 
 @page frontmatter {
   @bottom-center {
@@ -206,7 +154,7 @@ h3.abstract {
 
 @page maincontent {
   @bottom-center {
-      content: "- " counter(page) " -";
+      content: var(--appendix-prefix, "A") " - " counter(page);
       color: #32CD32;
       margin-top: 1.85cm;
       margin-bottom: 1cm;
@@ -220,16 +168,17 @@ h3.abstract {
 }
 
 /* ---------------------- Last page ----------------- */
-/* last page or back cover */
-.back-cover {
-  /* break-before: verso; */
-}
+
+/* .pagedjs_page:last-of-type {
+  display:none;
+} */
 .pagedjs_page:last-of-type {
-  background-image: url(../images/CFA_Logo.svg); /* var(--back-cover); */
+  visiblity: hidden;
+  /* background-image: url(../images/CFA_Logo.svg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.25;
+  opacity: 0.25; */
 }
 
 /* avoid supplementary blank page */
@@ -286,29 +235,6 @@ h3.abstract {
   background-color: #ffffff;
 }
 
-/* ------------------- Executive summary --------------------------- */
-/* title and subtitles style */
-.exec-summary h1 {
-  font-size: 24pt;
-  font-weight: 900;
-  background-color: #ffffff;
-  color: #FF0000;
-  margin-bottom: 0;
-}
-
-.exec-summary h2 {
-  font-size: 18pt;
-  font-weight: 700;
-  background-color: #ffffff;
-  color: #000000;
-  margin-bottom: 0;
-}
-
-/* page style */
-.exec-summary {
-  page-break-before: always;
-  break-after: avoid;
-}
 
 /* --------------------- Columns ------------------- */
 .left-column {

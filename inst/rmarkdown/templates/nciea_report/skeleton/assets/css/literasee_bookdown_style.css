@@ -1,6 +1,46 @@
+/*  From bookdown demo book  */
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+/*  Misc. from Literasee old HTML report  */
+
+.breakboth {
+  page-break-before: always;
+  page-break-after: always;
+}
+
 .caption {
   padding-top: 10px;
   padding-bottom: 20px;
+}
+
+/* ------------------------  References  ---------------------*/
+
+ /*   Hanging Indent style   */
+.references {
+ text-align:justify;
+ min-height: 22px;
+ padding-bottom: 15px;
+ padding-left: 35px;
+ text-indent: -35px;
+}
+
+.csl-entry {
+ padding-bottom: 10px;
 }
 
 /* Increment Figure Counter */

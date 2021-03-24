@@ -1,14 +1,14 @@
 #' Create a new report using the NCIEA RMarkdown template
 #'
-#' @param file_name The name of the file for your RMarkdown document. Defaults to "report" and creates a file called report.Rmd
-#' @param type_of_report The type of report you're creating ("General", "Simple Report", or "Cleaning")
+#' @param file_name The name of the file for your RMarkdown document. Defaults to "new_report" and creates a file called report.Rmd
+#' @param type_of_report The type of report you're creating (only "nciea_report" currently)
 #'
 #' @return
 #' @export
 #'
 #' @examples
-new_nciea_report <- function(file_name = "nciea_report",
-                            type_of_report = NULL) {
+new_nciea_report <- function(file_name = "new_report",
+                            type_of_report = "nciea_report") {
 
   if (is.null(type_of_report) | toupper(type_of_report) %in% c("NCIEA_REPORT", "GENERAL")) {
     type_of_report = "nciea_report"
