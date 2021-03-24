@@ -105,10 +105,13 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
     )
     bd.files <- bd.files[bd.files!=""]
     if (appdx.tf) { # ifelse doesn't work with character vectors length > 1
-      bd.files <- c(bd.files, file.path(rmd_file_list$bookdown$rmd.path, "appendices.Rmd"), setdiff(unlist(appdx.files), report.files)) # setdiff to weed out params.Rmd, setup.Rmd, etc. (possibly needed for pagedown)
+      if (length(rmd_file_list$appendices) > 1) {
+        apdx.placeholder <- "appendices.Rmd"
+      } else apdx.placeholder <- "appendix.Rmd"
+      bd.files <- c(bd.files, file.path(rmd_file_list$bookdown$rmd.path, apdx.placeholder), setdiff(unlist(appdx.files), report.files)) # setdiff to weed out params.Rmd, setup.Rmd, etc. (possibly needed for pagedown)
     }
 
-    extra.bd.files <- grep("references.Rmd|appendices.Rmd", list.files(rmd_file_list$bookdown$rmd.path), invert=TRUE, value = TRUE)
+    extra.bd.files <- grep("references.Rmd|appendix.Rmd|appendices.Rmd", list.files(rmd_file_list$bookdown$rmd.path), invert=TRUE, value = TRUE)
     if (length(extra.bd.files) > 0) {
       bd.files <- c(bd.files, file.path(rmd_file_list$bookdown$rmd.path, extra.bd.files))
     }
@@ -276,10 +279,11 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         ##  Make params and setup child RMD files to be included in the rmd_file_list/rmd.files argument/object
         # addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = tmp.apdx.fname)
 
-        tmp.code_chunk <- paste0("setCounters()\n\toptions(table_counter=FALSE)\n\toptions(table_counter_str = '", paste0("**Table ", tmp.apdx.label, "%s:**"),
-                        "')\n\toptions(fig_caption_no_sprintf = '", paste0("**Figure ", tmp.apdx.label, "%d:** %s"), "')")
-        addCodeChunk(chunk_args= "cache=FALSE, results='asis', echo=FALSE", code_chunk=tmp.code_chunk,
-                     comments=paste0("Initialize appendix format: re-start counters and change to alphabetical (", tmp.apdx.label, ")"), filename=tmp.apdx.fname)
+        ##  Make user specify counter setup in appendix specific setup.Rmd (e.g., setup_appendix_a.Rmd)
+        # tmp.code_chunk <- paste0("setCounters()\n\toptions(table_counter=FALSE)\n\toptions(table_counter_str = '", paste0("**Table ", tmp.apdx.label, "%s:**"),
+        #                 "')\n\toptions(fig_caption_no_sprintf = '", paste0("**Figure ", tmp.apdx.label, "%d:** %s"), "')")
+        # addCodeChunk(chunk_args= "cache=FALSE, results='asis', echo=FALSE", code_chunk=tmp.code_chunk,
+        #              comments=paste0("Initialize appendix format: re-start counters and change to alphabetical (", tmp.apdx.label, ")"), filename=tmp.apdx.fname)
 
         ###   Add in content child chunks
 
