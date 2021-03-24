@@ -88,7 +88,8 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
 
     writeYAML(yaml = index.rmd.yml, filename = "index.Rmd")
     addCurrentDraft(config=report_config, filename = "index.Rmd")
-    addChildChunk(rmd_file=file.path(report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = "index.Rmd")
+    # Make params and setup child RMD files to be included in the rmd_file_list/rmd.files argument/object
+    # addChildChunk(rmd_file=file.path(report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = "index.Rmd")
     cat("\n# {.unlisted .unnumbered}\n", file="index.Rmd", append=TRUE)
 
     ###   _bookdown_site.yml
@@ -104,7 +105,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
     )
     bd.files <- bd.files[bd.files!=""]
     if (appdx.tf) { # ifelse doesn't work with character vectors length > 1
-      bd.files <- c(bd.files, file.path(rmd_file_list$bookdown$rmd.path, "appendices.Rmd"), unlist(appdx.files))
+      bd.files <- c(bd.files, file.path(rmd_file_list$bookdown$rmd.path, "appendices.Rmd"), setdiff(unlist(appdx.files), report.files)) # setdiff to weed out params.Rmd, setup.Rmd, etc. (possibly needed for pagedown)
     }
 
     extra.bd.files <- grep("references.Rmd|appendices.Rmd", list.files(rmd_file_list$bookdown$rmd.path), invert=TRUE, value = TRUE)
@@ -189,17 +190,17 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
 
     addCurrentDraft(config=report_config, filename = pd.filename)
 
-    ##  Move child files back an additional level ("..") since rendered from the "./report/" directory
-    addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = pd.filename)
+    ##  Make params and setup child RMD files to be included in the rmd_file_list/rmd.files argument/object
+    # addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = pd.filename)
 
     # setup_chunk() # can't get to work. Just as easy without wrapper:
-    cat(ymlthis::code_chunk({
-      knitr::opts_chunk$set(
-        echo = FALSE,
-        fig.topcaption = TRUE,
-        fig.cap = TRUE,
-        dpi = 150)},
-      chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=pd.filename, append=TRUE)
+    # cat(ymlthis::code_chunk({
+    #   knitr::opts_chunk$set(
+    #     echo = FALSE,
+    #     fig.topcaption = TRUE,
+    #     fig.cap = TRUE,
+    #     dpi = 150)},
+    #   chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=pd.filename, append=TRUE)
 
     ###   Add in content child chunks
 
@@ -265,15 +266,15 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         addCurrentDraft(config=report_config, filename = tmp.apdx.fname)
 
         # setup_chunk() # can't get to work. Just as easy without wrapper:
-        cat(ymlthis::code_chunk({knitr::opts_chunk$set(echo = FALSE, fig.topcaption = TRUE, fig.cap = TRUE, dpi = 150)},
-          chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=tmp.apdx.fname, append=TRUE)
+        # cat(ymlthis::code_chunk({knitr::opts_chunk$set(echo = FALSE, fig.topcaption = TRUE, fig.cap = TRUE, dpi = 150)},
+        #   chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=tmp.apdx.fname, append=TRUE)
 
-        # tmp.code_chunk <- paste0("ymlthis::use_bookdown_yml(list(language=list(label=list(fig='Figure ", tmp.apdx.label, "', tab='Table ", tmp.apdx.label, "'))), path='report')")
         tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig='Figure ", tmp.apdx.label, "', tab='Table ", tmp.apdx.label, "'))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
         addCodeChunk(chunk_args= "include=FALSE", code_chunk=tmp.code_chunk,
                      comments="create _bookdown.yml file for labeling Figures and Tabels with appendix prefix.", filename=tmp.apdx.fname)
 
-        addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = tmp.apdx.fname)
+        ##  Make params and setup child RMD files to be included in the rmd_file_list/rmd.files argument/object
+        # addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = tmp.apdx.fname)
 
         tmp.code_chunk <- paste0("setCounters()\n\toptions(table_counter=FALSE)\n\toptions(table_counter_str = '", paste0("**Table ", tmp.apdx.label, "%s:**"),
                         "')\n\toptions(fig_caption_no_sprintf = '", paste0("**Figure ", tmp.apdx.label, "%d:** %s"), "')")
