@@ -1,6 +1,8 @@
 tblNum <- function(advance.counter=0) {return(getOption("table_number")+advance.counter)}
+figNum <- function(advance.counter=0) {return(getOption("fig_caption_no")+advance.counter)}
 
 tblNumIncrement <- function(advance.counter=1) {options("table_number" = getOption("table_number")+advance.counter); return(getOption("table_number"))}
+figNumIncrement <- function(advance.counter=1) {options("fig_caption_no" = getOption("fig_caption_no")+advance.counter); return(getOption("fig_caption_no"))}
 
 tblCap <- function(caption.text=NULL, advance.counter=1) {
   if (as.integer(advance.counter) != 0L) tblNumIncrement(advance.counter=advance.counter)
