@@ -19,21 +19,22 @@
     auth.list <- list()
     for(auth in seq(rmarkdown::metadata$author)) {
       tmp.name <- rmarkdown::metadata$author[[auth]][["name"]]
-      tmp.affl <- rmarkdown::metadata$author[[auth]][["affiliation"]]
-      auth.list <- c(auth.list, paste0(tmp.name, " (", tmp.affl, ")"))
+      if (length(rmarkdown::metadata$author[[auth]][["affiliation"]]) > 1L) {
+        tmp.affl <- rmarkdown::metadata$author[[auth]][["affiliation"]]
+        auth.list <- c(auth.list, paste0(tmp.name, " (", tmp.affl, ")"))
+      } else auth.list <- c(auth.list, tmp.name)
     }
     auth.text <- paste0("<p style='margin-left: 30px;'>", paste(paste(head(auth.list, -1), collapse=",<br>"), tail(auth.list, 1), sep=" and<br>"), "</p>")
-    ###   One line alternative:
+    ###   One line HTML (vs block) alternative:
     # auth.text <- paste(paste(head(auth.list, -1), collapse=", "), tail(auth.list, 1), sep=" and ")
   } else {
     auth.text <- paste(paste(head(rmarkdown::metadata$author, -1), collapse=", "), tail(rmarkdown::metadata$author, 1), sep=" and ")
+    auth.text <- paste0(auth.text, "\n<br>\n<br>\n")
   }
 ```  
   Author(s): `r auth.text`
   <br>
   `r if(!is.null(rmarkdown::metadata$project_team)) {paste("Project Team:", rmarkdown::metadata$project_team)}`
-  <br>
-  <br>
   <br>
   `r if((!is.null(rmarkdown::metadata$project_code)|!is.null(rmarkdown::metadata$project_email))) {paste("For More Information:<br><p style='font-weight: 400;margin-left: 30px;padding-left: 90px;text-indent: -90px;'>")}`
   `r if(!is.null(rmarkdown::metadata$project_code)) {paste("Project Code:", rmarkdown::metadata$project_code)}`
@@ -45,7 +46,6 @@
   <br>
   <br>
   The Center for Assessment wants to thank `r ifelse(is.null(rmarkdown::metadata$acknowledgements), rmarkdown::metadata$client_organization, rmarkdown::metadata$acknowledgements) ` for their contributions to the creation of this report.
-  <br>
   <br>
   <br>
   Suggested Citation:

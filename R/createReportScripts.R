@@ -33,6 +33,21 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
     }
   } else appdx.tf <- FALSE
 
+  ###   Output information
+
+  ##    Determine pagedown title (can be supplied or automatic based on title)
+  if (is.null(report_config$output$bookdown$directory)) {
+    bd.output.dir <- "site"
+  } else bd.output.dir <- report_config$output$bookdown$directory
+
+  if (is.null(report_config$output$pagedown$directory)) {
+    pd.output.dir <- "report"
+  } else pd.output.dir <- report_config$output$pagedown$directory
+
+  if (is.null(report_config$output$pagedown$file)) {
+    pd.output.file <- gsub(" ", "_", report_config$top.level$title)
+  } else pd.output.file <- report_config$output$pagedown$file
+
 
   ###   Top-level YAML used in both bookdown and pagedown
 
@@ -51,18 +66,19 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
 
   ###   index.Rmd
   if (bookdown) {
-    index.rmd.yml <- top.yml
+    index.rmd.yml <- top.yml %>%
+      ymlthis::yml_toplevel(favicon = "assets/images/favicon.png")
     if (report_config$top.level$executive.summary) {
       index.rmd.yml <- ymlthis::yml_toplevel(.yml=index.rmd.yml, `abstract-title`= "Executive Summary")
     }
 
-    bd.downloads <- paste0("[\"downloads/", paste0(gsub(" ", "_", report_config$top.level$title), ".pdf"), "\", \"Report\"]")
+    bd.downloads <- paste0("[\"downloads/", paste0(pd.output.file, ".pdf"), "\", \"Report\"]")
     if (appdx.tf) {
       for (apdx in seq(length(rmd_file_list$appendices))) {
         tmp.apdx.label <- names(rmd_file_list$appendices[apdx])
         bd.downloads <- c(bd.downloads, paste0("[\"downloads/", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".pdf"), "\", \"Appendix ",  tmp.apdx.label, "\"]"))
       }
-    } # paste0("report/", paste0(gsub(" ", "_", report_config$top.level$title), ".html"))) # Add link to HTML formats?
+    } # paste0("downloads/", paste0pd.output.file, ".html"))) # Add link to HTML formats?
 
     ##  Scoping issue when trying to send in objects like 'report_config$top.level$title' with ymlthis::yml_output(bookdown::gitbook(...))
 
@@ -92,7 +108,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
     # addChildChunk(rmd_file=file.path(report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = "index.Rmd")
     cat("\n# {.unlisted .unnumbered}\n", file="index.Rmd", append=TRUE)
 
-    ###   _bookdown_site.yml
+    ###   Create _bookdown.yml for website/book
 
     if (!is.null(rmd_file_list$bookdown$file.order)) {
       bd.files <- report.files[rmd_file_list$bookdown$file.order]
@@ -118,11 +134,11 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
 
     ymlthis::yml_empty() %>%
       ymlthis::yml_bookdown_opts(
-        output_dir = "site",
+        output_dir = bd.output.dir,
         delete_merged_file = TRUE,
         rmd_files = addQuote(bd.files) # paste0("[\n", paste0(addQuote(bd.files), collapse = ",\n"), "\n]")
       ) %>%
-        writeYAML(filename = "_bookdown_site.yml", fences=FALSE, remove_scalar_style=TRUE)
+        writeYAML(filename = "_bookdown.yml", fences=FALSE, remove_scalar_style=TRUE)
   }
 
 
@@ -186,8 +202,8 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
 
     pgdwn.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=pgdwn.rmd.yml), sapply(report_config$params, function(f) ifelse(is.character(f), addQuote(f), f)), render.format = "pagedown"))
     pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, abstract = code_chunk(chunk_args = list(child="'../assets/rmd/pagedown/abstract.Rmd'"))) # file.path("assets", "pagedown", "rmd", "abstract.Rmd")
-    pd.filename <- file.path("report", paste0(gsub(" ", "_", report_config$top.level$title), ".Rmd"))
-    if (!dir.exists("report")) dir.create("report")
+    pd.filename <- file.path(pd.output.dir, paste0(pd.output.file, ".Rmd"))
+    if (!dir.exists(pd.output.dir)) dir.create(pd.output.dir)
 
     writeYAML(yaml = pgdwn.rmd.yml, filename = pd.filename)
 
@@ -262,8 +278,8 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         tmp.appdx.yml <- do.call(ymlthis::yml_params, c(list(.yml=tmp.appdx.yml), report_config$params, render.format = "pagedown"))
 
         if (!is.na(tmp.apdx.label)) {
-          tmp.apdx.fname <- file.path("report", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".Rmd"))
-        } else tmp.apdx.fname <- file.path("report", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX", ".Rmd"))
+          tmp.apdx.fname <- file.path(pd.output.dir, paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".Rmd"))
+        } else tmp.apdx.fname <- file.path(pd.output.dir, paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX", ".Rmd"))
         writeYAML(yaml = tmp.appdx.yml, filename = tmp.apdx.fname)
 
         addCurrentDraft(config=report_config, filename = tmp.apdx.fname)

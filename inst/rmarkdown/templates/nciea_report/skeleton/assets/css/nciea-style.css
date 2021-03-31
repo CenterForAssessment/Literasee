@@ -85,7 +85,8 @@ h1 {
   text-transform: uppercase;
 /*   background-color: #314160; */
   color: #FF0000;
-  padding: 0;
+  margin-block-start: -0.5em; /* move h1 up -- might need to remove if use running headers*/
+  margin-block-end: 0.1em;
 }
 
 h2 {
@@ -196,6 +197,14 @@ p.caption {
   font-weight: 600;
   color: #FF0000;
   text-align: left;
+}
+
+/* hide table caption within a class 'figtab' div and use table caption */
+.figtab {
+  break-inside: avoid;
+}
+.figtab p.caption {
+  display: none;
 }
 
 table caption {
