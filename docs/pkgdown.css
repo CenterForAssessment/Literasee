@@ -79,14 +79,17 @@ pre {
   color: #212121;
   background-color: #fafafa;
   border: 0.1px solid #f5f5f5;
-  border-radius: 3px; }
-  pre code {
+  border-radius: 3px;
+}
+
+pre code {
     padding: 0;
     font-size: 13px;
     color: inherit;
     background-color: transparent;
     border-radius: 0;
-    overflow-x: auto; }
+    overflow-x: auto;
+}
 
 /*
 pre {
@@ -118,13 +121,21 @@ pre code {
 }
 */
 
-pre img {
+pre .img {
+  margin: 5px 0;
+}
+
+pre .img img {
   background-color: #fff;
   display: block;
 }
 
 code a, pre a {
   color: #375f84;
+}
+
+a.sourceLine:hover {
+  text-decoration: none;
 }
 
 .fl      {color: #1514b5;}
@@ -160,10 +171,12 @@ code a, pre a {
 .navbar-brand.shrink {
     padding: 0 0 0 54px;
     background-size: 32px auto;
+    transition-duration: 0.25s;
 }
 
 .navbar-label.shrink {
     font-size: 32px;
+    transition-duration: 0.25s;
 }
 
 /* Reference index & topics ----------------------------------------------- */
@@ -300,10 +313,43 @@ a.anchor {
 
 .fa-github {
   font-size: 28px;
-  color: #444;
+  color: #7c7c7c;
+  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-color: black;
+  transition: all 0.35s ease-in-out;
+}
+
+.fa-github:hover {
+  color: black;
+  transition: all 0.35s ease-in-out;
 }
 
 .fa-twitter {
   font-size: 28px;
-  color: #444;
+  color: #7c7c7c;
+  transition: all 0.35s ease-in-out;
+}
+
+.fa-twitter:hover {
+  color: #00ACED;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  transition: all 0.35s ease-in-out;
+}
+
+/* Clipboard --------------------------*/
+
+.hasCopyButton {
+  position: relative;
+}
+
+.btn-copy-ex {
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.hasCopyButton:hover button.btn-copy-ex {
+  visibility: visible;
 }

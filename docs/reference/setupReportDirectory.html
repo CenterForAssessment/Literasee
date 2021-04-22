@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Create a new NCIEA report directory — setupReportDirectory"/>
+<meta property="og:description" content="Literasee • Create a new NCIEA report directory — setupReportDirectory"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Create a new NCIEA report directory — setupReportDirectory"/>
+<meta name="twitter:description" content="Literasee • Create a new NCIEA report directory — setupReportDirectory"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Create a new NCIEA report directory — setupReportDirectory</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,50 +141,59 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Create a new NCIEA report directory</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>Create a new report using the NCIEA RMarkdown template and custom content templates.  Wrapper function for <code><a href='new_nciea_report.html'>new_nciea_report</a></code> and <code>file.copy</code>.</p>
 
+    <pre class="usage"><span class='fu'>setupReportDirectory</span>(
+  <span class='kw'>dir</span><span class='kw'>=</span><span class='fu'>getwd</span>(),
+  <span class='kw'>new.report</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
+  <span class='kw'>update.assets</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+  <span class='kw'>custom.content</span><span class='kw'>=</span><span class='fl'>TRUE</span>,
+  <span class='no'>custom.content.path</span>,
+  <span class='kw'>overwrite.custom</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dir</th>
+      <td><p>The directory path to establish the new report in.  Defaults to the current working directory.</p></td>
+    </tr>
+    <tr>
+      <th>new.report</th>
+      <td><p>Logical.  Whether the report is new and new &#8216;nciea_report&#8217; assets should be copied.</p></td>
+    </tr>
+    <tr>
+      <th>update.assets</th>
+      <td><p>Logical.  If report is not new, simply update Literasee package assets using <code><a href='updateAssets.html'>updateAssets</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>custom.content</th>
+      <td><p>Logical.  Whether the templates for custom content (.Rmd files) should be copied from some directory (custom.content.path).</p></td>
+    </tr>
+    <tr>
+      <th>custom.content.path</th>
+      <td><p>Character.  The file path location from which custom content templates will be copied.</p></td>
+    </tr>
+    <tr>
+      <th>overwrite.custom</th>
+      <td><p>Logical.  Whether the templates for custom content should all be overwritten. Defaults to FALSE - meaning only new items will be copied.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
+    <p>Copies assets (css, javascript, Rmd and other source files) and custom content necessary for creating a new Center for Assessment themed report.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
 
   </div>
 </div>

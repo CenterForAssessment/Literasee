@@ -7,6 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
+<meta property="og:title" content="Literasee • Render R Markdown in Multiple Output Formats — renderMultiDocument"/>
+<meta property="og:description" content="Literasee • Render R Markdown in Multiple Output Formats — renderMultiDocument"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
+<meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@NCIEA1"/>
+<meta name="twitter:creator" content="@dbetebenner"/>
+<meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
+<meta name="twitter:title" content="Literasee • Render R Markdown in Multiple Output Formats — renderMultiDocument"/>
+<meta name="twitter:description" content="Literasee • Render R Markdown in Multiple Output Formats — renderMultiDocument"/>
+
 <title>Literasee • Render R Markdown in Multiple Output Formats — renderMultiDocument</title>
 
 <!-- jquery -->
@@ -16,7 +29,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400" rel="stylesheet" type="text/css">
@@ -101,13 +120,13 @@
 </li>
         <li>
   <a href="https://github.com/centerforassessment/Literasee">
-    <span class="fa fa-github fa-2x"></span>
+    <span class="fab fa-github"></span>
      
   </a>
 </li>
 <li>
-   <a style="cursor:pointer" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=dbetebenner&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2C%20Literasee','','scrollbars=0,menubar=0,height=300,width=600,resizable=0,toolbar=0,location=0,status=0')">
-    <span class="fa fa-twitter"></span>
+   <a style="cursor:pointer" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=NCIEA1&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2CLiterasee','','scrollbars=0,menubar=0,height=300,width=600,resizable=0,toolbar=0,location=0,status=0')">
+    <span class="fab fa-twitter"></span>
      
   </a>
 </li>
@@ -125,14 +144,12 @@
     <h1>Render R Markdown in Multiple Output Formats</h1>
     </div>
 
-    
-    <p>Render the input file to the specified output formats using
-pandoc. If the input requires knitting then
-<code><a href='http://www.rdocumentation.org/packages/knitr/topics/knit'>knit</a></code> is called prior to pandoc.</p>
-    
+    <p>Render the input file to the specified output formats using pandoc. If the input requires knitting then <code><a href='http://www.rdocumentation.org/packages/knitr/topics/knit'>knit</a></code> is called prior to pandoc.</p>
 
-    <pre class="usage"><span class='fu'>renderMultiDocument</span>(<span class='no'>rmd_input</span>,
+    <pre class="usage"><span class='fu'>renderMultiDocument</span>(
+  <span class='no'>rmd_input</span>,
   <span class='kw'>report_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"HTML"</span>, <span class='st'>"PDF"</span>),
+  <span class='kw'>make_draft_final</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>cleanup_aux_files</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>number_sections</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>number_section_depth</span><span class='kw'>=</span><span class='fl'>3</span>,
@@ -153,44 +170,50 @@ pandoc. If the input requires knitting then
   <span class='kw'>add_cover_title</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>bibliography</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
   <span class='kw'>csl</span> <span class='kw'>=</span> <span class='st'>"default"</span>,
+  <span class='kw'>md_extensions</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>report_params</span><span class='kw'>=</span><span class='kw'>NULL</span>,
   <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>rmd_input</th>
-      <td><p>Input file. Must be an R Markdown (.Rmd) file located in the working directory).</p></td>
+      <td><p>Character. Input file. Must be an R Markdown (.Rmd) file located in the working directory (unless <code>make_draft_final = TRUE</code>).</p></td>
     </tr>
     <tr>
       <th>report_format</th>
-      <td><p>Report output format(s) to convert Rmd file to. Pass
-  a vector of format names to render multiple formats.  Defaults to the two
-  polished versions ("HTML" and "PDF").  "EPUB" and "DOCX" are also available.
-  MS Word DOCX is intended to be a draft-version document as it does not
-  support many of the stylization features included in the other formats.</p></td>
+      <td><p>Report output format(s) to convert Rmd file to. Pass a vector of format names to render multiple formats.
+          Defaults to the two polished versions (&#8216;HTML&#8217; and &#8216;PDF&#8217;). The &#8216;RMD&#8217; option allows the user to create
+          an intermediate .Rmd file that can be edited, reviewed, etc. and then re-run to render other formats.  &#8216;EPUB&#8217; and
+          &#8216;DOCX&#8217; are also available. MS Word DOCX is intended to be a draft-version document as it does not support many of
+          the stylization features included in the other formats.</p></td>
+    </tr>
+    <tr>
+      <th>make_draft_final</th>
+      <td><p>Boolean. Defaults to &#8216;FALSE&#8217;. Should a &#8216;Draft&#8217; .Rmd document rendered with a previous call to
+          <code>renderMultiDocument</code> with <code>report_format = 'RMD'</code> and saved to the &#8216;Draft&#8217; directory be changed to the
+          &#8216;final draft&#8217; and used to render requested report formats?  If &#8216;TRUE&#8217;, <code>rmd_input</code> should be the name of
+          the draft document (e.g. <code>rmd_input = 'Draft/My_Report-Compiled_Draft.Rmd'</code>). All required .Rmd and assets will be copied
+          to the main directory and renamed appropriately (e.g. &#8216;My_Report-Final_Draft.Rmd&#8217;).</p></td>
     </tr>
     <tr>
       <th>cleanup_aux_files</th>
-      <td><p>Boolean.  Defaults to TRUE to delete the
-  intermediate markdown files and directories be upon successful completion.</p></td>
+      <td><p>Boolean.  Defaults to TRUE to delete the intermediate markdown files and directories be upon successful completion.</p></td>
     </tr>
     <tr>
       <th>number_sections</th>
-      <td><p>Boolean. Should sections, subsections, and
-  subsubsections be numbered.  Default <code>TRUE</code></p></td>
+      <td><p>Boolean. Should sections, subsections, and subsubsections be numbered.  Default <code>TRUE</code></p></td>
     </tr>
     <tr>
       <th>number_section_depth</th>
-      <td><p>Numeric. Depth of headers to include in
-  section numbering. Default is 3 (subsubsections).</p></td>
+      <td><p>Numeric. Depth of headers to include in section numbering. Default is 3 (subsubsections).</p></td>
     </tr>
     <tr>
       <th>convert_header_levels</th>
-      <td><p>Numeric. Markdown header levels 5 and 6 can
-  be used as figure captions in HTML document. These headers are converted
-  back to in image captions for PDF format.</p></td>
+      <td><p>Numeric. Markdown header levels 5 and 6 can be used as figure captions in HTML document.
+          These headers are converted back to in image captions for PDF format.</p></td>
     </tr>
     <tr>
       <th>toc</th>
@@ -198,20 +221,17 @@ pandoc. If the input requires knitting then
     </tr>
     <tr>
       <th>toc_depth</th>
-      <td><p>Numeric. Depth of headers to include in table of
-  contents. Default is 2 (subsections).</p></td>
+      <td><p>Numeric. Depth of headers to include in table of contents. Default is 2 (subsections).</p></td>
     </tr>
     <tr>
       <th>self_contained</th>
-      <td><p>Produce a standalone HTML file with no external
-  dependencies, using data: URIs to incorporate the contents of linked
-  scripts, stylesheets, images, and videos.</p></td>
+      <td><p>Produce a standalone HTML file with no external dependencies, using data: URIs to incorporate the
+          contents of linked scripts, stylesheets, images, and videos.</p></td>
     </tr>
     <tr>
       <th>docx_self_contained</th>
-      <td><p>Produce a standalone DOCX file with no external
-  dependencies.  Allows copy and paste of HTML content to Word document
-  without serving the local directory.</p></td>
+      <td><p>Produce a standalone DOCX file with no external dependencies.  Allows copy and paste of HTML content
+          to Word document without serving the local directory.</p></td>
     </tr>
     <tr>
       <th>dev</th>
@@ -219,25 +239,23 @@ pandoc. If the input requires knitting then
     </tr>
     <tr>
       <th>literasee_template</th>
-      <td><p>Name of Literasee package style templates to use for rendering. Default is "sgp_report"
-    (currently the only option available).  Located at <code>system.file('rmarkdown', 'templates', 'sgp_report', 'resources', package = 'Literasee')</code>.
-    Note that alternative templates must adopt the same naming conventions ('html_report.html', 'pdf_report.tex', etc).</p></td>
+      <td><p>Name of Literasee package style templates to use for rendering. Default is &#8216;sgp_report&#8217;
+          (currently the only option available).  Located at <code>system.file('rmarkdown', 'templates', 'sgp_report', 'resources', package = 'Literasee')</code>.
+          Note that alternative templates must adopt the same naming conventions (&#8216;html_report.html&#8217;, &#8216;pdf_report.tex&#8217;, etc).</p></td>
     </tr>
     <tr>
       <th>html_template</th>
-      <td><p>Pandoc template to use for HTML rendering. Pass "default"
-    to use the Literasee package default template.  Note that if you don't
-    use the "default" template then the features of <code>multi_document</code>
-    won't be available.  Additionally, there is a 'simple' version that does not include the
-    table of contents or the two-toned background (useful for printing/PDF via browser).</p></td>
+      <td><p>Pandoc template to use for HTML rendering. Pass &#8216;default&#8217; to use the Literasee package default template.
+          Note that if you do not use the default template then the features of <code>multi_document</code> will not be available.  Additionally,
+          there is a <code>'simple'</code> version that does not include the table of contents or the two-toned background (useful for printing/PDF via browser).</p></td>
     </tr>
     <tr>
       <th>epub_template</th>
-      <td><p>Pandoc template to use for EPUB rendering. The "default" uses Pandoc's base template.</p></td>
+      <td><p>Pandoc template to use for EPUB rendering. The default uses the Pandoc base template.</p></td>
     </tr>
     <tr>
       <th>pdf_template</th>
-      <td><p>Pandoc template to use for PDF rendering. Pass "default" to use the Literasee package default template.</p></td>
+      <td><p>Pandoc template to use for PDF rendering. Pass &#8216;default&#8217; to use the Literasee package default template.</p></td>
     </tr>
     <tr>
       <th>html_css</th>
@@ -257,60 +275,92 @@ pandoc. If the input requires knitting then
     </tr>
     <tr>
       <th>add_cover_title</th>
-      <td><p>EXPERIMENTAL.  Add the document title and subtitle to the EPUB cover image.
-    Currently set up for only .jpg files and tailored to an image with dimensions roughly 2100 x 2800.</p></td>
+      <td><p>EXPERIMENTAL.  Add the document title and subtitle to the EPUB cover image. Currently set up for only .jpg files and
+          tailored to an image with dimensions roughly 2100 x 2800.</p></td>
     </tr>
     <tr>
       <th>bibliography</th>
       <td><p>The LaTeX style bibliography file (.bib, .bibtex, etc.) to include. The default file included
-    in the package includes references often used by the author and will likely be insufficient for most users.</p></td>
+          in the package includes references often used by the author and will likely be insufficient for most users.</p></td>
     </tr>
     <tr>
       <th>csl</th>
       <td><p>The CSL (citation style language) to use to format bibliography (if included).  Defaults to APA 5th edition. See
-    <a href = 'https://github.com/citation-style-language/styles'>this Github repository</a> for alternatives.  If NULL pandoc's defaults will be used.</p></td>
+          <a href = 'https://github.com/citation-style-language/styles'>this Github repository</a> for alternatives.  If NULL pandoc defaults will be used.</p></td>
+    </tr>
+    <tr>
+      <th>md_extensions</th>
+      <td><p>Markdown extensions to be added or removed from the default definition or R Markdown.</p></td>
     </tr>
     <tr>
       <th>pandoc_args</th>
       <td><p>Additional command line options to pass to pandoc</p></td>
     </tr>
     <tr>
+      <th>report_params</th>
+      <td><p>Additional report parameters to pass to <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code> (&#8216;params&#8217;).</p></td>
+    </tr>
+    <tr>
       <th>...</th>
-      <td><p>Passed onto<code><a href='multi_document.html'>multi_document</a></code> and/or
-  <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/html_document'>html_document</a></code>.</p></td>
+      <td><p>Passed onto <code><a href='multi_document.html'>multi_document</a></code> and/or <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/html_document'>html_document</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The compiled documents are written into the working directory.  Additional directories
-  are created for each of the output formats.</p>
-    
+    <p>The compiled documents are written into the working directory.  Additional directories are created for each of the output formats.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is a wrapper function that combines calls to <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code>
-and direct <code>system</code> calls to Pandoc.  The function begins with a rendering of the
-HTML version of the document and saves the markdown file from this rendering and
-uses that as a base from which other formats can be rendered.  Other formats require
-specific post-processing, which is also accomplished in the function.</p>
-    
+    <p>This function is a wrapper function that combines calls to <code><a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a></code> and direct <code>system</code> calls to Pandoc.
+The function typically begins with a rendering of the HTML version of the document and saves the markdown file from this rendering and uses that
+as a base from which other formats can be rendered.  Other formats require specific post-processing, which is also accomplished in the function.
+The &#8216;RMD&#8217; <code>report_format</code> produces a knitted (<a href='http://www.rdocumentation.org/packages/knitr/topics/knit'>knit</a>) Rmarkdown file with all analyses, tables, plots, etc. calculated,
+and can be useful in editing and proofing a document when using children.  The output (named as the rmd_input with &#8216;-Compiled_Draft.Rmd&#8217;)
+can subsequently be re-rendered with <code>renderMultiDocument</code> and the various other <code>report_format</code> versions to produce polished documents.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p><a href = 'http://rmarkdown.rstudio.com/'>Rmarkdown</a>
 <a href='http://www.rdocumentation.org/packages/knitr/topics/knit'>knit</a>, <a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a>,
 <a href = 'http://johnmacfarlane.net/pandoc'>pandoc</a></p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
   <span class='fu'>library</span>(<span class='no'>Literasee</span>)
 
-  <span class='co'># Render all four formats.</span>
+  <span class='co'># Render all four polished document formats.</span>
   <span class='co'># Use --webtex to process LaTeX style math equations.</span>
 
   <span class='fu'>renderMultiDocument</span>(<span class='st'>"My_Report.Rmd"</span>,
                       <span class='kw'>report_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"HTML"</span>, <span class='st'>"EPUB"</span>, <span class='st'>"PDF"</span>, <span class='st'>"DOCX"</span>),
                       <span class='kw'>cleanup_aux_files</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+                      <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='st'>"--webtex"</span>)
+
+})
+<span class='fu'>not_run</span>({
+  <span class='fu'>library</span>(<span class='no'>Literasee</span>)
+
+  <span class='co'># Render RMD draft, edit output, and then</span>
+  <span class='co'># re-render two polished document formats.</span>
+
+  <span class='fu'>renderMultiDocument</span>(<span class='kw'>rmd_input</span> <span class='kw'>=</span> <span class='st'>"My_Report.Rmd"</span>,
+                      <span class='kw'>report_format</span> <span class='kw'>=</span> <span class='st'>"RMD"</span>)
+
+  <span class='co'>#  Make edits to 'Draft/My_Report-Compiled_Draft.Rmd'. Set working</span>
+  <span class='co'>#  directory to 'Draft' and render HTML and PDF of edited version.</span>
+
+  <span class='fu'>setwd</span>(<span class='st'>"Draft"</span>)
+  <span class='fu'>renderMultiDocument</span>(<span class='kw'>rmd_input</span> <span class='kw'>=</span> <span class='st'>"My_Report-Compiled_Draft.Rmd"</span>,
+                      <span class='kw'>report_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"HTML"</span>, <span class='st'>"PDF"</span>),
+                      <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='st'>"--webtex"</span>,
+                      <span class='kw'>cleanup_aux_files</span><span class='kw'>=</span><span class='fl'>FALSE</span>)
+
+  <span class='co'>#  Make FINAL edits to 'Draft/My_Report-Compiled_Draft.Rmd'. Set working</span>
+  <span class='co'>#  directory to main directory and render HTML and PDF 'Final Draft' versions.</span>
+
+  <span class='fu'>setwd</span>(<span class='st'>".."</span>)
+  <span class='fu'>renderMultiDocument</span>(<span class='kw'>rmd_input</span> <span class='kw'>=</span> <span class='st'>"Draft/My_Report-Compiled_Draft.Rmd"</span>,
+                      <span class='kw'>report_format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"HTML"</span>, <span class='st'>"PDF"</span>),
+                      <span class='kw'>make_draft_final</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                       <span class='kw'>pandoc_args</span> <span class='kw'>=</span> <span class='st'>"--webtex"</span>)
 
 })</div></pre>
@@ -319,13 +369,9 @@ specific post-processing, which is also accomplished in the function.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -342,7 +388,7 @@ Adam Van Iwaarden
 </div>
 
 <div class="author">
-  <p>Developed & Maintained by <a href='https://github.com/dbetebenner'><img src='https://centerforassessment.github.io/assets/dbetebenner.png' height='20' /> Damian W. Betebenner</a> & <a href='https://github.com/adamvi'><img src='https://centerforassessment.github.io/assets/adamvi.png' height='20' /> Adam R. Van Iwaarden</a>.</p>
+  <p>Developed & Maintained by <a href='https://github.com/adamvi'><img src='https://centerforassessment.github.io/assets/adamvi.png' height='20' /> Adam R. Van Iwaarden</a> & <a href='https://github.com/dbetebenner'><img src='https://centerforassessment.github.io/assets/dbetebenner.png' height='20' /> Damian W. Betebenner</a>.</p>
 </div>
 
 <script>

@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Places figure and caption appropriately within the supplied file. — placeFigure"/>
+<meta property="og:description" content="Literasee • Places figure and caption appropriately within the supplied file. — placeFigure"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Places figure and caption appropriately within the supplied file. — placeFigure"/>
+<meta name="twitter:description" content="Literasee • Places figure and caption appropriately within the supplied file. — placeFigure"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Places figure and caption appropriately within the supplied file. — placeFigure</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,50 +141,78 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Places figure and caption appropriately within the supplied file.</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>Places figure appropriately within file with caption.</p>
 
+    <pre class="usage"><span class='fu'>placeFigure</span>(
+    <span class='no'>files</span>,
+    <span class='kw'>rows</span><span class='kw'>=</span><span class='fl'>1</span>,
+    <span class='kw'>columns</span><span class='kw'>=</span><span class='fl'>1</span>,
+    <span class='kw'>figure.id</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>caption</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>caption.position</span><span class='kw'>=</span><span class='st'>"top"</span>,
+    <span class='kw'>pdf.width</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>html.width</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>page.break</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+    <span class='kw'>normalize.path</span><span class='kw'>=</span><span class='fl'>FALSE</span>
+  )</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>files</th>
+      <td><p>Character string of files in which figures are placed.  Multiple files will be put in a <code>rows</code> x <code>columns</code> grid by
+          row (i.e. with four files in a 2x2 grid, the first two files will be the top row and the last two files will be the bottom row.)</p></td>
+    </tr>
+    <tr>
+      <th>rows</th>
+      <td><p>Postive integer, defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>columns</th>
+      <td><p>Positive integer defining number of columsns, defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>figure.id</th>
+      <td><p>Figure identifier.</p></td>
+    </tr>
+    <tr>
+      <th>caption</th>
+      <td><p>Figure caption.</p></td>
+    </tr>
+    <tr>
+      <th>caption.position</th>
+      <td><p>Figure caption position. Either &#8216;top&#8217; (the default) or &#8216;bottom&#8217;.</p></td>
+    </tr>
+    <tr>
+      <th>pdf.width</th>
+      <td><p>The width of the PDF output.</p></td>
+    </tr>
+    <tr>
+      <th>html.width</th>
+      <td><p>The width of the HTML output (if single image in the figure - ignored for multiple image grid).</p></td>
+    </tr>
+    <tr>
+      <th>page.break</th>
+      <td><p>Boolean variable indicating whether there should be page breaks (defaults to FALSE).</p></td>
+    </tr>
+    <tr>
+      <th>normalize.path</th>
+      <td><p>Boolean variable indicating whether the should paths in <code>files</code> should be normalized with
+          <a href='http://www.rdocumentation.org/packages/base/topics/normalizePath'>normalizePath</a> (defaults to FALSE).</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
 
   </div>
 </div>

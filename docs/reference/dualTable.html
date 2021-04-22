@@ -7,6 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
+<meta property="og:title" content="Literasee • Output HTML and LaTeX Tables — dualTable"/>
+<meta property="og:description" content="Literasee • Output HTML and LaTeX Tables — dualTable"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
+<meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@NCIEA1"/>
+<meta name="twitter:creator" content="@dbetebenner"/>
+<meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
+<meta name="twitter:title" content="Literasee • Output HTML and LaTeX Tables — dualTable"/>
+<meta name="twitter:description" content="Literasee • Output HTML and LaTeX Tables — dualTable"/>
+
 <title>Literasee • Output HTML and LaTeX Tables — dualTable</title>
 
 <!-- jquery -->
@@ -16,7 +29,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400" rel="stylesheet" type="text/css">
@@ -101,13 +120,13 @@
 </li>
         <li>
   <a href="https://github.com/centerforassessment/Literasee">
-    <span class="fa fa-github fa-2x"></span>
+    <span class="fab fa-github"></span>
      
   </a>
 </li>
 <li>
-   <a style="cursor:pointer" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=dbetebenner&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2C%20Literasee','','scrollbars=0,menubar=0,height=300,width=600,resizable=0,toolbar=0,location=0,status=0')">
-    <span class="fa fa-twitter"></span>
+   <a style="cursor:pointer" onclick="window.open('https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=NCIEA1&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2CLiterasee','','scrollbars=0,menubar=0,height=300,width=600,resizable=0,toolbar=0,location=0,status=0')">
+    <span class="fab fa-twitter"></span>
      
   </a>
 </li>
@@ -125,23 +144,20 @@
     <h1>Output HTML and LaTeX Tables</h1>
     </div>
 
-    
-    <p>This is a function for outputting a more advanced table
-than what <span class="pkg">xtable</span>, <span class="pkg">ztable</span>, or <span class="pkg">knitr</span>'s
-<code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>kable</a>()</code> allows. It's aim is to provide the
-combined functionality of the the <span class="pkg">Hmisc</span> <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a>()</code>
-and  <span class="pkg">htmlTable</span> <code><a href='http://www.rdocumentation.org/packages/htmlTable/topics/htmlTable'>htmlTable</a></code> . See those
-function's documentation for more details.</p>
-    
+    <p>This is a function for outputting a more advanced table than what <span class="pkg">xtable</span>, <span class="pkg">ztable</span>, or <code><a href='http://www.rdocumentation.org/packages/knitr/topics/kable'>kable</a>()</code> allows.
+It's aim is to provide the combined functionality of the the <span class="pkg">Hmisc</span> <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a>()</code> and
+<span class="pkg">htmlTable</span> <code><a href='http://www.rdocumentation.org/packages/htmlTable/topics/htmlTable'>htmlTable</a></code>. See documentation of those functions for more details.</p>
 
     <pre class="usage"><span class='fu'>dualTable</span>(
     <span class='no'>my_tbl</span>,
     <span class='kw'>where</span><span class='kw'>=</span><span class='st'>"H"</span>,
     <span class='kw'>align</span><span class='kw'>=</span><span class='fu'>paste</span>(<span class='fu'>rep</span>(<span class='st'>'c'</span>, <span class='fu'>ncol</span>(<span class='no'>my_tbl</span>)), <span class='kw'>collapse</span><span class='kw'>=</span><span class='st'>''</span>),
-    <span class='no'>caption</span>,
-    <span class='kw'>css.class</span> <span class='kw'>=</span> <span class='st'>"gmisc_table breakboth"</span>,
+    <span class='kw'>caption</span><span class='kw'>=</span><span class='st'>""</span>,
+    <span class='kw'>css.class</span><span class='kw'>=</span><span class='st'>"gmisc_table breakboth"</span>,
+    <span class='kw'>use.xtable</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+    <span class='kw'>files</span><span class='kw'>=</span><span class='st'>""</span>,
     <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -151,13 +167,15 @@ function's documentation for more details.</p>
     </tr>
     <tr>
       <th>where</th>
-      <td><p>Passed to <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a></code>.  Specifies placement of floats if a table environment is used. Default is  <code>"H"</code>, which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of text you might specify  <code>where="!htbp"</code> to  <code>latex.default</code>.</p></td>
+      <td><p>Passed to <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a></code>. Specifies placement of floats if a table environment is used. Default is  <code>"H"</code>,
+          which places the table in the exact location it appears in the document. To allow tables to appear in the middle of a page of
+          text you might specify <code>where="!htbp"</code> to <code>latex.default</code>.</p></td>
     </tr>
     <tr>
       <th>align</th>
-      <td><p>A character strings specifying column alignments, defaulting to "paste(rep('c',ncol(my_tbl)),collapse='')" to center.
-          Valid alignments are l = left, c = center and r = right. You can also specify "align='c|c'" and other LaTeX tabular
-          formatting. If you want to set the alignment of the rownames this string needst to be "ncol(x) + 1", otherwise it
+      <td><p>A character strings specifying column alignments, defaulting to <code>paste(rep('c',ncol(my_tbl)),collapse='')</code> to center.
+          Valid alignments are l = left, c = center and r = right. You can also specify <code>align='c|c'</code> and other LaTeX tabular
+          formatting. If you want to set the alignment of the rownames this string needst to be &#8216;ncol(x) + 1&#8217;, otherwise it
           automatically pads the string with a left alignment for the rownames.</p></td>
     </tr>
     <tr>
@@ -166,26 +184,30 @@ function's documentation for more details.</p>
     </tr>
     <tr>
       <th>css.class</th>
-      <td><p>The html CSS class for the table. This allows directing html formatting through
-          <a href = 'https://www.w3schools.com/cssref/css_selectors.asp'>CSS</a> directly at all instances of that class.
-          Default includes <code>breakboth</code> class.  This inserts a page break before and after the table, which
-          prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.</p></td>
+      <td><p>The html CSS class for the table. This allows directing html formatting through <a href = 'https://www.w3schools.com/cssref/css_selectors.asp'>CSS</a>
+          directly at all instances of that class. Default includes <code>breakboth</code> class. This inserts a page break before and after
+          the table, which prevents tables from being broken up between pages when printed from HTML or rendered as an EPUB document.</p></td>
+    </tr>
+    <tr>
+      <th>use.xtable</th>
+      <td><p>Boolean argument (defaults to FALSE) indicating whether xtable is used.</p></td>
+    </tr>
+    <tr>
+      <th>files</th>
+      <td><p>Path to output file(s) to save text to. Default is &#8216;""&#8217;, which is prints to the standard output connection (typically the rendered .md file).
+          Multiple files, or file(s) and stdout, are supported.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Passed onto <code><a href='http://www.rdocumentation.org/packages/htmlTable/topics/htmlTable'>htmlTable</a></code> and/or
-  <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a></code>.</p></td>
+      <td><p>Passed onto <code><a href='http://www.rdocumentation.org/packages/htmlTable/topics/htmlTable'>htmlTable</a></code> and/or <code><a href='http://www.rdocumentation.org/packages/Hmisc/topics/latex'>latex</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>string</code> Returns a character string containing the text for
-both the table to be rendered in HTML or PDF via LaTeX.  String also
-contains HTML/Markdown comments to demarcate the location of
-the each code type, which is used later for post-processing markdown
+    <p><code>string</code> Returns a character string containing the text for both the table to be rendered in HTML or PDF via LaTeX.  String also
+contains HTML/Markdown comments to demarcate the location of the each code type, which is used later for post-processing markdown
 text files using  <code>renderMultiDocument</code>.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># A simple output</span>
@@ -198,14 +220,14 @@ text files using  <code>renderMultiDocument</code>.</p>
 
 <span class='fu'>dualTable</span>(<span class='no'>output</span>, <span class='kw'>caption</span><span class='kw'>=</span><span class='st'>"Simple Test Table"</span>)</div><div class='output co'>#&gt; 
 #&gt; &lt;!-- HTML_Start --&gt;
+#&gt; &lt;!-- dualTable --&gt;
 #&gt; &lt;table class='gmisc_table breakboth' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' &gt;
 #&gt; &lt;thead&gt;
 #&gt; &lt;tr&gt;&lt;td colspan='3' style='text-align: left;'&gt;
 #&gt; **Table 1:** Simple Test Table&lt;/td&gt;&lt;/tr&gt;
-#&gt; &lt;tr&gt;
-#&gt; &lt;th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'&gt; &lt;/th&gt;
-#&gt; &lt;th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'&gt;Column 1&lt;/th&gt;
-#&gt; &lt;th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'&gt;Column 2&lt;/th&gt;
+#&gt; &lt;tr&gt;&lt;th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'&gt;&lt;/th&gt;
+#&gt; &lt;th style='font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'&gt;Column 1&lt;/th&gt;
+#&gt; &lt;th style='font-weight: 900; border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'&gt;Column 2&lt;/th&gt;
 #&gt; &lt;/tr&gt;
 #&gt; &lt;/thead&gt;
 #&gt; &lt;tbody&gt;
@@ -221,8 +243,7 @@ text files using  <code>renderMultiDocument</code>.</p>
 #&gt; &lt;/tr&gt;
 #&gt; &lt;/tbody&gt;
 #&gt; &lt;/table&gt;
-#&gt; &lt;!-- LaTeX_Start
-#&gt; %latex.default(my_tbl, file = "", where = where, col.just = tex.align,     caption = tmp_caption, ...)%
+#&gt; &lt;!-- LaTeX_Start dualTable
 #&gt; \begin{table}[H]
 #&gt; \caption{**Table 1:** Simple Test Table\label{my}} 
 #&gt; \begin{center}
@@ -276,9 +297,7 @@ text files using  <code>renderMultiDocument</code>.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -291,7 +310,7 @@ text files using  <code>renderMultiDocument</code>.</p>
 </div>
 
 <div class="author">
-  <p>Developed & Maintained by <a href='https://github.com/dbetebenner'><img src='https://centerforassessment.github.io/assets/dbetebenner.png' height='20' /> Damian W. Betebenner</a> & <a href='https://github.com/adamvi'><img src='https://centerforassessment.github.io/assets/adamvi.png' height='20' /> Adam R. Van Iwaarden</a>.</p>
+  <p>Developed & Maintained by <a href='https://github.com/adamvi'><img src='https://centerforassessment.github.io/assets/adamvi.png' height='20' /> Adam R. Van Iwaarden</a> & <a href='https://github.com/dbetebenner'><img src='https://centerforassessment.github.io/assets/dbetebenner.png' height='20' /> Damian W. Betebenner</a>.</p>
 </div>
 
 <script>

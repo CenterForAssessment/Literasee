@@ -39,10 +39,10 @@ navbar:
       - text: "Change log"
         href: news/index.html
     right:
-      - icon: fa-github fa-2x
+      - icon: fab fa-github
         href: https://github.com/centerforassessment/Literasee
-      - icon: fa-twitter
-        href: https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=dbetebenner&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2C%20Literasee
+      - icon: fab fa-twitter
+        href: https://twitter.com/intent/tweet?url=https%3A%2F%2Fcenterforassessment.github.io%2FLiterasee&via=NCIEA1&text=Literasee%3A%20R%20package%20for%20assessment%20literacy%20content%20development&hashtags=rstats%2CLiterasee
 
 
 reference:
