@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Convenience wrapper to get (download) one or more files from a Github repo. — getGithubFile"/>
+<meta property="og:description" content="Literasee • Convenience wrapper to get (download) one or more files from a Github repo. — getGithubFile"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Convenience wrapper to get (download) one or more files from a Github repo. — getGithubFile"/>
+<meta name="twitter:description" content="Literasee • Convenience wrapper to get (download) one or more files from a Github repo. — getGithubFile"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Convenience wrapper to get (download) one or more files from a Github repo. — getGithubFile</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,50 +141,77 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Convenience wrapper to get (download) one or more files from a Github repo.</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>The function retrieves one or more files from a Github repo via <a href='http://www.rdocumentation.org/packages/utils/topics/download.file'>download.file</a>.</p>
+
+    <pre class="usage"><span class='fu'>getGithubFile</span>(
+  <span class='no'>github.user</span>,
+        <span class='no'>repo</span>,
+        <span class='kw'>branch</span><span class='kw'>=</span><span class='st'>"master"</span>,
+        <span class='kw'>github.directory</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+  <span class='kw'>file.to.get</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+        <span class='kw'>local.directory</span><span class='kw'>=</span><span class='st'>"github_files"</span>,
+        <span class='kw'>file.type</span> <span class='kw'>=</span> <span class='st'>"[.]R$|[.]Rmd$"</span>,
+        <span class='kw'>quiet</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>github.user</th>
+      <td><p>Character. Name of github user or organization who owns the repo you want to get file(s) from.</p></td>
+    </tr>
+    <tr>
+      <th>repo</th>
+      <td><p>Character. The repo in which file(s) are located.</p></td>
+    </tr>
+    <tr>
+      <th>branch</th>
+      <td><p>Character. Repo branch in which to look.  Default is &#8216;master&#8217;.</p></td>
+    </tr>
+    <tr>
+      <th>github.directory</th>
+      <td><p>Character. Additional directory structure within the repo branch in which to look.
+              Default is NULL, meaning the whole repo.</p></td>
+    </tr>
+    <tr>
+      <th>file.to.get</th>
+      <td><p>Character. Specific (single) file to get within the <code>repo/branch/github.directory</code>.
+              Default is NULL, meaning all files in the <code>repo/branch/github.directory</code> path.</p></td>
+    </tr>
+    <tr>
+      <th>local.directory</th>
+      <td><p>Character. Local directory in which to download files.  Default is &#8216;github_files&#8217;.
+              A directory of this name will be created in the working directory if it does not already exist.</p></td>
+    </tr>
+    <tr>
+      <th>file.type</th>
+      <td><p>Character. Specific file type (or other special text in which to <a href='http://www.rdocumentation.org/packages/base/topics/grep'>grep</a> from the list of files in
+              the repo) to limit files that are retrieved.  Default is &#8216;[.]R$|[.]Rmd$&#8217;, which will get all .R and .Rmd files.</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>Boolean. Logical - should download progress be shown. Defaults to &#8216;FALSE&#8217;. See
+              <a href='http://www.rdocumentation.org/packages/utils/topics/download.file'>download.file</a> for details.</p></td>
+    </tr>
+    </table>
 
 
-
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
+  <span class='fu'>getGithubFile</span>(<span class='kw'>github.user</span> <span class='kw'>=</span> <span class='st'>"CenterForAssessment"</span>, <span class='kw'>repo</span> <span class='kw'>=</span> <span class='st'>"SGP_Research"</span>,
+                <span class='kw'>github.directory</span> <span class='kw'>=</span> <span class='st'>"Master_Documents/Skip_Year_Analysis/SGP_Report"</span>,
+                <span class='kw'>local.directory</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='st'>"assets"</span>, <span class='st'>"github_children"</span>), <span class='kw'>file.type</span> <span class='kw'>=</span> <span class='st'>".Rmd$"</span>)
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
 
   </div>
 </div>

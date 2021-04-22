@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Function to produce Goodness of Fit plots from a SGP object. — gofPrint"/>
+<meta property="og:description" content="Literasee • Function to produce Goodness of Fit plots from a SGP object. — gofPrint"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Function to produce Goodness of Fit plots from a SGP object. — gofPrint"/>
+<meta name="twitter:description" content="Literasee • Function to produce Goodness of Fit plots from a SGP object. — gofPrint"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Function to produce Goodness of Fit plots from a SGP object. — gofPrint</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,51 +141,73 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Function to produce Goodness of Fit plots from a SGP object.</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>The function gofPrint is used to output Goodness of Fit plots from R grobs stored in a SGP object.</p>
 
+    <pre class="usage"><span class='fu'>gofPrint</span>(
+    <span class='no'>sgp_object</span>,
+    <span class='kw'>years</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>content_areas</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>grades</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>norm_group</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>sgp_types</span><span class='kw'>=</span><span class='kw'>NULL</span>,
+    <span class='kw'>output_format</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"PDF"</span>, <span class='st'>"PNG"</span>, <span class='st'>"DECILE_TABLES"</span>))</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>sgp_object</th>
+      <td><p>An SGP object resulting from SGP analyses.</p></td>
+    </tr>
+    <tr>
+      <th>years</th>
+      <td><p>The academic year(s) for which fit plots should be produced</p></td>
+    </tr>
+    <tr>
+      <th>content_areas</th>
+      <td><p>The content area(s) for which fit plots should be produced</p></td>
+    </tr>
+    <tr>
+      <th>grades</th>
+      <td><p>The grade(s) for which fit plots should be produced.</p></td>
+    </tr>
+    <tr>
+      <th>norm_group</th>
+      <td><p>The specific norm group (cohort or course progression) for which fit plots should be produced</p></td>
+    </tr>
+    <tr>
+      <th>sgp_types</th>
+      <td><p>The SGP type for which fit plots should be produdced (e.g., cohort or baseline referenced, SIMEX adjusted, etc.).</p></td>
+    </tr>
+    <tr>
+      <th>output_format</th>
+      <td><p>The graphical file type that should be produced (PDF or PNG), or the decile tables as a .Rdata file.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>Returns a graphical output of the fit plot(s) requested based on the arguments provided.  Can also save the decile table data in Rdata format.</p>
 
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='fu'>not_run</span>({
+      <span class='fu'>gofPrint</span>(<span class='no'>Demonstration_SGP</span>)
 
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
     <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
-
+    Adam Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
   </div>
 </div>
 

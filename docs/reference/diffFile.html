@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package — diffFile"/>
+<meta property="og:description" content="Literasee • Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package — diffFile"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package — diffFile"/>
+<meta name="twitter:description" content="Literasee • Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package — diffFile"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package — diffFile</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,50 +141,87 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Render the differences between two files as an HTML document using the &#8216;git&#8217; version control software package</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>This is a function for rendering the differences between two files as an HTML document.  The function depends on the user
+having <a href = 'https://git-scm.com'>git</a> version control software installed. See <a href = 'https://git-scm.com/doc'>git documentation</a> for more details.</p>
 
+    <pre class="usage"><span class='fu'>diffFile</span>(
+  <span class='no'>current_file</span>,
+  <span class='kw'>reference_file</span> <span class='kw'>=</span> <span class='st'>"HEAD"</span>,
+  <span class='kw'>diff_algorithm</span><span class='kw'>=</span><span class='st'>"minimal"</span>,
+  <span class='kw'>clean_empyt_lines</span><span class='kw'>=</span><span class='fl'>FALSE</span>,
+  <span class='kw'>keep_diff</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>view</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>return_results</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>current_file</th>
+      <td><p>string: path to file after changes</p></td>
+    </tr>
+    <tr>
+      <th>reference_file</th>
+      <td><p>string: path to file before changes.</p></td>
+    </tr>
+    <tr>
+      <th>diff_algorithm</th>
+      <td><p>string: The algorithm to use in &#8216;git diff&#8217;.  See
+          <a href = 'https://git-scm.com/docs/git-diff'>git diff</a> for more information. Possible choices are
+          &#8216;patience&#8217;, &#8216;minimal&#8217;, &#8216;histogram&#8217;, or &#8216;myers&#8217; (&#8216;myers&#8217; is git default).</p></td>
+    </tr>
+    <tr>
+      <th>clean_empyt_lines</th>
+      <td><p>logical: Should both files be &#8216;cleaned&#8217; by removing additional lines between text chunks.
+          Only an option for reference_file if it is an actual file (not a git repo).</p></td>
+    </tr>
+    <tr>
+      <th>keep_diff</th>
+      <td><p>logical: Keep a copy of the HTML file.  If TRUE a file is saved to the current_file directory and named after it.</p></td>
+    </tr>
+    <tr>
+      <th>view</th>
+      <td><p>logical: View the HTML results automatically using <code><a href='http://www.rdocumentation.org/packages/utils/topics/browseURL'>browseURL</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>return_results</th>
+      <td><p>logical: Return the character string with the location of the HTML results.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p><code>string</code> Returns a character string containing the path for a git diff output file that has been post-processed as an
+          HTML document using <a href='http://www.rdocumentation.org/packages/rmarkdown/topics/render'>render</a>.</p>
 
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='fu'>not_run</span>({
+    <span class='co'># Check differences between two 'Draft' .Rmd files (not in a git repo)</span>
+    <span class='fu'>diffRmd</span>(<span class='kw'>current_file</span><span class='kw'>=</span><span class='st'>'Draft/My_Report-Compiled_Draft_v2.Rmd'</span>,
+            <span class='kw'>reference_file</span><span class='kw'>=</span><span class='st'>'Draft/My_Report-Compiled_Draft_v1.Rmd'</span>,
+            <span class='kw'>clean_empyt_lines</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+            <span class='kw'>keep_diff</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
+})
+  <span class='co'># An advanced output</span>
+  <span class='fu'>not_run</span>({
+    <span class='co'># From the Literacy repo directory</span>
+    <span class='co'># check the current placeFigure.R file against an old commit</span>
+    <span class='fu'>diffRmd</span>(<span class='kw'>current_file</span><span class='kw'>=</span><span class='st'>'R/placeFigure.R'</span>,
+            <span class='kw'>reference_file</span><span class='kw'>=</span><span class='st'>'d47a9e2bdb1fde5723af3877ef21ea18d229ced7'</span>)
+
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
 
   </div>
 </div>

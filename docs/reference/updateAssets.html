@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
 
-<meta property="og:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta property="og:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta property="og:title" content="Literasee • Update the Literasee NCIEA report assets in and existing report directory — updateAssets"/>
+<meta property="og:description" content="Literasee • Update the Literasee NCIEA report assets in and existing report directory — updateAssets"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee"/>
 <meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
@@ -17,10 +17,10 @@
 <meta name="twitter:site" content="@NCIEA1"/>
 <meta name="twitter:creator" content="@dbetebenner"/>
 <meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png"/>
-<meta name="twitter:title" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
-<meta name="twitter:description" content="Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package"/>
+<meta name="twitter:title" content="Literasee • Update the Literasee NCIEA report assets in and existing report directory — updateAssets"/>
+<meta name="twitter:description" content="Literasee • Update the Literasee NCIEA report assets in and existing report directory — updateAssets"/>
 
-<title>Literasee • Literasee: Assessment Literacy Content Development via R — Literasee-package</title>
+<title>Literasee • Update the Literasee NCIEA report assets in and existing report directory — updateAssets</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -141,50 +141,37 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Literasee: Assessment Literacy Content Development via R</h1>
+    <h1>Update the Literasee NCIEA report assets in and existing report directory</h1>
     </div>
 
-    <p>Assessment Literacy Content Development via R.</p>
+    <p>Update local assets for use with the NCIEA RMarkdown template.</p>
 
+    <pre class="usage"><span class='fu'>updateAssets</span>(<span class='kw'>asset.type</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"css"</span>, <span class='st'>"js"</span>, <span class='st'>"pandoc"</span>, <span class='st'>"rmd"</span>), <span class='kw'>asset.directory</span> <span class='kw'>=</span> <span class='st'>"assets"</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>asset.type</th>
+      <td><p>Character. Which of the assets to update. Defaults to &#8216;css&#8217;, &#8216;js&#8217;, &#8216;pandoc&#8217; and &#8216;rmd&#8217;. The &#8216;images&#8217; can also be updated.</p></td>
+    </tr>
+    <tr>
+      <th>asset.directory</th>
+      <td><p>Character. The &#8216;assets&#8217; directory in which to copy/overwrite the requested assets.  This directory should already include the appropriate subdirectories (&#8216;css&#8217;, &#8216;js&#8217;, etc.).</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <table><tr><td>
-Package: </td>
-</tr><tr><td> Literasee</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-Version: </td>
-</tr><tr><td> 0.0-5.3</td>
-</tr><tr><td>
-Date: </td>
-</tr><tr><td> 2020-3-31</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr><tr><td>
-LazyLoad: </td>
-</tr><tr><td> yes</td>
-</tr></table><p>Literasee is an experimental package for the R software environment designed to help create assessment literacy related content.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Betebenner, D. W. (2009). Norm- and criterion-referenced student growth.
-Educational Measurement: Issues and Practice, 28(4):42-51.</p>
+    <p>Updates the requested assets in a local report directory to the most current installed version of the Literasee package (may require package update).</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#details">Details</a></li>
-      <li><a href="#references">References</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
-
-    <h2>Author</h2>
-    
-Adam R. Van Iwaarden <a href='mailto:avaniwaarden@nciea.org'>avaniwaarden@nciea.org</a> and Damian W. Betebenner <a href='mailto:dbetebenner@nciea.org'>dbetebenner@nciea.org</a>
 
   </div>
 </div>
