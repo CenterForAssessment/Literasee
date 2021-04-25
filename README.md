@@ -1,8 +1,7 @@
 Literasee
 =========
 
-
-[![Build Status](https://travis-ci.org/CenterForAssessment/Literasee.svg?branch=master)](https://travis-ci.org/CenterForAssessment/Literasee)
+[![R-CMD-check](https://github.com/CenterForAssessment/Literasee/workflows/R-CMD-check/badge.svg)](https://github.com/CenterForAssessment/Literasee/actions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/Literasee)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Literasee)](http://cran.r-project.org/package=Literasee)
 [![Development Version](https://img.shields.io/badge/devel-0.0--5.3-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
