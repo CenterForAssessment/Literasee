@@ -12,6 +12,9 @@ writeYAML <- function(yaml=ymlthis::last_yml(), filename, fences = TRUE, remove_
   clean.yaml <- gsub("\n\n", "\n", clean.yaml)
   clean.yaml <- gsub("'TRUE'", "yes", clean.yaml)
   clean.yaml <- gsub("'FALSE'", "no", clean.yaml)
+  clean.yaml <- gsub("\"NULL\"", "c()", clean.yaml)
+  clean.yaml <- gsub("'[!]r", "!r", clean.yaml)
+  clean.yaml <- gsub(")XXX'", ")", clean.yaml)
   if (remove_scalar_style) {
     clean.yaml <- gsub("[|]-\n", "", clean.yaml)
   }
