@@ -338,7 +338,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
           addChildChunk(rmd_file=file.path("..", apdxchld), filename = tmp.apdx.fname)
         }
 
-        tmp.code_chunk <- "options(table_counter_str = NULL)\n\toptions(fig_caption_no_sprintf = NULL)"
+        tmp.code_chunk <- "options(table_counter_str = NULL)\n\toptions(table_num_str = NULL)\n\toptions(fig_caption_no_sprintf = NULL)\n\toptions(fig_num_str = NULL)"
         addCodeChunk(chunk_args = "cache=FALSE, results='asis', echo=FALSE", code_chunk = tmp.code_chunk,
                      comments = "End appendix format: re-start counters and change back to numeric for subsequent re-rendering", filename = tmp.apdx.fname)
 
