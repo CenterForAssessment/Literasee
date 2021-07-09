@@ -295,7 +295,18 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
                bibliography = report_config$top.level$bibliography,
                link_citations = TRUE)
         }
-        tmp.appdx.yml <- do.call(ymlthis::yml_params, c(list(.yml=tmp.appdx.yml), report_config$params, render.format = "pagedown"))
+        ##    clean up (nested) params
+        if (!exists("tmp.params")) {
+          tmp.params <- report_config$params
+          for (prm in seq(length(tmp.params))) {
+            if (is.character(tmp.params[[prm]])) tmp.params[[prm]] <- addQuote(tmp.params[[prm]])
+            if (is.list(tmp.params[[prm]])) {
+              tmp.params[[prm]] <- gsub("'c[(]", "c(", gsub("[)]'", ")", paste0("!r list(", paste(names(tmp.params[[prm]]), "=", addQuote(tmp.params[[prm]]), collapse = ", "), ")XXX")))
+            }
+          }
+        }
+
+        tmp.appdx.yml <- do.call(ymlthis::yml_params, c(list(.yml=tmp.appdx.yml), tmp.params, render.format = "pagedown"))
 
         if (!is.na(tmp.apdx.label)) {
           tmp.apdx.fname <- file.path(pd.output.dir, paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".Rmd"))
@@ -308,7 +319,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         # cat(ymlthis::code_chunk({knitr::opts_chunk$set(echo = FALSE, fig.topcaption = TRUE, fig.cap = TRUE, dpi = 150)},
         #   chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=tmp.apdx.fname, append=TRUE)
 
-        tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig='Figure ", tmp.apdx.label, "', tab='Table ", tmp.apdx.label, "'))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
+        tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig=\"'Figure ", tmp.apdx.label, "'\", tab=\"'Table ", tmp.apdx.label, "'\"))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
         addCodeChunk(chunk_args= "include=FALSE", code_chunk=tmp.code_chunk,
                      comments="create _bookdown.yml file for labeling Figures and Tabels with appendix prefix.", filename=tmp.apdx.fname)
 
