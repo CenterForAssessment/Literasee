@@ -244,7 +244,8 @@ h3.abstract {
   font-size: 24pt;
   font-weight: 900;
   background-color: #ffffff;
-  color: #FF0000;
+/*  color: #FF0000; */
+  color: #279F27;
 }
 
 /* spacing between elements + no underline */
@@ -291,7 +292,8 @@ h3.abstract {
   font-size: 24pt;
   font-weight: 900;
   background-color: #ffffff;
-  color: #FF0000;
+/*  color: #FF0000; */
+  color: #279F27;
   margin-bottom: 0;
 }
 
