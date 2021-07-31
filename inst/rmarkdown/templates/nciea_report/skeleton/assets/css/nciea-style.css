@@ -53,9 +53,12 @@ h1.subtitle {
 h2.date {
   font-size: 12pt;
   font-weight: 200;
-  color: #FF0000;
-  border-top: 1px solid #FF0000;
-  border-bottom: 1px solid #FF0000;
+/* color: #FF0000; */
+  color: #279F27;
+/*  border-top: 1px solid #FF0000; */
+  border-top: 1px solid #279F27;
+/*  border-bottom: 1px solid #FF0000; */
+  border-bottom: 1px solid #279F27;
   margin-left: 40%;
   margin-right: -20%;
   margin-top: .75cm;
@@ -68,7 +71,8 @@ h2.author {
   font-size: 12pt;
   font-weight: 200;
   font-style: italic;
-  color: #FF0000;
+/*  color: #FF0000; */
+  color: #279F27;
   margin-left: 40%;
   margin-top: 15px;
   text-align: left;
@@ -84,7 +88,8 @@ h1 {
   font-weight: 700;
   text-transform: uppercase;
 /*   background-color: #314160; */
-  color: #FF0000;
+/*  color: #FF0000; */
+  color: #279F27;
   margin-block-start: -0.5em; /* move h1 up -- might need to remove if use running headers*/
   margin-block-end: 0.1em;
 }
@@ -121,7 +126,8 @@ a, a:active, a:visited {
 /* ---------------------- Aside ------------------- */
 /* Normal aside - for citations */
 aside {
-  background-color: #FF0000;
+/* background-color: #FF0000; */
+  background-color: #279F27;
   width: 40%;
   float: right;
   margin: 0% 0% 0% 3%;
@@ -155,7 +161,8 @@ aside.info-callout {
 }
 
 .info-callout-title {
-  background-color: #FF0000;
+/* background-color: #FF0000; */
+  background-color: #279F27;
   color: white;
   font-size: 14pt;
   font-weight: 700;
@@ -195,7 +202,8 @@ img {
 p.caption {
   /* text-transform: uppercase; */
   font-weight: 600;
-  color: #FF0000;
+/* color: #FF0000; */
+  color: #279F27;
   text-align: left;
 }
 
