@@ -1,5 +1,16 @@
-tblNum <- function(advance.counter=0) {return(getOption("table_number")+advance.counter)}
-figNum <- function(advance.counter=0) {return(getOption("fig_caption_no")+advance.counter)}
+tblNum <- function(advance.counter=0) {
+  if (!is.null(getOption("table_num_str"))) {
+    return(sprintf(getOption("table_num_str"), getOption("table_number")+advance.counter))
+  }
+  return(getOption("table_number")+advance.counter)
+}
+
+figNum <- function(advance.counter=0) {
+  if (!is.null(getOption("fig_num_str"))) {
+    return(sprintf(getOption("fig_num_str"), getOption("fig_caption_no")+advance.counter))
+  }
+  return(getOption("fig_caption_no")+advance.counter)
+}
 
 tblNumIncrement <- function(advance.counter=1) {options("table_number" = getOption("table_number")+advance.counter); return(getOption("table_number"))}
 figNumIncrement <- function(advance.counter=1) {options("fig_caption_no" = getOption("fig_caption_no")+advance.counter); return(getOption("fig_caption_no"))}

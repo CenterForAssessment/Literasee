@@ -79,7 +79,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         bd.downloads <- c(bd.downloads, paste0("[\"downloads/", paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".pdf"), "\", \"Appendix ",  tmp.apdx.label, "\"]"))
       }
     } # paste0("downloads/", paste0pd.output.file, ".html"))) # Add link to HTML formats?
-
+    if (length(bd.downloads) == 1L) bd.downloads <- paste0("[", bd.downloads, "]")
     ##  Scoping issue when trying to send in objects like 'report_config$top.level$title' with ymlthis::yml_output(bookdown::gitbook(...))
 
     index.rmd.yml <- index.rmd.yml %>%
@@ -100,7 +100,16 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
           bibliography = report_config$top.level$bibliography,
           link_citations = TRUE)
 
-    index.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=index.rmd.yml), sapply(report_config$params, function(f) ifelse(is.character(f), addQuote(f), f)), render.format = "'bookdown'"))
+    ##    clean up (nested) params
+    tmp.params <- report_config$params
+    for (prm in seq(length(tmp.params))) {
+      if (is.character(tmp.params[[prm]])) tmp.params[[prm]] <- addQuote(tmp.params[[prm]])
+      if (is.list(tmp.params[[prm]])) {
+        tmp.params[[prm]] <- gsub("'c[(]", "c(", gsub("[)]'", ")", paste0("!r list(", paste(names(tmp.params[[prm]]), "=", addQuote(tmp.params[[prm]]), collapse = ", "), ")XXX")))
+      }
+    }
+    # index.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=index.rmd.yml), sapply(report_config$params, function(f) ifelse(is.character(f), addQuote(f), f)), render.format = "'bookdown'"))
+    index.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=index.rmd.yml), tmp.params, render.format = "'bookdown'"))
 
     writeYAML(yaml = index.rmd.yml, filename = "index.Rmd")
     addCurrentDraft(config=report_config, filename = "index.Rmd")
@@ -200,7 +209,18 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
            link_citations = TRUE)
     }
 
-    pgdwn.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=pgdwn.rmd.yml), sapply(report_config$params, function(f) ifelse(is.character(f), addQuote(f), f)), render.format = "pagedown"))
+    ##    clean up (nested) params
+    if (!exists("tmp.params")) {
+      tmp.params <- report_config$params
+      for (prm in seq(length(tmp.params))) {
+        if (is.character(tmp.params[[prm]])) tmp.params[[prm]] <- addQuote(tmp.params[[prm]])
+        if (is.list(tmp.params[[prm]])) {
+          tmp.params[[prm]] <- gsub("'c[(]", "c(", gsub("[)]'", ")", paste0("!r list(", paste(names(tmp.params[[prm]]), "=", addQuote(tmp.params[[prm]]), collapse = ", "), ")XXX")))
+        }
+      }
+    }
+    # pgdwn.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=pgdwn.rmd.yml), sapply(report_config$params, function(f) ifelse(is.character(f), addQuote(f), f)), render.format = "pagedown"))
+    pgdwn.rmd.yml <- do.call(ymlthis::yml_params, c(list(.yml=pgdwn.rmd.yml), tmp.params, render.format = "pagedown"))
     pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, abstract = code_chunk(chunk_args = list(child="'../assets/rmd/pagedown/abstract.Rmd'"))) # file.path("assets", "pagedown", "rmd", "abstract.Rmd")
     pd.filename <- file.path(pd.output.dir, paste0(pd.output.file, ".Rmd"))
     if (!dir.exists(pd.output.dir)) dir.create(pd.output.dir)
@@ -275,7 +295,18 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
                bibliography = report_config$top.level$bibliography,
                link_citations = TRUE)
         }
-        tmp.appdx.yml <- do.call(ymlthis::yml_params, c(list(.yml=tmp.appdx.yml), report_config$params, render.format = "pagedown"))
+        ##    clean up (nested) params
+        if (!exists("tmp.params")) {
+          tmp.params <- report_config$params
+          for (prm in seq(length(tmp.params))) {
+            if (is.character(tmp.params[[prm]])) tmp.params[[prm]] <- addQuote(tmp.params[[prm]])
+            if (is.list(tmp.params[[prm]])) {
+              tmp.params[[prm]] <- gsub("'c[(]", "c(", gsub("[)]'", ")", paste0("!r list(", paste(names(tmp.params[[prm]]), "=", addQuote(tmp.params[[prm]]), collapse = ", "), ")XXX")))
+            }
+          }
+        }
+
+        tmp.appdx.yml <- do.call(ymlthis::yml_params, c(list(.yml=tmp.appdx.yml), tmp.params, render.format = "pagedown"))
 
         if (!is.na(tmp.apdx.label)) {
           tmp.apdx.fname <- file.path(pd.output.dir, paste0(gsub(" ", "_", rmd_file_list$appendices[[apdx]]$title), "_APPENDIX_",  tmp.apdx.label, ".Rmd"))
@@ -288,7 +319,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         # cat(ymlthis::code_chunk({knitr::opts_chunk$set(echo = FALSE, fig.topcaption = TRUE, fig.cap = TRUE, dpi = 150)},
         #   chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=tmp.apdx.fname, append=TRUE)
 
-        tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig='Figure ", tmp.apdx.label, "', tab='Table ", tmp.apdx.label, "'))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
+        tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig=\"'Figure ", tmp.apdx.label, "'\", tab=\"'Table ", tmp.apdx.label, "'\"))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
         addCodeChunk(chunk_args= "include=FALSE", code_chunk=tmp.code_chunk,
                      comments="create _bookdown.yml file for labeling Figures and Tabels with appendix prefix.", filename=tmp.apdx.fname)
 
@@ -307,7 +338,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
           addChildChunk(rmd_file=file.path("..", apdxchld), filename = tmp.apdx.fname)
         }
 
-        tmp.code_chunk <- "options(table_counter_str = NULL)\n\toptions(fig_caption_no_sprintf = NULL)"
+        tmp.code_chunk <- "options(table_counter_str = NULL)\n\toptions(table_num_str = NULL)\n\toptions(fig_caption_no_sprintf = NULL)\n\toptions(fig_num_str = NULL)"
         addCodeChunk(chunk_args = "cache=FALSE, results='asis', echo=FALSE", code_chunk = tmp.code_chunk,
                      comments = "End appendix format: re-start counters and change back to numeric for subsequent re-rendering", filename = tmp.apdx.fname)
 
