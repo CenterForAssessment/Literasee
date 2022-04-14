@@ -4,10 +4,10 @@ citEntry(entry = "Manual",
          title        = "{Literasee}: Assessment Literacy Content Development via R.",
          author       = personList(as.person("Adam R. Van Iwaarden"), as.person("Damian W. Betebenner")),
          year         = "2021",
-         note         = "R package version 0.0-5.6",
+         note         = "R package version 0.0-5.7",
          url          = "literacy.io",
 
          textVersion  = paste("Adam R. Van Iwaarden and Damian W. Betebenner (2021).",
                         "Literasee: Assessment Literacy Content Development via R.",
-                        "(R package version 0.0-5.6)",
+                        "(R package version 0.0-5.7)",
                         "URL: literasee.io"))
