@@ -268,7 +268,7 @@ h3.abstract {
 /* here each level contain the following one so we have to override the properties */
 /* first level */
 .toc ul > li > a, .lof ul > li > a, .lot ul > li > a  {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* second level and more */

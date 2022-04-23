@@ -234,6 +234,7 @@ table {
 /* ----------------- List style ------------------- */
 ul {
   list-style-type: disc;
+  font-weight: 300;
 }
 
 /* ----------------- Footnotes -------------------- */
