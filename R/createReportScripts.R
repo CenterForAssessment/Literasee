@@ -91,7 +91,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
             config = list(
               toc = list(
                 before = paste0("<li><a href=\"./\"><strong>", report_config$top.level$title, "</strong></a></li>"),
-                after =  paste0("<li><a href=\"https://github.com/", report_config$client.info$github.repo, "\" target=\"blank\">Analysis Code on Github</a></li>")),
+                after =  paste0("<li><a href=\"", report_config$client.info$github.repo, "\" target=\"blank\">Analysis Code on Github</a></li>")),
               download = bd.downloads),
             split_bib = FALSE)
         ))
@@ -170,7 +170,7 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
       pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, project_team = addQuote(report_config$top.level$project.team))
     }
     if (!is.null(report_config$client.info$github.repo)) {
-      pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, project_code = addQuote(paste0("[Github](https://github.com/", report_config$client.info$github.repo, ")")))
+      pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, project_code = addQuote(paste0("[Github](", report_config$client.info$github.repo, ")")))
     }
     if (!is.null(report_config$top.level$project.email)) {
       pgdwn.rmd.yml <- ymlthis::yml_toplevel(.yml=pgdwn.rmd.yml, project_email = report_config$top.level$project.email)
@@ -319,9 +319,9 @@ createReportScripts <- function(report_config, rmd_file_list, bookdown=TRUE, pag
         # cat(ymlthis::code_chunk({knitr::opts_chunk$set(echo = FALSE, fig.topcaption = TRUE, fig.cap = TRUE, dpi = 150)},
         #   chunk_name = "setup", chunk_args = list(include = FALSE)), "\n\n", file=tmp.apdx.fname, append=TRUE)
 
-        tmp.code_chunk <- paste0("ymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig=\"'Figure ", tmp.apdx.label, "'\", tab=\"'Table ", tmp.apdx.label, "'\"))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
+        tmp.code_chunk <- paste0("require(ymlthis)\nymlthis::yml_empty() %>%\n\t\tymlthis::yml_bookdown_opts(\n\t\t\tlanguage=list(label=list(fig=\"'Figure ", tmp.apdx.label, "'\", tab=\"'Table ", tmp.apdx.label, "'\"))\n\t\t) %>%\n\t\t\tLiterasee:::writeYAML(filename = '_bookdown.yml', fences=FALSE)")
         addCodeChunk(chunk_args= "include=FALSE", code_chunk=tmp.code_chunk,
-                     comments="create _bookdown.yml file for labeling Figures and Tabels with appendix prefix.", filename=tmp.apdx.fname)
+                     comments="create _bookdown.yml file for labeling `Figures` and `Tables` with appendix prefix.", filename=tmp.apdx.fname)
 
         ##  Make params and setup child RMD files to be included in the rmd_file_list/rmd.files argument/object
         # addChildChunk(rmd_file=file.path("..", report_config$params$unvrsl.rmd.path[[1]], "report_setup.Rmd"), comments = "Set up report params, packages, cache, etc.", filename = tmp.apdx.fname)

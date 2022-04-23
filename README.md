@@ -4,7 +4,7 @@ Literasee
 [![R-CMD-check](https://github.com/CenterForAssessment/Literasee/workflows/R-CMD-check/badge.svg)](https://github.com/CenterForAssessment/Literasee/actions)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&svg=true)](https://ci.appveyor.com/project/centerforassessment/Literasee)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/Literasee)](http://cran.r-project.org/package=Literasee)
-[![Development Version](https://img.shields.io/badge/devel-0.0--5.6-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
+[![Development Version](https://img.shields.io/badge/devel-0.0--5.7-brightgreen.svg)](https://github.com/CenterForAssessment/Literasee)
 [![License](http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat)](https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md)
 
 # Overview
@@ -49,7 +49,7 @@ We love feedback and are happy to answer questions.
 
 # References
 
-VanIwaarden, A. Betebenner, D. W. (2021). Literasee: Assessment Literacy content development via R.
+VanIwaarden, A. Betebenner, D. W. (2022). Literasee: Assessment Literacy content development via R.
 
-R Development Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+R Development Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 3-900051-07-0.
