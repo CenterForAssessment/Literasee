@@ -49,7 +49,7 @@ We love feedback and are happy to answer questions.
 
 # References
 
-VanIwaarden, A. Betebenner, D. W. (2021). Literasee: Assessment Literacy content development via R.
+VanIwaarden, A. Betebenner, D. W. (2022). Literasee: Assessment Literacy content development via R.
 
-R Development Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
+R Development Core Team (2022). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria.
 3-900051-07-0.

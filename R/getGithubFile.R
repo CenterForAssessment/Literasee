@@ -26,7 +26,7 @@
 	    github.files <- grep(file.type, github.files, value=TRUE, ignore.case = TRUE)
 	  }
 	} else github.files <- file.to.get
-	
+
 	###   Create local.directory if necessary
   if (!dir.exists(file.path(local.directory))) {
     dir.create(file.path(local.directory), showWarnings = FALSE, recursive = TRUE)
