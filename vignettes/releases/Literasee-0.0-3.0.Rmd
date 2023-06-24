@@ -4,7 +4,7 @@ date: "September 27th, 2017"
 ---
 
 ```{r include = FALSE}
-    library(SGP)
+    library(Literasee)
 
     is_html_output = function() {
         knitr::opts_knit$get("rmarkdown.pandoc.to")=="html"
@@ -26,7 +26,7 @@ date: "September 27th, 2017"
 The Literasee package isn't available on [CRAN](https://CRAN.R-project.org/package=Literasee)
 yet so you'll need to install it off of GitHub.
 
-```
+```{r eval=FALSE}
 devtools::install_github("centerforassessment/Literasee")
 ```
 
