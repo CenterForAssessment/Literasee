@@ -5,19 +5,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
+<meta name="keywords" content="assessment-literacy, sgp, student-growth-percentiles, student-growth-projections, sgp-analyses, literasee-package">
+<meta name="github-repo" content="Literasee • Literasee 0.0-0.4">
 <meta property="og:title" content="Literasee • Literasee 0.0-0.4">
-<meta property="og:description" content="Literasee • Literasee 0.0-0.4">
+<meta property="og:description" content="">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Literasee • Literasee 0.0-0.4">
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee">
-<meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://centerforassessment.github.io/Literasee/img/REPO_CARD_image.png">
+<meta name="og:image:alt" content="Landing Page Image for Repo">
+<meta name="twitter:title" content="Literasee • Literasee 0.0-0.4">
+<meta name="twitter:description" content="">
+<meta name="twitter:url" content="https://centerforassessment.github.io/Literasee">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@NCIEA1">
 <meta name="twitter:creator" content="@dbetebenner">
-<meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png">
-<meta name="twitter:title" content="Literasee • Literasee 0.0-0.4">
-<meta name="twitter:description" content="Literasee • Literasee 0.0-0.4">
+<meta name="twitter:image" content="https://centerforassessment.github.io/Literasee/img/REPO_CARD_image.png">
+<meta name="twitter:image:alt" content="Landing Page Image for Repo">
 <title>Literasee • Literasee 0.0-0.4</title>
+<link rel="icon" type="image/png" href="https://centerforassessment.github.io/Literasee/img/favicon.png" sizes="16x16">
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- Fonts --><link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400" rel="stylesheet" type="text/css">
 <!-- packagePages --><link href="../../packagePages.css" rel="stylesheet">
@@ -109,7 +115,7 @@
 <!--/.navbar -->
 
       
-      </header><script src="Literasee-0.0-0.4_files/header-attrs-2.13/header-attrs.js"></script><link href="Literasee-0.0-0.4_files/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet">
+      </header><script src="Literasee-0.0-0.4_files/header-attrs-2.22/header-attrs.js"></script><link href="Literasee-0.0-0.4_files/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet">
 <link href="Literasee-0.0-0.4_files/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet">
 <script src="Literasee-0.0-0.4_files/anchor-sections-1.1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9">
@@ -125,13 +131,18 @@
 <ul>
 <li>Utilize pkgdown package for documentation generation.</li>
 </ul>
-<p>We’re pleased to announce the first release of the Literasee package. The package isn’t available on <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a> yet so you’ll need to install it off of GitHub.</p>
-<pre><code>devtools::install_github("centerforassessment/Literasee")</code></pre>
-<p>There’s not much in the package yet: Just a single function <code>reportSGP</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Literasee)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reportSGP</span>()</span></code></pre></div>
-<p>You can see the documentation for more info on the <code>reportSGP</code> arguments.</p>
-<p>Literasee is under active development. We :heart: feedback and are happy to answer questions.</p>
+<p>We’re pleased to announce the first release of the Literasee package.
+The package isn’t available on <a href="https://CRAN.R-project.org/package=Literasee">CRAN</a> yet so
+you’ll need to install it off of GitHub.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="sc">&gt;</span> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"centerforassessment/Literasee"</span>)</span></code></pre></div>
+<p>There’s not much in the package yet: Just a single function
+<code>reportSGP</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(Literasee)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">reportSGP</span>()</span></code></pre></div>
+<p>You can see the documentation for more info on the
+<code>reportSGP</code> arguments.</p>
+<p>Literasee is under active development. We :heart: feedback and are
+happy to answer questions.</p>
 </div>
   </div>
 
@@ -150,14 +161,12 @@
   <p>Developed &amp; Maintained by <a href="https://github.com/adamvi"><img class="img-author" src="https://centerforassessment.github.io/assets/adamvi.png" height="20"> Adam R. Van Iwaarden</a> &amp; <a href="https://github.com/dbetebenner"><img class="img-author" src="https://centerforassessment.github.io/assets/dbetebenner.png" height="20"> Damian W. Betebenner</a>.</p>
 </div>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10JFLJTXNE"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-98997021-1', 'auto');
-  ga('send', 'pageview');
+  gtag('config', 'G-10JFLJTXNE');
 </script></footer>
 </div>
 

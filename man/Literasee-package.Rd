@@ -11,8 +11,8 @@ Assessment Literacy Content Development via R.
 \tabular{ll}{
 Package: \tab Literasee\cr
 Type: \tab Package\cr
-Version: \tab 0.0-5.7\cr
-Date: \tab 2021-8-6\cr
+Version: \tab 0.0-6.0\cr
+Date: \tab 2023-6-23\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }

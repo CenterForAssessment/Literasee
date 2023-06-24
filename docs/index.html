@@ -5,19 +5,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="https://centerforassessment.github.io/assets/favicon.png" sizes="16x16">
+<meta name="keywords" content="assessment-literacy, sgp, student-growth-percentiles, student-growth-projections, sgp-analyses, literasee-package">
+<meta name="github-repo" content="Literasee • Assessment Literacy Content Development via R">
 <meta property="og:title" content="Literasee • Assessment Literacy Content Development via R">
-<meta property="og:description" content="Literasee • Assessment Literacy Content Development via R">
+<meta property="og:description" content="Assessment Literacy Content Development via R.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Literasee • Assessment Literacy Content Development via R">
 <meta property="og:url" content="https://centerforassessment.github.io/Literasee">
-<meta property="og:image" content="https://centerforassessment.github.io/assets/favicon.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://centerforassessment.github.io/Literasee/img/REPO_CARD_image.png">
+<meta name="og:image:alt" content="Landing Page Image for Repo">
+<meta name="twitter:title" content="Literasee • Assessment Literacy Content Development via R">
+<meta name="twitter:description" content="Assessment Literacy Content Development via R.">
+<meta name="twitter:url" content="https://centerforassessment.github.io/Literasee">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@NCIEA1">
 <meta name="twitter:creator" content="@dbetebenner">
-<meta name="twitter:image" content="https://centerforassessment.github.io/assets/favicon.png">
-<meta name="twitter:title" content="Literasee • Assessment Literacy Content Development via R">
-<meta name="twitter:description" content="Literasee • Assessment Literacy Content Development via R">
+<meta name="twitter:image" content="https://centerforassessment.github.io/Literasee/img/REPO_CARD_image.png">
+<meta name="twitter:image:alt" content="Landing Page Image for Repo">
 <title>Literasee • Assessment Literacy Content Development via R</title>
+<link rel="icon" type="image/png" href="https://centerforassessment.github.io/Literasee/img/favicon.png" sizes="16x16">
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- Fonts --><link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400" rel="stylesheet" type="text/css">
 <!-- packagePages --><link href="packagePages.css" rel="stylesheet">
@@ -128,24 +134,31 @@
 <h2 class="hasAnchor">
 <a href="#from-cran" class="anchor" aria-hidden="true"></a>From <a href="https://CRAN.R-project.org">CRAN</a>
 </h2>
-<p>Currently there is no "stable" version of <code>Literasee</code> available on <a href="https://CRAN.R-project.org">CRAN</a>.<br>
-The development version of the package must be installed from github.</p>
+<p>Currently there is no "stable" version of <code>Literasee</code>
+available on <a href="https://CRAN.R-project.org">CRAN</a>.<br>
+The development version of the package must be installed from
+github.</p>
 </div>
 <div id="from-github" class="section level2">
 <h2 class="hasAnchor">
 <a href="#from-github" class="anchor" aria-hidden="true"></a>From <a href="https://github.com/CenterForAssessment/Literasee/">Github</a>
 </h2>
 <p>To install the development version of <strong>Literasee</strong>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"CenterForAssessment/Literasee"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="sc">&gt;</span> devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"CenterForAssessment/Literasee"</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="usage" class="section level1">
 <h1 class="hasAnchor">
 <a href="#usage" class="anchor" aria-hidden="true"></a>Usage</h1>
 <ul>
-<li>The <a href="https://github.com/CenterForAssessment/Literasee/wiki/Home">Literasee Package Wiki</a> contains instructions on how to prepare data and run <strong>Literasee</strong> analyses.</li>
-<li>The <a href="https://CRAN.R-project.org/web/packages/Literasee/Literasee.pdf">Literasee Package Documentation</a> contains man pages for all functions and data sets in the the <strong>Literasee</strong> Package.</li>
-<li>Numerous <a href="https://gist.github.com/dbetebenner">Literasee Gists</a> provide other examples of analyses that can be performed.</li>
+<li>The <a href="https://github.com/CenterForAssessment/Literasee/wiki/Home">Literasee
+Package Wiki</a> contains instructions on how to prepare data and run
+<strong>Literasee</strong> analyses.</li>
+<li>The <a href="https://CRAN.R-project.org/web/packages/Literasee/Literasee.pdf">Literasee
+Package Documentation</a> contains man pages for all functions and data
+sets in the the <strong>Literasee</strong> Package.</li>
+<li>Numerous <a href="https://gist.github.com/dbetebenner">Literasee
+Gists</a> provide other examples of analyses that can be performed.</li>
 </ul>
 </div>
 <div id="resources" class="section level1">
@@ -153,7 +166,8 @@ The development version of the package must be installed from github.</p>
 <a href="#resources" class="anchor" aria-hidden="true"></a>Resources</h1>
 <ul>
 <li><a href="https://literasee.io">literasee.io</a></li>
-<li><a href="https://CRAN.R-project.org/package=Literasee">CRAN Repo</a></li>
+<li><a href="https://CRAN.R-project.org/package=Literasee">CRAN
+Repo</a></li>
 </ul>
 </div>
 <div id="contributors" class="section level1">
@@ -169,8 +183,11 @@ The development version of the package must be installed from github.</p>
 <div id="references" class="section level1">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor" aria-hidden="true"></a>References</h1>
-<p>VanIwaarden, A. Betebenner, D. W. (2021). Literasee: Assessment Literacy content development via R.</p>
-<p>R Development Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. 3-900051-07-0.</p>
+<p>VanIwaarden, A. Betebenner, D. W. (2021). Literasee: Assessment
+Literacy content development via R.</p>
+<p>R Development Core Team (2021). R: A language and environment for
+statistical computing. R Foundation for Statistical Computing, Vienna,
+Austria. 3-900051-07-0.</p>
 </div>
 
   </div>
@@ -196,7 +213,7 @@ The development version of the package must be installed from github.</p>
 <li><a href="https://github.com/CenterForAssessment/Literasee/actions"><img src="https://github.com/CenterForAssessment/Literasee/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://ci.appveyor.com/project/centerforassessment/Literasee"><img src="https://ci.appveyor.com/api/projects/status/github/centerforassessment/Literasee?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="http://cran.r-project.org/package=Literasee"><img src="http://www.r-pkg.org/badges/version/Literasee" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/CenterForAssessment/Literasee"><img src="https://img.shields.io/badge/devel-0.0--5.7-brightgreen.svg" alt="Development Version"></a></li>
+<li><a href="https://github.com/CenterForAssessment/Literasee"><img src="https://img.shields.io/badge/devel-0.0--6.0-brightgreen.svg" alt="Development Version"></a></li>
 <li><a href="https://github.com/CenterForAssessment/Literasee/blob/master/LICENSE.md"><img src="http://img.shields.io/badge/license-GPL%203-brightgreen.svg?style=flat" alt="License"></a></li>
 </ul>
 </div>
@@ -211,14 +228,12 @@ The development version of the package must be installed from github.</p>
   <p>Developed &amp; Maintained by <a href="https://github.com/adamvi"><img class="img-author" src="https://centerforassessment.github.io/assets/adamvi.png" height="20"> Adam R. Van Iwaarden</a> &amp; <a href="https://github.com/dbetebenner"><img class="img-author" src="https://centerforassessment.github.io/assets/dbetebenner.png" height="20"> Damian W. Betebenner</a>.</p>
 </div>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10JFLJTXNE"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-98997021-1', 'auto');
-  ga('send', 'pageview');
+  gtag('config', 'G-10JFLJTXNE');
 </script></footer>
 </div>
 
